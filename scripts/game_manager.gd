@@ -18,10 +18,6 @@ func display_game_over(display : bool):
 	if display:
 		Engine.time_scale = 0
 
-func _input(ev):
-	if Input.is_key_pressed(KEY_ESCAPE):
-		paused(!pause)
-
 func paused(state: bool):
 	pause = state
 	var pause_menu = get_tree().get_first_node_in_group("pause")

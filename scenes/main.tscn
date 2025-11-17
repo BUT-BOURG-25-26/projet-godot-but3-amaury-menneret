@@ -26,7 +26,6 @@ shadow_enabled = true
 
 [node name="Camera" type="Camera3D" parent="."]
 script = ExtResource("7_o6xl0")
-fov_camera = 4.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Camera"]
 anchors_preset = 15
@@ -34,21 +33,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(2560, 1440)
 render_target_update_mode = 4
 
 [node name="PlayerUi" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("7_tipki")]
-anchors_preset = -1
-anchor_right = 3.75
-anchor_bottom = 2.109
-offset_right = -1920.0
-offset_bottom = -1079.81
-grow_horizontal = 2
-grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="UI" type="CanvasLayer" parent="Camera"]
 

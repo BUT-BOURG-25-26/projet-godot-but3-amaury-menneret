@@ -5,7 +5,7 @@ extends Node3D
 @onready var player : Player = get_tree().get_first_node_in_group("Player")
 
 @export var enemy : PackedScene
-@export var range : int = 10
+@export var range : int = 20
 @export var spawn_rate : float = 1.5
 
 func _ready() -> void:

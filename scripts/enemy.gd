@@ -46,4 +46,5 @@ func _despawn():
 		var player = target as Player
 		player.kill_count += 1
 		player.get_xp(xp_value)
+		player.gain_mana(int(xp_value * 0.1))
 		queue_free()

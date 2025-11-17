@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var gravity:float = ProjectSettings.get_setting("physics/3d/default_gravity");
 @export var speed:float = 1.5;
 
-@export var max_mana:int = 10;
+@export var max_mana:int = 100;
 var mana:int;
 
 @export var max_health:int = 10;
@@ -34,7 +34,7 @@ func _ready() -> void:
 	health = max_health
 	mana = max_mana
 	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
-	gain_skill(preload("res://scenes/attacks/fireball.tscn"))
+	gain_skill(preload("res://scenes/attacks/dismantle.tscn"))
 	gain_skill(preload("res://scenes/attacks/fireball.tscn"))
 	gain_skill(preload("res://scenes/attacks/iceball.tscn"))
 
@@ -44,6 +44,17 @@ func gain_skill(attack_skill : PackedScene) -> void:
 	new_skill.source = self
 	attack_skills.set(attack_skills.size(),new_skill)
 	add_child(new_skill)
+	
+func use_mana(value : int) -> bool:
+	if mana - value >= 0:
+		mana -= value
+		return true
+	return false
+	
+func gain_mana(value : int):
+	mana += value
+	if mana >= max_mana:
+		mana = max_mana
 
 func _process(delta: float) -> void:
 	read_move_inputs()
@@ -90,7 +101,11 @@ func full_rest():
 func read_move_inputs():
 	if !GameManager.pause:
 		move_inputs = Input.get_vector("left", "right", "forward", "backward")
-	
+
+func _input(ev):
+	if Input.is_key_pressed(KEY_ESCAPE) && health > 0:
+		GameManager.paused(!GameManager.pause)
+
 func take_damage(value : int):
 	health -= value
 	if(health < 0):
