@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq5ayxykesrlm"]
+
+[ext_resource type="Script" uid="uid://q43vfrsy4siw" path="res://scripts/world_generator.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://07tucox5xoja" path="res://scenes/player.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bwcqvj1g877n1" path="res://scenes/enemySpawner.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cyheoi1mur2hd" path="res://scenes/attacks/projectile.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bqj8ogl30cvi3" path="res://scenes/enemy.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://d12olfaaeo2jc" path="res://scenes/pauseMenu.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://5a8lwcgkyly5" path="res://scenes/game_over_menu.tscn" id="7_85g3d"]
+[ext_resource type="Script" uid="uid://bpbgfbcpeax2r" path="res://scripts/camera.gd" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dn23wa63ppe56" path="res://scenes/playerUi.tscn" id="7_tipki"]
+
+[node name="Main" type="Node"]
+
+[node name="WorldGenerator" type="Node" parent="."]
+script = ExtResource("1_o5qli")
+
+[node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("2_0wfyh")]
+speed = 5.0
+projectile = ExtResource("3_tbgi4")
+ui = NodePath("../Camera/SubViewportContainer/SubViewport/PlayerUi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.310676, 0.939327, -0.145415, 0, 0.152986, 0.988228, 0.950516, 0.307019, -0.0475291, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="."]
+script = ExtResource("7_o6xl0")
+fov_camera = 4.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Camera/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="PlayerUi" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("7_tipki")]
+anchors_preset = -1
+anchor_right = 3.75
+anchor_bottom = 2.109
+offset_right = -1920.0
+offset_bottom = -1079.81
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="CanvasLayer" parent="Camera"]
+
+[node name="GameOverMenu" parent="Camera/UI" instance=ExtResource("7_85g3d")]
+
+[node name="PauseMenu" parent="Camera/UI" instance=ExtResource("6_tefeu")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.783336, -0.621599, 0, 0.621599, 0.783336, 0, 0, 0, 1, -0.504179, 0.635363, 0)
+enemy = ExtResource("4_jyhfs")

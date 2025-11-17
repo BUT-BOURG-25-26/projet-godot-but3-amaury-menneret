@@ -1,0 +1,49 @@
+class_name Enemy
+
+extends CharacterBody3D
+
+@export var xp_value : float = 10
+
+@export var damage : int = 1
+
+@export var speed : float = 1.5
+@export var gravity : float = 9.81
+@onready var target = get_tree().get_first_node_in_group("Player")
+
+@export var health:int = 10;
+
+func take_damage(value : int):
+	health -= value
+	if(health < 0):
+		health = 0
+
+func _process(delta: float) -> void:
+	_despawn()
+
+func _physics_process(delta: float) -> void:
+	if(!is_on_floor()):
+		velocity.y = -1 * gravity
+	else:
+		look_at(Vector3(target.position.x, position.y, target.position.z))
+		var direction = target.position - global_position
+		var distance = direction.length()
+		if distance > 0.1:
+			direction = direction.normalized()
+			velocity = direction * speed
+	
+	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider() is Player:
+			(collision.get_collider() as Player).take_damage(damage)
+			queue_free()
+
+	
+func _despawn():
+	if global_position.y < 0:
+		queue_free()
+	if health <= 0:
+		var player = target as Player
+		player.kill_count += 1
+		player.get_xp(xp_value)
+		queue_free()

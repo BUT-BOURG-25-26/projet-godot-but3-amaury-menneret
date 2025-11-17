@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1bigax0lcvh0"]
+
+[ext_resource type="Script" uid="uid://b1n087eqaqe77" path="res://scripts/main_menu.gd" id="1_qkhwq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c7uy4"]
+font_size = 50
+font_color = Color(0.644445, 0.511626, 0.286951, 1)
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_qkhwq")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 222.0
+grow_horizontal = 2
+text = "Vampire Survivor Clone"
+label_settings = SubResource("LabelSettings_c7uy4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -48.5
+offset_right = 576.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+flat = true
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -97.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

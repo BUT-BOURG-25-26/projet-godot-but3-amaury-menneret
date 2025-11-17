@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn23wa63ppe56"]
+
+[ext_resource type="Script" uid="uid://mcidf8pojwdx" path="res://scripts/player_ui.gd" id="1_jbnu6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbnu6"]
+font_size = 32
+font_color = Color(0.0716173, 0.428089, 0.562388, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnb0s"]
+bg_color = Color(0, 0.451795, 0.896569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1m76"]
+bg_color = Color(0.247586, 0.607702, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbnu6"]
+bg_color = Color(0.607508, 0, 0.126674, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3a0n"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="PlayerUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jbnu6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 75.0
+offset_right = 1163.0
+offset_bottom = 184.0
+label_settings = SubResource("LabelSettings_jbnu6")
+
+[node name="ManaBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 1038.0
+offset_right = 1728.0
+offset_bottom = 1065.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mnb0s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a1m76")
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 15.0
+offset_right = 1728.0
+offset_bottom = 42.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jbnu6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b3a0n")
+show_percentage = false

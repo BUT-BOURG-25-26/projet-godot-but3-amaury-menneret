@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqj8ogl30cvi3"]
+
+[ext_resource type="Script" uid="uid://n02hbl5h21wd" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://bmet0v46e2uqj" path="res://anim/idle/tile000.png" id="2_md0e3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8tegq"]
+radius = 0.086
+height = 0.239
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tegq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tegq"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_7p1mj")
+speed = 3.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]
+shape = SubResource("CapsuleShape3D_8tegq")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8tegq")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 0.086
+height = 0.239
+material = SubResource("StandardMaterial3D_8tegq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00451553, 0.131055, -0.0354136)
+size = Vector3(0.0507507, 0.041748, 0.0681155)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_md0e3")
+
+[connection signal="child_entered_tree" from="CollisionShape3D" to="." method="_on_collision_shape_3d_child_entered_tree"]

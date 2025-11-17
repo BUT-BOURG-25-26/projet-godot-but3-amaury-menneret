@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://5a8lwcgkyly5"]
+
+[ext_resource type="Script" uid="uid://dl20phokk1u7j" path="res://scripts/game_over_menu.gd" id="1_6ebp1"]
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ebp1")
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 60.0
+text = "RETRY"
+
+[node name="Exit" type="Button" parent="." groups=["game_over"]]
+layout_mode = 0
+offset_top = 1020.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+text = "Quit"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

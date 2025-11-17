@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://s7j60cvg050v"]
+
+[ext_resource type="Texture2D" uid="uid://b3f355liqt3n0" path="res://sprites/sand.png" id="1_r1pgh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7rdv"]
+size = Vector3(5, 0, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1pgh"]
+albedo_texture = ExtResource("1_r1pgh")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h73sg"]
+material = SubResource("StandardMaterial3D_r1pgh")
+size = Vector2(5, 5)
+
+[node name="Empty" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_p7rdv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_h73sg")

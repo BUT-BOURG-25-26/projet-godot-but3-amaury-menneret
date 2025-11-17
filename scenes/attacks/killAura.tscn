@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0btjaqcspd00"]
+
+[ext_resource type="Script" uid="uid://bucyh36jub117" path="res://scripts/kill_aura.gd" id="1_t065w"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t065w"]
+radius = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t065w"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.203922)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1pft3"]
+material = SubResource("StandardMaterial3D_t065w")
+radius = 3.0
+height = 0.001
+
+[node name="KillAura" type="Area3D"]
+script = ExtResource("1_t065w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_t065w")
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1pft3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
