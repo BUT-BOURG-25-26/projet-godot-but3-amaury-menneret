@@ -30,7 +30,6 @@ var move_inputs: Vector2
 func _ready() -> void:
 	enemies_in_range = []
 	health = max_health
-	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
 
 func _process(delta: float) -> void:
 	read_move_inputs()
@@ -45,6 +44,9 @@ func _process(delta: float) -> void:
 		
 	if velocity.is_zero_approx():
 		_animated_sprite.play("idle_facing")
+		
+	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
+	
 
 func _physics_process(delta: float) -> void:
 	read_move_inputs()
@@ -87,7 +89,7 @@ func take_damage(value : int):
 func _on_timer_timeout() -> void:
 	if(enemies_in_range.size() > 0):
 		for x in enemies_in_range.size():
-			if x < 3:
+			if x < 5:
 				var scene = projectile.instantiate()
 				scene.global_position = global_position
 				scene.target_position = enemies_in_range.get(x).global_position

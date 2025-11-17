@@ -1,6 +1,6 @@
 extends Node
 
-@onready var pause : bool
+var pause : bool = true
 @onready var enemySpawner : EnemySpawner
 
 func _ready() -> void:
@@ -15,20 +15,18 @@ func display_game_over(display : bool):
 	var game_over_menu = get_tree().get_first_node_in_group("game_over")
 	if(game_over_menu):
 		game_over_menu.visible = display
-		paused(display)
+	if display:
+		Engine.time_scale = 0
 
 func _input(ev):
 	if Input.is_key_pressed(KEY_ESCAPE):
-		display_pause_menu(!pause)
-
-func display_pause_menu(state: bool):
-	var pause_menu = get_tree().get_first_node_in_group("pause")
-	if(pause_menu):
-		pause_menu.visible = state
-		paused(state)
+		paused(!pause)
 
 func paused(state: bool):
 	pause = state
+	var pause_menu = get_tree().get_first_node_in_group("pause")
+	if(pause_menu):
+		pause_menu.visible = state
 	if pause:
 		Engine.time_scale = 0
 	else:
@@ -39,5 +37,4 @@ func restart():
 	paused(false)
 
 func quit():
-	print("quit")
 	get_tree().quit()
