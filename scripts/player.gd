@@ -30,6 +30,7 @@ var move_inputs: Vector2
 func _ready() -> void:
 	enemies_in_range = []
 	health = max_health
+	mana = max_mana
 
 func _process(delta: float) -> void:
 	read_move_inputs()
@@ -46,7 +47,6 @@ func _process(delta: float) -> void:
 		_animated_sprite.play("idle_facing")
 		
 	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
-	
 
 func _physics_process(delta: float) -> void:
 	read_move_inputs()
@@ -73,6 +73,7 @@ func level_up(value : int):
 	GameManager.onPlayerLevelUp()
 
 func full_rest():
+	mana = max_mana
 	health = max_health
 
 func read_move_inputs():
@@ -89,7 +90,8 @@ func take_damage(value : int):
 func _on_timer_timeout() -> void:
 	if(enemies_in_range.size() > 0):
 		for x in enemies_in_range.size():
-			if x < 5:
+			if mana >= 2:
+				mana -= 2
 				var scene = projectile.instantiate()
 				scene.global_position = global_position
 				scene.target_position = enemies_in_range.get(x).global_position
@@ -103,3 +105,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Enemy:
 		enemies_in_range.erase(body)
+
+
+func _on_timer_2_timeout() -> void:
+	if mana < max_mana:
+		mana += 1
+	if mana > max_mana:
+		mana = max_mana 

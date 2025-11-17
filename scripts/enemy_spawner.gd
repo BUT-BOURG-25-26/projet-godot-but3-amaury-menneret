@@ -22,7 +22,6 @@ func _on_timer_timeout() -> void:
 
 func increaseSpawnRate(value : float) -> void:
 	spawn_rate = spawn_rate * value
-	print("NEW SPAWN RATE : ", spawn_rate)
 
 func _physics_process(delta: float) -> void:
 	global_position = player.global_position
