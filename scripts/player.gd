@@ -10,6 +10,8 @@ var mana:int;
 @export var max_health:int = 10;
 var health:int;
 
+@onready var attack_skills = { }
+
 @export var projectile : PackedScene
 
 @export var ui : PlayerStats
@@ -31,22 +33,31 @@ func _ready() -> void:
 	enemies_in_range = []
 	health = max_health
 	mana = max_mana
+	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
+	gain_skill(preload("res://scenes/attacks/fireball.tscn"))
+	gain_skill(preload("res://scenes/attacks/fireball.tscn"))
+	gain_skill(preload("res://scenes/attacks/iceball.tscn"))
+
+func gain_skill(attack_skill : PackedScene) -> void:
+	var new_skill = AttackHandler.new()
+	new_skill.attack = attack_skill
+	new_skill.source = self
+	attack_skills.set(attack_skills.size(),new_skill)
+	add_child(new_skill)
 
 func _process(delta: float) -> void:
 	read_move_inputs()
 	if move_inputs.x > 0:
-		_animated_sprite.play("run_right") #if speed > 0 else _animated_sprite.play("idle_right")
+		_animated_sprite.play("run_right") 
 	if move_inputs.x < 0:
-		_animated_sprite.play("run_left") #if speed > 0 else _animated_sprite.play("idle_left")
+		_animated_sprite.play("run_left") 
 	if move_inputs.y > 0:
-		_animated_sprite.play("run_facing") #if speed > 0 else _animated_sprite.play("idle_facing")
+		_animated_sprite.play("run_facing") 
 	if move_inputs.y < 0:
-		_animated_sprite.play("run_front") #if speed > 0 else _animated_sprite.play("idle_front")
+		_animated_sprite.play("run_front") 
 		
 	if velocity.is_zero_approx():
 		_animated_sprite.play("idle_facing")
-		
-	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
 
 func _physics_process(delta: float) -> void:
 	read_move_inputs()
@@ -86,16 +97,6 @@ func take_damage(value : int):
 		health = 0
 	if health <= 0:
 		GameManager.display_game_over(true)
-
-func _on_timer_timeout() -> void:
-	if(enemies_in_range.size() > 0):
-		for x in enemies_in_range.size():
-			if mana >= 2:
-				mana -= 2
-				var scene = projectile.instantiate()
-				scene.global_position = global_position
-				scene.target_position = enemies_in_range.get(x).global_position
-				get_tree().get_current_scene().add_child(scene)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Enemy:

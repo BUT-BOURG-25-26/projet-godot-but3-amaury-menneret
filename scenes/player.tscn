@@ -367,14 +367,9 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"run_front"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [node name="Timer2" type="Timer" parent="."]
 autostart = true
 
 [connection signal="body_entered" from="CollisionShape3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="CollisionShape3D/Area3D" to="." method="_on_area_3d_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

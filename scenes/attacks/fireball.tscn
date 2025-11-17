@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcxj8i758e8n4"]
+
+[ext_resource type="PackedScene" uid="uid://cb6hha35wkvfr" path="res://scenes/attacks/projectile_attack.tscn" id="1_l5qua"]
+[ext_resource type="Script" uid="uid://cqxg5moxwlkcd" path="res://scripts/fireball.gd" id="2_gp56f"]
+[ext_resource type="Texture2D" uid="uid://q3mwqtngntfq" path="res://anim/fireball/tile000.png" id="2_rnpk7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gp56f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rnpk7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ProjectileAttack" instance=ExtResource("1_l5qua")]
+script = ExtResource("2_gp56f")
+damage = 5.0
+speed = 25.0
+
+[node name="AnimatedSprite3D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_gp56f")
+animation = &"default"
