@@ -12,24 +12,34 @@ extends CharacterBody3D
 
 @export var health:int = 10;
 
+var direction : Vector3
+@onready var id : int = GameManager.killcount
+
 func take_damage(value : int):
 	health -= value
 	if(health < 0):
 		health = 0
 
+func _ready() -> void:
+	pathtrace()
+
 func _process(delta: float) -> void:
 	_despawn()
+	
+func pathtrace() :
+	look_at(Vector3(target.position.x, position.y, target.position.z))
+	direction = target.position - global_position
+	direction = direction.normalized()
+	velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
-	if(!is_on_floor()):
-		velocity.y = -1 * gravity
-	else:
-		look_at(Vector3(target.position.x, position.y, target.position.z))
-		var direction = target.position - global_position
-		var distance = direction.length()
-		if distance > 0.1:
-			direction = direction.normalized()
-			velocity = direction * speed
+	if Engine.get_frames_drawn() % 2 == id % 2:
+		pathtrace()
+	#if(!is_on_floor()):
+	#	velocity.y = -1 * gravity
+	#else:
+	#var distance = direction.length()
+	#if distance > 0.1:
 	
 	move_and_slide()
 	for i in get_slide_collision_count():
@@ -44,7 +54,7 @@ func _despawn():
 		queue_free()
 	if health <= 0:
 		var player = target as Player
-		player.kill_count += 1
+		GameManager.killcount += 1
 		player.get_xp(xp_value)
 		player.gain_mana(int(xp_value * 0.1))
 		queue_free()

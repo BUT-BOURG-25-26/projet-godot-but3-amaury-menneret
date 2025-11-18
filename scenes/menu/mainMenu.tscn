@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1bigax0lcvh0"]
 
-[ext_resource type="Script" uid="uid://b1n087eqaqe77" path="res://scripts/main_menu.gd" id="1_qkhwq"]
+[ext_resource type="Script" uid="uid://b1n087eqaqe77" path="res://scripts/main_menu.gd" id="1_kwvgq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c7uy4"]
 font_size = 50
 font_color = Color(0.644445, 0.511626, 0.286951, 1)
 
 [node name="MainMenu" type="CanvasLayer"]
-script = ExtResource("1_qkhwq")
+script = ExtResource("1_kwvgq")
 
 [node name="Title" type="Label" parent="."]
 anchors_preset = 5

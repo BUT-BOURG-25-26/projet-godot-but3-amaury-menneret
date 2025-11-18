@@ -11,6 +11,7 @@ var mana:int;
 var health:int;
 
 @onready var attack_skills = { }
+@onready var skill_list : skillListDisplay = get_tree().get_first_node_in_group("skillListDisplay")
 
 @export var projectile : PackedScene
 
@@ -23,7 +24,7 @@ var xp : float = 0
 var xp_to_next_level : int = 10
 var level : float = 0
 
-var kill_count : int = 0
+#var kill_count : int = 0
 
 var enemies_in_range
 
@@ -34,8 +35,8 @@ func _ready() -> void:
 	health = max_health
 	mana = max_mana
 	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
-	#gain_skill(preload("res://scenes/attacks/dismantle.tscn"))
-	#gain_skill(preload("res://scenes/attacks/fireball.tscn"))
+	#gain_skill(preload("res://scenes/attack/fireball.tscn"))
+	#gain_skill(preload("res://scenes/attack/dismantle.tscn"))
 	#gain_skill(preload("res://scenes/attacks/iceball.tscn"))
 
 func gain_skill(attack_skill : PackedScene) -> void:
@@ -44,6 +45,7 @@ func gain_skill(attack_skill : PackedScene) -> void:
 	new_skill.source = self
 	attack_skills.set(attack_skills.size(),new_skill)
 	add_child(new_skill)
+	skill_list.add_skill(attack_skill.instantiate() as ProjectileAttack)
 	
 func use_mana(value : int) -> bool:
 	if mana - value >= 0:
@@ -91,7 +93,9 @@ func get_xp(value : float):
 	
 func level_up(value : int):
 	level += value
+	max_mana *= 1.2
 	full_rest()
+	gain_skill(preload("res://scenes/attack/iceball.tscn"))
 	GameManager.onPlayerLevelUp()
 
 func full_rest():

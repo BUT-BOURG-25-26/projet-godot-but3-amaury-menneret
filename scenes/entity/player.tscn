@@ -74,7 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://be3886rfk80vq" path="res://anim/run/tile021.png" id="72_fr8ja"]
 [ext_resource type="Texture2D" uid="uid://bia2c4mx3w8y3" path="res://anim/run/tile022.png" id="73_gvmy4"]
 [ext_resource type="Texture2D" uid="uid://da4xgxco0v7v7" path="res://anim/run/tile023.png" id="74_fcu33"]
-[ext_resource type="PackedScene" uid="uid://c0btjaqcspd00" path="res://scenes/attacks/killAura.tscn" id="75_mwp2n"]
+[ext_resource type="PackedScene" uid="uid://c0btjaqcspd00" path="res://scenes/attack/killAura.tscn" id="75_mwp2n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 0.0861542

@@ -7,7 +7,8 @@ extends Node3D
 @export var speed : float = 30
 @export var mana_cost : float = 2
 
-@export var attack_name : String = ""
+@export var attack_name : String
+@export var icon : Texture2D
 
 @export var sprite : AnimatedSprite3D
 

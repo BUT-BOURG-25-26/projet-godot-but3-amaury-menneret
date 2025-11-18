@@ -30,4 +30,9 @@ material = SubResource("StandardMaterial3D_8tegq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00451553, 0.131055, -0.0354136)
 size = Vector3(0.0507507, 0.041748, 0.0681155)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="child_entered_tree" from="CollisionShape3D" to="." method="_on_collision_shape_3d_child_entered_tree"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

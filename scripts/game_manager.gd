@@ -2,6 +2,7 @@ extends Node
 
 var pause : bool = true
 @onready var enemySpawner : EnemySpawner
+@onready var killcount : int
 
 func _ready() -> void:
 	paused(false)

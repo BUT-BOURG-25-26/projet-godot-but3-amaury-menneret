@@ -6,7 +6,7 @@ extends Node3D
 
 @export var enemy : PackedScene
 @export var range : int = 20
-@export var spawn_rate : float = 1.5
+@export var spawn_rate : float = 1.
 
 func _ready() -> void:
 	GameManager.enemySpawner = self
@@ -14,9 +14,9 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	for x in (spawn_rate as int):
 		var scene = enemy.instantiate()
-		var spawnpoint = Vector3(randf_range(-range,range),3,randf_range(-range,range))
+		var spawnpoint = Vector3(randf_range(-range,range),0,randf_range(-range,range))
 		if(spawnpoint.distance_to(Vector3(0,0,0)) < range/2):
-			spawnpoint = Vector3(randf_range(-range,range),3,randf_range(-range,range))
+			spawnpoint = Vector3(randf_range(-range,range),0,randf_range(-range,range))
 		scene.position = global_position + spawnpoint
 		get_tree().get_current_scene().add_child(scene)
 
