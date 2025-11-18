@@ -2,7 +2,7 @@ class_name Enemy
 
 extends CharacterBody3D
 
-@export var xp_value : float = 100
+@export var xp_value : float = 10
 
 @export var damage : int = 1
 
@@ -33,7 +33,7 @@ func pathtrace() :
 	velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
-	if Engine.get_frames_drawn() % 10 == id % 10:
+	if Engine.get_frames_drawn() % 2 == id % 2:
 		pathtrace()
 	#if(!is_on_floor()):
 	#	velocity.y = -1 * gravity
