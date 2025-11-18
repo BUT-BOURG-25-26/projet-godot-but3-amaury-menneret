@@ -34,9 +34,9 @@ func _ready() -> void:
 	health = max_health
 	mana = max_mana
 	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
-	gain_skill(preload("res://scenes/attacks/dismantle.tscn"))
-	gain_skill(preload("res://scenes/attacks/fireball.tscn"))
-	gain_skill(preload("res://scenes/attacks/iceball.tscn"))
+	#gain_skill(preload("res://scenes/attacks/dismantle.tscn"))
+	#gain_skill(preload("res://scenes/attacks/fireball.tscn"))
+	#gain_skill(preload("res://scenes/attacks/iceball.tscn"))
 
 func gain_skill(attack_skill : PackedScene) -> void:
 	var new_skill = AttackHandler.new()

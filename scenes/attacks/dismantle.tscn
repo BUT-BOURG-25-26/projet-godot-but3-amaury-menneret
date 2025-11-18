@@ -32,3 +32,6 @@ shape = SubResource("BoxShape3D_5x4j6")
 pixel_size = 0.001
 sprite_frames = SubResource("SpriteFrames_l2bw0")
 animation = &"default"
+
+[node name="AliveTimer" parent="." index="2"]
+wait_time = 0.1
