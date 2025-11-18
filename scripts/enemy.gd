@@ -2,7 +2,7 @@ class_name Enemy
 
 extends CharacterBody3D
 
-@export var xp_value : float = 10
+@export var xp_value : float = 100
 
 @export var damage : int = 1
 
@@ -13,7 +13,7 @@ extends CharacterBody3D
 @export var health:int = 10;
 
 var direction : Vector3
-@onready var id : int = GameManager.killcount
+@onready var id : int = get_instance_id()
 
 func take_damage(value : int):
 	health -= value
@@ -33,7 +33,7 @@ func pathtrace() :
 	velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
-	if Engine.get_frames_drawn() % 2 == id % 2:
+	if Engine.get_frames_drawn() % 10 == id % 10:
 		pathtrace()
 	#if(!is_on_floor()):
 	#	velocity.y = -1 * gravity
