@@ -3,14 +3,25 @@ extends Node
 var pause : bool = true
 @onready var enemySpawner : EnemySpawner
 @onready var killcount : int
+@onready var player : Player
 
 func _ready() -> void:
 	paused(false)
 	display_game_over(false)
+	
+func give_player_upgrade(upgrade : PackedScene) :
+	player.gain_skill(upgrade)
 
 func onPlayerLevelUp():
 	if(enemySpawner != null):
 		enemySpawner.increaseSpawnRate(1.2)
+	#var upgrade_menu = load("res://scenes/menu/upgrade_choice_menu.tscn").instantiate()
+	#upgrade_menu.visible = true
+	#var ui_layer = get_tree().get_first_node_in_group("ui_layer")
+	#ui_layer.add_child(upgrade_menu)
+	#print((upgrade_menu as UpgradeChoiceMenu).choices)
+	var upgrade_menu = get_tree().get_first_node_in_group("upgrade_choice_menu")
+	Engine.time_scale = 0
 
 func display_game_over(display : bool):
 	var game_over_menu = get_tree().get_first_node_in_group("game_over")

@@ -95,7 +95,7 @@ func level_up(value : int):
 	level += value
 	max_mana *= 1.2
 	full_rest()
-	gain_skill(preload("res://scenes/attack/iceball.tscn"))
+	#gain_skill(preload("res://scenes/attack/iceball.tscn"))
 	GameManager.onPlayerLevelUp()
 
 func full_rest():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq5ayxykesrlm"]
+[gd_scene load_steps=12 format=3 uid="uid://bq5ayxykesrlm"]
 
 [ext_resource type="Script" uid="uid://q43vfrsy4siw" path="res://scripts/world_generator.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://07tucox5xoja" path="res://scenes/entity/player.tscn" id="2_0wfyh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d12olfaaeo2jc" path="res://scenes/menu/pauseMenu.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://bpbgfbcpeax2r" path="res://scripts/camera.gd" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dn23wa63ppe56" path="res://scenes/ui/playerUi.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://drshay27la78v" path="res://scenes/menu/upgrade_choice_menu.tscn" id="9_ya4ey"]
 
 [node name="Main" type="Node"]
 
@@ -48,11 +49,13 @@ size_flags_vertical = 3
 
 [node name="SkillListDisplay" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("6_choun")]
 
-[node name="UI" type="CanvasLayer" parent="Camera"]
+[node name="UI" type="CanvasLayer" parent="Camera" groups=["ui_layer"]]
 
 [node name="GameOverMenu" parent="Camera/UI" instance=ExtResource("6_85g3d")]
 
 [node name="PauseMenu" parent="Camera/UI" instance=ExtResource("6_tefeu")]
+
+[node name="UpgradeChoiceMenu" parent="Camera/UI" groups=["upgrade_choice_menu"] instance=ExtResource("9_ya4ey")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.783336, -0.621599, 0, 0.621599, 0.783336, 0, 0, 0, 1, -0.504179, 0.635363, 0)
