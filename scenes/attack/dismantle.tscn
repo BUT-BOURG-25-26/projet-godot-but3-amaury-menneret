@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsue18d8xkusr"]
+[gd_scene load_steps=7 format=3 uid="uid://bsue18d8xkusr"]
 
 [ext_resource type="PackedScene" uid="uid://cb6hha35wkvfr" path="res://scenes/attack/projectile_attack.tscn" id="1_rgqe1"]
 [ext_resource type="Script" uid="uid://cjewmqrgtfqhk" path="res://scripts/dismantle.gd" id="2_05aca"]
+[ext_resource type="Texture2D" uid="uid://68ie0f731njy" path="res://sprites/dismantle.png" id="3_o4k4h"]
 [ext_resource type="Texture2D" uid="uid://bby8r1n8j3h2l" path="res://anim/slash/001.png" id="3_rxcdl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5x4j6"]
@@ -24,6 +25,8 @@ cooldown = 0.1
 damage = 3.0
 speed = 50.0
 mana_cost = 1.0
+attack_name = "DISMANTLE"
+icon = ExtResource("3_o4k4h")
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_5x4j6")

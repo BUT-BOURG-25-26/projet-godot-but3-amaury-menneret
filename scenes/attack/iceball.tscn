@@ -24,6 +24,7 @@ script = ExtResource("2_4narw")
 cooldown = 2.0
 speed = 7.0
 mana_cost = 25.0
+attack_name = "ICEBALL"
 icon = ExtResource("3_c853f")
 
 [node name="CollisionShape3D" parent="." index="0"]
