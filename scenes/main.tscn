@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq5ayxykesrlm"]
+[gd_scene load_steps=14 format=3 uid="uid://bq5ayxykesrlm"]
 
 [ext_resource type="Script" uid="uid://q43vfrsy4siw" path="res://scripts/world_generator.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://07tucox5xoja" path="res://scenes/entity/player.tscn" id="2_0wfyh"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bpbgfbcpeax2r" path="res://scripts/camera.gd" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dn23wa63ppe56" path="res://scenes/ui/playerUi.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://drshay27la78v" path="res://scenes/menu/upgrade_choice_menu.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://cwng65wpndg38" path="res://scenes/entity/malevolant_shrine.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://ch6hy2l77hwdc" path="res://scenes/attack/iceball.tscn" id="13_trceg"]
 
 [node name="Main" type="Node"]
 
@@ -40,7 +42,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2560, 1440)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="PlayerUi" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("7_tipki")]
@@ -51,12 +53,17 @@ size_flags_vertical = 3
 
 [node name="UI" type="CanvasLayer" parent="Camera" groups=["ui_layer"]]
 
-[node name="GameOverMenu" parent="Camera/UI" instance=ExtResource("6_85g3d")]
-
 [node name="PauseMenu" parent="Camera/UI" instance=ExtResource("6_tefeu")]
 
-[node name="UpgradeChoiceMenu" parent="Camera/UI" groups=["upgrade_choice_menu"] instance=ExtResource("9_ya4ey")]
+[node name="GameOverMenu" parent="Camera/UI" instance=ExtResource("6_85g3d")]
+
+[node name="UpgradeChoiceMenu" parent="Camera/UI" instance=ExtResource("9_ya4ey")]
+visible = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.783336, -0.621599, 0, 0.621599, 0.783336, 0, 0, 0, 1, -0.504179, 0.635363, 0)
 enemy = ExtResource("4_jyhfs")
+
+[node name="MalevolantShrine" parent="." instance=ExtResource("12_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3)
+attack = ExtResource("13_trceg")

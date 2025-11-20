@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://drshay27la78v"]
+[gd_scene load_steps=3 format=3 uid="uid://drshay27la78v"]
 
 [ext_resource type="Script" uid="uid://dgdq4lldh1m6p" path="res://scripts/upgrade_choice_menu.gd" id="1_k5hju"]
+[ext_resource type="PackedScene" uid="uid://1svm703dsnjb" path="res://scenes/menu/upgrade_choice.tscn" id="2_gcs6u"]
 
-[node name="UpgradeChoiceMenu" type="Control"]
+[node name="UpgradeChoiceMenu" type="Control" groups=["upgrade_choice_menu"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k5hju")
+upgrade_choice_scene = ExtResource("2_gcs6u")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
