@@ -4,7 +4,7 @@ var pause : bool = true
 @onready var enemySpawner : EnemySpawner
 @onready var killcount : int
 @onready var player : Player
-#@onready var menu : UpgradeChoiceMenu = get_tree().get_first_node_in_group("upgrade_choice_menu")
+@onready var upgrade_menu : UpgradeChoiceMenu
 
 func _ready() -> void:
 	paused(false)
@@ -24,15 +24,11 @@ func give_player_upgrade(upgrade : PackedScene) :
 func onPlayerLevelUp():
 	if(enemySpawner != null):
 		enemySpawner.increaseSpawnRate(1.2)
-	#Engine.time_scale = 0
-	#var upgrade_menu = load("res://scenes/menu/upgrade_choice_menu.tscn").instantiate()
-	#v+ar ui_layer = get_tree().get_first_node_in_group("ui_layer")
-	#ui_layer.add_child(upgrade_menu)
-	#print((upgrade_menu as UpgradeChoiceMenu).choices)
-	#var upgrade_menu : UpgradeChoiceMenu = get_tree().get_first_node_in_group("upgrade_choice_menu")
-	#upgrade_menu.init()
-	#upgrade_menu.visible = true
-	#Engine.time_scale = 0
+	Engine.time_scale = 0
+	if upgrade_menu == null:
+		upgrade_menu = get_tree().get_first_node_in_group("upgrade_choice_menu")
+	upgrade_menu.init()
+	upgrade_menu.visible = true
 
 func display_game_over(display : bool):
 	var game_over_menu = get_tree().get_first_node_in_group("game_over")

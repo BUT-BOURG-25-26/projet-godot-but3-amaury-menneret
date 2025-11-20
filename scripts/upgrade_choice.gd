@@ -3,10 +3,10 @@ extends Control
 class_name UpgradeChoice
 
 @onready var button : Button = $Button
+@onready var upgrade : PackedScene
 
 func _ready() -> void:
-	button.pressed.connect(marche)
+	button.pressed.connect(chosen)
 
-func marche() -> void:
-	pass
-	#GameManager.give_player_upgrade(load("res://scenes/attack/dismantle.tscn"))
+func chosen() -> void :
+	GameManager.give_player_upgrade(upgrade)

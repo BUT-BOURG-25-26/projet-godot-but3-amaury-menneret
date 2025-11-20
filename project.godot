@@ -21,8 +21,8 @@ GameManager="*res://scripts/game_manager.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=2560
+window/size/viewport_height=1440
 window/size/mode=3
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
@@ -63,5 +63,4 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
