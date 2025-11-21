@@ -43,6 +43,11 @@ func _physics_process(delta: float) -> void:
 			(collision.get_collider() as Player).take_damage(damage)
 			queue_free()
 
+func take_damage(value : int) -> void:
+	health -= value
+	if(health <= 0):
+		health = 0
+	_despawn()
 	
 func _despawn():
 	if global_position.y < 0:

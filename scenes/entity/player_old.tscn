@@ -1,7 +1,7 @@
 [gd_scene load_steps=79 format=3 uid="uid://07tucox5xoja"]
 
 [ext_resource type="Material" uid="uid://q5v4nq6ax8pa" path="res://material/player.tres" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://cx58hqulaicl7" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://cx58hqulaicl7" path="res://scripts/player_old.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bmet0v46e2uqj" path="res://anim/idle/tile000.png" id="3_giy8y"]
 [ext_resource type="Texture2D" uid="uid://dw2dwuwysn6qy" path="res://anim/idle/tile001.png" id="4_fdfoy"]
 [ext_resource type="Texture2D" uid="uid://be0otbbnpo1lw" path="res://anim/idle/tile002.png" id="5_hhpqf"]
@@ -342,7 +342,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_g2els")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
@@ -351,6 +351,7 @@ material_override = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_u8vuu")
+disabled = true
 
 [node name="KillAura" parent="CollisionShape3D" instance=ExtResource("75_mwp2n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0604463, 0)

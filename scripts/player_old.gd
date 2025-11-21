@@ -1,8 +1,7 @@
-class_name Player
-
+class_name PlayerOld
 extends CharacterBody3D
 
-@onready var gravity:float = ProjectSettings.get_setting("physics/3d/default_gravity");
+@export var gravity:float = ProjectSettings.get_setting("physics/3d/default_gravity");
 @export var speed:float = 1.5;
 
 @export var max_mana:int = 100;
@@ -14,13 +13,18 @@ var health:int;
 @onready var attack_skills = { }
 @onready var skill_list : skillListDisplay = get_tree().get_first_node_in_group("skillListDisplay")
 
+@export var projectile : PackedScene
+
 @export var ui : PlayerStats
 
+@onready var _animated_sprite = $AnimatedSprite3D
 @onready var camera = get_viewport().get_camera_3d()
 
 var xp : float = 0
 var xp_to_next_level : int = 10
 var level : float = 0
+
+#var kill_count : int = 0
 
 var enemies_in_range
 
@@ -30,7 +34,10 @@ func _ready() -> void:
 	enemies_in_range = []
 	health = max_health
 	mana = max_mana
-	gain_skill(load("res://scenes/attack/fireball.tscn"))
+	(_animated_sprite as AnimatedSprite3D).look_at(camera.position)
+	#gain_skill(preload("res://scenes/attack/fireball.tscn"))
+	#gain_skill(preload("res://scenes/attack/dismantle.tscn"))
+	#gain_skill(preload("res://scenes/attacks/iceball.tscn"))
 
 func gain_skill(attack_skill : PackedScene) -> void:
 	var new_skill = AttackHandler.new()
@@ -53,7 +60,17 @@ func gain_mana(value : int):
 
 func _process(delta: float) -> void:
 	read_move_inputs()
-
+	if move_inputs.x > 0:
+		_animated_sprite.play("run_right") 
+	if move_inputs.x < 0:
+		_animated_sprite.play("run_left") 
+	if move_inputs.y > 0:
+		_animated_sprite.play("run_facing") 
+	if move_inputs.y < 0:
+		_animated_sprite.play("run_front") 
+		
+	if velocity.is_zero_approx():
+		_animated_sprite.play("idle_facing")
 
 func _physics_process(delta: float) -> void:
 	read_move_inputs()
@@ -72,13 +89,13 @@ func get_xp(value : float):
 		xp = 0
 		xp_to_next_level = xp_to_next_level * 1.5 as int
 		level_up(1)
-	if ui != null:
-		ui.update()
+	ui.update()
 	
 func level_up(value : int):
 	level += value
 	max_mana *= 1.2
 	full_rest()
+	#gain_skill(preload("res://scenes/attack/iceball.tscn"))
 	GameManager.onPlayerLevelUp()
 
 func full_rest():
@@ -102,14 +119,15 @@ func take_damage(value : int):
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Enemy:
-		print("New Enemy")
 		enemies_in_range.append(body)
+
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Enemy:
 		enemies_in_range.erase(body)
 
-func _on_timer_timeout() -> void:
+
+func _on_timer_2_timeout() -> void:
 	if mana < max_mana:
 		mana += 1
 	if mana > max_mana:

@@ -1,6 +1,6 @@
 class_name LivingEntity
 
-extends Node3D
+extends CharacterBody3D
 
 @export var health : int
 @export var speed : float

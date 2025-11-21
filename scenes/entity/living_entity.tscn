@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkhed4huclm1h" path="res://scripts/living_entity.gd" id="1_2l3cf"]
 
-[node name="LivingEntity" type="Node3D"]
+[node name="LivingEntity" type="CharacterBody3D"]
 script = ExtResource("1_2l3cf")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
