@@ -15,11 +15,6 @@ extends CharacterBody3D
 var direction : Vector3
 @onready var id : int = get_instance_id()
 
-func take_damage(value : int):
-	health -= value
-	if(health < 0):
-		health = 0
-
 func _ready() -> void:
 	pathtrace()
 

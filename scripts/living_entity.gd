@@ -1,0 +1,22 @@
+class_name LivingEntity
+
+extends Node3D
+
+@export var health : int
+@export var speed : float
+@export var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var direction : Vector3
+
+signal hp_depleted
+
+func take_damage(value : int) -> void:
+	health -= value
+	if(health <= 0):
+		hp_depleted.emit()
+	
+func despawn() -> void:
+	queue_free()
+
+func _ready() -> void:
+	hp_depleted.connect(despawn)

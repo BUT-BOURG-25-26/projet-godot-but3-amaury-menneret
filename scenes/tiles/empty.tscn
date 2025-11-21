@@ -1,13 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://s7j60cvg050v"]
 
-[ext_resource type="Texture2D" uid="uid://b3f355liqt3n0" path="res://sprites/sand.png" id="1_r1pgh"]
+[ext_resource type="Texture2D" uid="uid://bbconq48dlmfo" path="res://sprites/grass_empty.png" id="1_r1pgh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p7rdv"]
 size = Vector3(5, 0, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1pgh"]
 albedo_texture = ExtResource("1_r1pgh")
-texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h73sg"]
 material = SubResource("StandardMaterial3D_r1pgh")

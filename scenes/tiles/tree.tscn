@@ -1,17 +1,17 @@
 [gd_scene load_steps=10 format=3 uid="uid://dr2jjwans82ff"]
 
 [ext_resource type="Script" uid="uid://ibq6hva530nc" path="res://scripts/tree.gd" id="1_jbcy1"]
-[ext_resource type="Texture2D" uid="uid://b3f355liqt3n0" path="res://sprites/sand.png" id="1_t0apo"]
+[ext_resource type="Texture2D" uid="uid://bd3phmv6synjp" path="res://sprites/grass.png" id="3_e0rlf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p7rdv"]
 size = Vector3(5, 0, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dglrf"]
-albedo_texture = ExtResource("1_t0apo")
+albedo_texture = ExtResource("3_e0rlf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbcy1"]
-albedo_texture = ExtResource("1_t0apo")
-texture_filter = 0
+albedo_texture = ExtResource("3_e0rlf")
+texture_filter = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e0rlf"]
 material = SubResource("StandardMaterial3D_jbcy1")
@@ -40,9 +40,11 @@ mesh = SubResource("PlaneMesh_e0rlf")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("BoxShape3D_dglrf")
+disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
 mesh = SubResource("BoxMesh_kg3gv")
