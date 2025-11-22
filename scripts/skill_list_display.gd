@@ -2,7 +2,10 @@ class_name skillListDisplay
 
 extends Control
 
-@onready var skills = []
+@onready var skills : Dictionary
+
+func _ready() -> void:
+	skills = {}
 
 func add_skill(skill : ProjectileAttack) :
 	var texture = TextureRect.new()
@@ -11,4 +14,4 @@ func add_skill(skill : ProjectileAttack) :
 	texture.position = Vector2(0, 0 + (32 * skills.size()))
 	texture.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	add_child(texture)
-	skills.append(skill)
+	skills.set(skill, skills.size())

@@ -19,6 +19,8 @@ script = ExtResource("1_o5qli")
 [node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("12_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
 speed = 5.0
+max_mana = 100
+max_health = 10
 ui = NodePath("../Camera/SubViewportContainer/SubViewport/PlayerUi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

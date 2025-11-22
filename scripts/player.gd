@@ -30,7 +30,7 @@ func _ready() -> void:
 	enemies_in_range = []
 	health = max_health
 	mana = max_mana
-	gain_skill(load("res://scenes/attack/fireball.tscn"))
+	gain_skill(load("res://scenes/attack/dismantle.tscn"))
 
 func gain_skill(attack_skill : PackedScene) -> void:
 	var new_skill = AttackHandler.new()
@@ -97,12 +97,12 @@ func take_damage(value : int):
 	health -= value
 	if(health < 0):
 		health = 0
+	ui.update()
 	if health <= 0:
 		GameManager.display_game_over(true)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Enemy:
-		print("New Enemy")
 		enemies_in_range.append(body)
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
