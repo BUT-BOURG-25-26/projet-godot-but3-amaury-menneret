@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://v06wlln7wnx0"]
+[gd_scene load_steps=6 format=3 uid="uid://v06wlln7wnx0"]
 
 [ext_resource type="Script" uid="uid://dssvyjp1o43ku" path="res://scripts/player.gd" id="1_1obkj"]
+[ext_resource type="Material" uid="uid://q5v4nq6ax8pa" path="res://material/player.tres" id="2_gdab3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqvra"]
 radius = 0.075
@@ -21,6 +22,7 @@ shape = SubResource("CapsuleShape3D_gqvra")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 mesh = SubResource("CapsuleMesh_gqvra")
+material = ExtResource("2_gdab3")
 
 [node name="StateMachine" type="Node" parent="."]
 

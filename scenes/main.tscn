@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://q43vfrsy4siw" path="res://scripts/world_generator.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bwcqvj1g877n1" path="res://scenes/entity/enemySpawner.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://bqj8ogl30cvi3" path="res://scenes/entity/enemy_old.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://5a8lwcgkyly5" path="res://scenes/menu/game_over_menu.tscn" id="6_85g3d"]
 [ext_resource type="PackedScene" uid="uid://qjtya8hu6dls" path="res://scenes/ui/skill_list_display.tscn" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://d12olfaaeo2jc" path="res://scenes/menu/pauseMenu.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://bpbgfbcpeax2r" path="res://scripts/camera.gd" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dn23wa63ppe56" path="res://scenes/ui/playerUi.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://drshay27la78v" path="res://scenes/menu/upgrade_choice_menu.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://v06wlln7wnx0" path="res://scenes/entity/player.tscn" id="12_eb6dy"]
 
 [node name="Main" type="Node"]
@@ -19,8 +19,6 @@ script = ExtResource("1_o5qli")
 [node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("12_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
 speed = 5.0
-max_mana = 100
-max_health = 10
 ui = NodePath("../Camera/SubViewportContainer/SubViewport/PlayerUi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -61,4 +59,4 @@ visible = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.783336, -0.621599, 0, 0.621599, 0.783336, 0, 0, 0, 1, 0, 0, 0)
-enemy = ExtResource("4_jyhfs")
+enemy = ExtResource("10_choun")

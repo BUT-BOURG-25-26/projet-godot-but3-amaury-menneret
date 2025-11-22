@@ -30,7 +30,7 @@ func _ready() -> void:
 	enemies_in_range = []
 	health = max_health
 	mana = max_mana
-	gain_skill(load("res://scenes/attack/dismantle.tscn"))
+	#gain_skill(load("res://scenes/attack/dismantle.tscn"))
 
 func gain_skill(attack_skill : PackedScene) -> void:
 	var new_skill = AttackHandler.new()

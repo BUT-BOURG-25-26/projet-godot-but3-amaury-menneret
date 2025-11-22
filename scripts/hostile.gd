@@ -11,21 +11,13 @@ extends LivingEntity
 @onready var id : int = get_instance_id()
 
 func _ready() -> void:
-	pathtrace()
+	pass
+	#pathtrace()
 
 func _process(delta: float) -> void:
 	_despawn()
-	
-func pathtrace() :
-	look_at(Vector3(target.position.x, position.y, target.position.z))
-	direction = target.position - global_position
-	direction = direction.normalized()
-	velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
-	if Engine.get_frames_drawn() % 2 == id % 2:
-		pathtrace()
-	
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
