@@ -2,7 +2,8 @@ class_name LivingEntity
 
 extends CharacterBody3D
 
-@export var health : int
+@export var max_health : int
+var health : int
 @export var speed : float
 @export var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -16,7 +17,9 @@ func take_damage(value : int) -> void:
 		hp_depleted.emit()
 	
 func despawn() -> void:
+	print("DESPAWN", self)
 	queue_free()
 
 func _ready() -> void:
+	health = max_health
 	hp_depleted.connect(despawn)

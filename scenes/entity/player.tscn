@@ -1,44 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://v06wlln7wnx0"]
+[gd_scene load_steps=6 format=3 uid="uid://cyam61ck6xmku"]
 
-[ext_resource type="Script" uid="uid://dssvyjp1o43ku" path="res://scripts/player.gd" id="1_1obkj"]
-[ext_resource type="Material" uid="uid://q5v4nq6ax8pa" path="res://material/player.tres" id="2_gdab3"]
+[ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_tw10c"]
+[ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player_living_entity.gd" id="2_qswnv"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqvra"]
-radius = 0.075
-height = 0.15
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tw10c"]
+radius = 0.025
+height = 0.1
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_gqvra"]
-radius = 0.075
-height = 0.15
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tw10c"]
+radius = 0.025
+height = 0.1
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1obkj"]
-radius = 5.0
+[sub_resource type="SphereShape3D" id="SphereShape3D_tw10c"]
+radius = 10.0
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
-script = ExtResource("1_1obkj")
+[node name="LivingEntity" groups=["Player"] instance=ExtResource("1_tw10c")]
+script = ExtResource("2_qswnv")
+max_mana = 100
+max_health = 10
+speed = 5.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_gqvra")
+[node name="CSGMesh3D" parent="." index="0"]
+mesh = SubResource("CapsuleMesh_tw10c")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-mesh = SubResource("CapsuleMesh_gqvra")
-material = ExtResource("2_gdab3")
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CapsuleShape3D_tw10c")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="DetectionRange" type="Area3D" parent="." index="2"]
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange" index="0"]
+shape = SubResource("SphereShape3D_tw10c")
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="Timer" type="Timer" parent="." index="3"]
 
-[node name="Move" type="Node" parent="StateMachine"]
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_1obkj")
-
+[connection signal="hp_depleted" from="." to="." method="_on_hp_depleted"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

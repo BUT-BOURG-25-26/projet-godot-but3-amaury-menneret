@@ -10,11 +10,8 @@ extends LivingEntity
 
 @onready var id : int = get_instance_id()
 
-func _ready() -> void:
-	pass
-
-func _process(delta: float) -> void:
-	_despawn()
+#func _process(delta: float) -> void:
+#	_despawn()
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -32,6 +29,7 @@ func take_damage(value : int) -> void:
 	
 func _despawn():
 	if health <= 0:
+		print("DESPAWN", self)
 		var player = target as Player
 		GameManager.killcount += 1
 		player.get_xp(xp_value)

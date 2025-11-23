@@ -12,7 +12,7 @@ extends Node3D
 
 @export var sprite : AnimatedSprite3D
 
-@onready var target : Enemy
+@onready var target : LivingEntity
 var target_direction : Vector3
 
 func _ready() -> void:
@@ -23,8 +23,8 @@ func _physics_process(delta: float) -> void:
 		global_position += target_direction * speed * delta
 	
 func _on_body_entered(body: Node3D) -> void:
-	if body is Enemy:
-		(body as Enemy).take_damage(damage)
+	if body is Hostile:
+		(body as Hostile).take_damage(damage)
 		queue_free()
 
 func _on_alive_timer_timeout() -> void:
