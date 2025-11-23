@@ -1,36 +1,26 @@
-class_name Player_temp
+class_name Player
 
-extends CharacterBody3D
-
-@onready var gravity:float = ProjectSettings.get_setting("physics/3d/default_gravity");
-@export var speed:float = 1.5;
+extends LivingEntity
 
 @export var max_mana:int = 100;
 var mana:int;
 
-@export var max_health:int = 10;
-var health:int;
-
-@onready var attack_skills = { }
-@onready var skill_list : skillListDisplay = get_tree().get_first_node_in_group("skillListDisplay")
+@onready var attack_skills : Dictionary = { }
 
 @export var ui : PlayerStats
-
-@onready var camera = get_viewport().get_camera_3d()
 
 var xp : float = 0
 var xp_to_next_level : int = 10
 var level : float = 0
 
-var enemies_in_range
+var enemies_in_range : Dictionary = {}
 
 var move_inputs: Vector2
 
 func _ready() -> void:
-	enemies_in_range = []
-	health = max_health
-	mana = max_mana
+	full_rest()
 	gain_skill(load("res://scenes/attack/fireball.tscn"))
+	ui.update()
 
 func gain_skill(attack_skill : PackedScene) -> void:
 	var new_skill = AttackHandler.new()
@@ -38,7 +28,6 @@ func gain_skill(attack_skill : PackedScene) -> void:
 	new_skill.source = self
 	attack_skills.set(attack_skills.size(),new_skill)
 	add_child(new_skill)
-	skill_list.add_skill(attack_skill.instantiate() as ProjectileAttack)
 	
 func use_mana(value : int) -> bool:
 	if mana - value >= 0:
@@ -50,10 +39,6 @@ func gain_mana(value : int):
 	mana += value
 	if mana >= max_mana:
 		mana = max_mana
-
-func _process(delta: float) -> void:
-	read_move_inputs()
-
 
 func _physics_process(delta: float) -> void:
 	read_move_inputs()
@@ -95,22 +80,23 @@ func _input(ev):
 
 func take_damage(value : int):
 	health -= value
-	if(health < 0):
-		health = 0
 	ui.update()
-	if health <= 0:
-		GameManager.display_game_over(true)
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is Hostile:
-		enemies_in_range.append(body)
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body is Hostile:
-		enemies_in_range.erase(body)
+	if(health <= 0):
+		hp_depleted.emit()
 
 func _on_timer_timeout() -> void:
 	if mana < max_mana:
 		mana += 1
 	if mana > max_mana:
 		mana = max_mana 
+
+func _on_hp_depleted() -> void:
+	GameManager.display_game_over(true)
+
+func _on_detection_range_body_entered(body: Node3D) -> void:
+	if body is Hostile:
+		enemies_in_range.set(body, body.id)
+
+func _on_detection_range_body_exited(body: Node3D) -> void:
+	if body is Hostile:
+		enemies_in_range.erase(body)

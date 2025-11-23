@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyam61ck6xmku"]
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_tw10c"]
-[ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player_living_entity.gd" id="2_qswnv"]
+[ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player.gd" id="2_qswnv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tw10c"]
 radius = 0.025
