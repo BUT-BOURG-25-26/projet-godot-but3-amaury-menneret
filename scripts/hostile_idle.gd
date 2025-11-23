@@ -7,12 +7,15 @@ extends State
 var move_direction : Vector3
 var wander_time : float
 
+var player : Player
+
 func randomize_wander():
 	move_direction = Vector3(randf_range(-1,1), 0, randf_range(-1,1)).normalized()
 	wander_time = randf_range(1,3)
 
 func enter():
 	randomize_wander()
+	player = get_tree().get_first_node_in_group("Player")
 
 func Update(delta: float):
 	if wander_time > 0:
@@ -24,3 +27,6 @@ func Update(delta: float):
 func Physics_Update(delta: float):
 	if hostile:
 		hostile.velocity = move_direction * hostile.speed
+		
+	#if player.position.distance_to(hostile.position) < 10:
+	#	Transitioned.emit(self, "Chase")

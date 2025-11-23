@@ -12,7 +12,6 @@ extends LivingEntity
 
 func _ready() -> void:
 	pass
-	#pathtrace()
 
 func _process(delta: float) -> void:
 	_despawn()

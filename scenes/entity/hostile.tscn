@@ -30,17 +30,17 @@ material = SubResource("StandardMaterial3D_efb3t")
 [node name="CollisionShape3D" parent="." index="1"]
 shape = SubResource("SphereShape3D_mu37s")
 
-[node name="Node" type="Node" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ro2fa")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Chase")
 
-[node name="Idle" type="Node" parent="Node" index="0" node_paths=PackedStringArray("hostile")]
+[node name="Idle" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("hostile")]
 script = ExtResource("4_s18c6")
 hostile = NodePath("../..")
 metadata/_custom_type_script = "uid://dw6os4ch7oetj"
 
-[node name="Chase" type="Node" parent="Node" index="1" node_paths=PackedStringArray("hostile")]
+[node name="Chase" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("hostile")]
 script = ExtResource("5_efb3t")
 hostile = NodePath("../..")
-speed = 1.5
+speed = 3.0
 metadata/_custom_type_script = "uid://ctrb4s8bd7cju"
