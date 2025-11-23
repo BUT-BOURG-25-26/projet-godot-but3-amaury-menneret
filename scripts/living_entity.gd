@@ -17,7 +17,6 @@ func take_damage(value : int) -> void:
 		hp_depleted.emit()
 	
 func despawn() -> void:
-	print("DESPAWN", self)
 	queue_free()
 
 func _ready() -> void:

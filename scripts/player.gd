@@ -7,6 +7,7 @@ var mana:int;
 
 @onready var attack_skills : Dictionary = { }
 
+@export var sprite : AnimatedSprite3D
 @export var ui : PlayerStats
 
 var xp : float = 0
@@ -32,6 +33,7 @@ func gain_skill(attack_skill : PackedScene) -> void:
 func use_mana(value : int) -> bool:
 	if mana - value >= 0:
 		mana -= value
+		ui.update()
 		return true
 	return false
 	
@@ -45,9 +47,6 @@ func _physics_process(delta: float) -> void:
 	
 	if(!is_on_floor()):
 		velocity.y -= gravity * delta
-		
-	velocity.x = move_inputs.x * speed
-	velocity.z = move_inputs.y * speed
 		
 	move_and_slide()
 
@@ -71,8 +70,7 @@ func full_rest():
 	health = max_health
 
 func read_move_inputs():
-	if !GameManager.pause:
-		move_inputs = Input.get_vector("left", "right", "forward", "backward")
+	move_inputs = Input.get_vector("left", "right", "forward", "backward")
 
 func _input(ev):
 	if Input.is_key_pressed(KEY_ESCAPE) && health > 0:
@@ -87,6 +85,7 @@ func take_damage(value : int):
 func _on_timer_timeout() -> void:
 	if mana < max_mana:
 		mana += 1
+		ui.update()
 	if mana > max_mana:
 		mana = max_mana 
 

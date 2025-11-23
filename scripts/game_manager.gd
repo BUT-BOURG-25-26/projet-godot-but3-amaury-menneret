@@ -11,7 +11,6 @@ func _ready() -> void:
 	display_game_over(false)
 	
 func give_player_upgrade(upgrade : PackedScene) :
-	print("UPGRADE CHOSEN : ", (upgrade.instantiate() as ProjectileAttack).attack_name)
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player")
 	player.gain_skill(upgrade)

@@ -29,7 +29,6 @@ func take_damage(value : int) -> void:
 	
 func _despawn():
 	if health <= 0:
-		print("DESPAWN", self)
 		var player = target as Player
 		GameManager.killcount += 1
 		player.get_xp(xp_value)

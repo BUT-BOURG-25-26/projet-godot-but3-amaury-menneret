@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_mu37s"]
 [ext_resource type="Script" uid="uid://be544a2bnlrwh" path="res://scripts/hostile.gd" id="2_2rgjq"]
-[ext_resource type="Script" uid="uid://dgmvqv47rcwft" path="res://scripts/hostile_sm.gd" id="3_ro2fa"]
 [ext_resource type="Script" uid="uid://dw6os4ch7oetj" path="res://scripts/hostile_idle.gd" id="4_s18c6"]
 [ext_resource type="Script" uid="uid://ctrb4s8bd7cju" path="res://scripts/hostile_chase.gd" id="5_efb3t"]
+[ext_resource type="PackedScene" uid="uid://dh7tkfawuad0p" path="res://scenes/util/StateMachine.tscn" id="6_e6bal"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_mu37s"]
 radius = 0.05
@@ -30,8 +30,7 @@ material = SubResource("StandardMaterial3D_efb3t")
 [node name="CollisionShape3D" parent="." index="1"]
 shape = SubResource("SphereShape3D_mu37s")
 
-[node name="StateMachine" type="Node" parent="." index="2" node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_ro2fa")
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state") instance=ExtResource("6_e6bal")]
 initial_state = NodePath("Chase")
 
 [node name="Idle" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("hostile")]
