@@ -5,10 +5,14 @@ const GENERATION_BOUND_DISTANCE = 50
 var noise = FastNoiseLite.new()
 var player: Node
 var generated_tiles
-const tiles  = {
-		1 : "res://scenes/tiles/empty.tscn",
-		2 : "res://scenes/tiles/tree.tscn"
-	}
+
+const textures = {
+	1 : "res://sprites/tiles/red_flower.png",
+	2 : "res://sprites/tiles/grass.png",
+	3 : "res://sprites/tiles/grass_patch_1.png",
+	4 : "res://sprites/tiles/grass_patch_2.png",
+	5 : "res://sprites/tiles/grass_patch_3.png"
+}
 
 func _ready():
 	noise.seed = randf_range(0,10000)
@@ -59,25 +63,17 @@ func _process(delta):
 	pass
 	
 func create_tile(position):
+	var scene : CustomWorldTile = preload("res://scenes/tiles/tile.tscn").instantiate()
+	
+	scene.position = position
+	scene.texture = load(textures[int(remap(noise.get_noise_2d(position.x, position.z), -1, 1, 1, textures.size()))])
 	if noise.get_noise_2d(position.x, position.z) <= 0.1:
-		const test = tiles[1]
-		var scene = preload(test).instantiate()
-	
-		scene.position = position
-	
-		add_child(scene)
-		return scene
-		
+		scene.texture = load(textures[1])
 	else:
-		const test = tiles[2]
-		var scene = preload(test).instantiate()
-		
-		scene.box_coordinates = get_child_coordinates_from_noise(position)
-		
-		scene.position = position
-		
-		add_child(scene)
-		return scene
+		scene.texture = load(textures[2])
+	
+	add_child(scene)
+	return scene
 		
 func get_child_coordinates_from_noise(coordinates : Vector3):
 	return Vector2(0,0)
