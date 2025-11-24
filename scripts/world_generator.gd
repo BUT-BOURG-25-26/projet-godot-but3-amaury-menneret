@@ -67,10 +67,6 @@ func create_tile(position):
 	
 	scene.position = position
 	scene.texture = load(textures[int(remap(noise.get_noise_2d(position.x, position.z), -1, 1, 1, textures.size()))])
-	if noise.get_noise_2d(position.x, position.z) <= 0.1:
-		scene.texture = load(textures[1])
-	else:
-		scene.texture = load(textures[2])
 	
 	add_child(scene)
 	return scene
