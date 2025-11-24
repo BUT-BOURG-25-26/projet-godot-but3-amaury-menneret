@@ -10,6 +10,8 @@ var mana:int;
 @export var sprite : AnimatedSprite3D
 @export var ui : PlayerStats
 
+@onready var stateMachine = $StateMachine
+
 var xp : float = 0
 var xp_to_next_level : int = 10
 var level : float = 0
@@ -20,7 +22,7 @@ var move_inputs: Vector2
 
 func _ready() -> void:
 	full_rest()
-	gain_skill(load("res://scenes/attack/fireball.tscn"))
+	#gain_skill(load("res://scenes/attack/fireball.tscn"))
 	ui.update()
 
 func gain_skill(attack_skill : PackedScene) -> void:
@@ -81,6 +83,7 @@ func take_damage(value : int):
 	ui.update()
 	if(health <= 0):
 		hp_depleted.emit()
+	sprite.play("hurt")
 
 func _on_timer_timeout() -> void:
 	if mana < max_mana:
@@ -90,7 +93,7 @@ func _on_timer_timeout() -> void:
 		mana = max_mana 
 
 func _on_hp_depleted() -> void:
-	GameManager.display_game_over(true)
+	stateMachine.current_state.Transitioned.emit(stateMachine.current_state, "Dead")
 
 func _on_detection_range_body_entered(body: Node3D) -> void:
 	if body is Hostile:

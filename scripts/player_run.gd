@@ -15,7 +15,7 @@ func enter():
 	player.sprite.play("run")
 
 func Update(delta: float):
-	player.sprite.flip_h = (player.move_inputs.x < 0)
+	player.sprite.flip_h = floor(((player.move_inputs.x) + (player.move_inputs.y))/2) < 0
 
 func Physics_Update(delta: float):
 	move_inputs = player.move_inputs

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cyam61ck6xmku"]
+[gd_scene load_steps=34 format=3 uid="uid://cyam61ck6xmku"]
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_tw10c"]
 [ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player.gd" id="2_qswnv"]
@@ -28,14 +28,15 @@
 [ext_resource type="PackedScene" uid="uid://dh7tkfawuad0p" path="res://scenes/util/StateMachine.tscn" id="26_53ku4"]
 [ext_resource type="Script" uid="uid://dwvrjd7x7085e" path="res://scripts/player_run.gd" id="27_b6txc"]
 [ext_resource type="Script" uid="uid://tqavfvqa87c6" path="res://scripts/player_idle.gd" id="28_lqdkl"]
+[ext_resource type="Script" uid="uid://cesjjh6qvkvab" path="res://scripts/player_dead.gd" id="29_v1usl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tw10c"]
 radius = 0.025
 height = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tw10c"]
-radius = 0.025
-height = 0.1
+radius = 0.03
+height = 0.22
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tw10c"]
 radius = 10.0
@@ -55,7 +56,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_lqdkl")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -69,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_4i0yy")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -144,6 +145,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_tw10c")
 
 [node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109737, 0)
 shape = SubResource("CapsuleShape3D_tw10c")
 
 [node name="DetectionRange" type="Area3D" parent="." index="2"]
@@ -155,13 +157,14 @@ shape = SubResource("SphereShape3D_tw10c")
 autostart = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0464222, 0)
-pixel_size = 0.003
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159488, 0)
+pixel_size = 0.005
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gdab3")
-animation = &"hurt"
-frame_progress = 0.557175
+animation = &"idle"
+frame_progress = 0.802284
+speed_scale = 2.0
 
 [node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state") instance=ExtResource("26_53ku4")]
 initial_state = NodePath("Idle")
@@ -176,6 +179,11 @@ metadata/_custom_type_script = "uid://dwvrjd7x7085e"
 script = ExtResource("28_lqdkl")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://tqavfvqa87c6"
+
+[node name="Dead" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("player")]
+script = ExtResource("29_v1usl")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://cesjjh6qvkvab"
 
 [connection signal="hp_depleted" from="." to="." method="_on_hp_depleted"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]

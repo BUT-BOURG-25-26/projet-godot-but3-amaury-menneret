@@ -13,14 +13,13 @@ func enter():
 	pathtrace()
 
 func pathtrace() :
-	hostile.look_at(Vector3(player.position.x, hostile.position.y, player.position.z))
 	direction = player.position - hostile.position
 	direction = direction.normalized()
 	hostile.velocity = direction * speed
 
 func Physics_Update(delta: float):
-	#if hostile.position.distance_to(player.position) > 10:
-	#	Transitioned.emit(self, "Idle")
-	
 	if Engine.get_frames_drawn() % 2 == hostile.id % 2:
 		pathtrace()
+		
+	if(!hostile.is_on_floor()):
+		Transitioned.emit(self, "falling")

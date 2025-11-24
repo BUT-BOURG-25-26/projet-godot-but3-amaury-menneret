@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4dedur8wo133"]
+[gd_scene load_steps=10 format=3 uid="uid://d4dedur8wo133"]
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_mu37s"]
 [ext_resource type="Script" uid="uid://be544a2bnlrwh" path="res://scripts/hostile.gd" id="2_2rgjq"]
 [ext_resource type="Script" uid="uid://dw6os4ch7oetj" path="res://scripts/hostile_idle.gd" id="4_s18c6"]
 [ext_resource type="Script" uid="uid://ctrb4s8bd7cju" path="res://scripts/hostile_chase.gd" id="5_efb3t"]
 [ext_resource type="PackedScene" uid="uid://dh7tkfawuad0p" path="res://scenes/util/StateMachine.tscn" id="6_e6bal"]
+[ext_resource type="Script" uid="uid://3t50pp7o0hry" path="res://scripts/hostile_falling.gd" id="6_lh40n"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_mu37s"]
 radius = 0.05
@@ -31,7 +32,7 @@ material = SubResource("StandardMaterial3D_efb3t")
 shape = SubResource("SphereShape3D_mu37s")
 
 [node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state") instance=ExtResource("6_e6bal")]
-initial_state = NodePath("Chase")
+initial_state = NodePath("Falling")
 
 [node name="Idle" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("hostile")]
 script = ExtResource("4_s18c6")
@@ -43,3 +44,8 @@ script = ExtResource("5_efb3t")
 hostile = NodePath("../..")
 speed = 3.0
 metadata/_custom_type_script = "uid://ctrb4s8bd7cju"
+
+[node name="Falling" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("hostile")]
+script = ExtResource("6_lh40n")
+hostile = NodePath("../..")
+metadata/_custom_type_script = "uid://3t50pp7o0hry"

@@ -27,6 +27,3 @@ func Update(delta: float):
 func Physics_Update(delta: float):
 	if hostile:
 		hostile.velocity = move_direction * hostile.speed
-		
-	#if player.position.distance_to(hostile.position) < 10:
-	#	Transitioned.emit(self, "Chase")
