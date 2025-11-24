@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dh7tkfawuad0p" path="res://scenes/util/StateMachine.tscn" id="26_53ku4"]
 [ext_resource type="Script" uid="uid://dwvrjd7x7085e" path="res://scripts/player_run.gd" id="27_b6txc"]
 [ext_resource type="Script" uid="uid://tqavfvqa87c6" path="res://scripts/player_idle.gd" id="28_lqdkl"]
-[ext_resource type="Script" uid="uid://cesjjh6qvkvab" path="res://scripts/player_dead.gd" id="29_v1usl"]
+[ext_resource type="Script" path="res://scripts/player_dead.gd" id="29_v1usl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tw10c"]
 radius = 0.025
@@ -183,7 +183,6 @@ metadata/_custom_type_script = "uid://tqavfvqa87c6"
 [node name="Dead" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("player")]
 script = ExtResource("29_v1usl")
 player = NodePath("../..")
-metadata/_custom_type_script = "uid://cesjjh6qvkvab"
 
 [connection signal="hp_depleted" from="." to="." method="_on_hp_depleted"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]

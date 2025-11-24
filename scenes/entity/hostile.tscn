@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dw6os4ch7oetj" path="res://scripts/hostile_idle.gd" id="4_s18c6"]
 [ext_resource type="Script" uid="uid://ctrb4s8bd7cju" path="res://scripts/hostile_chase.gd" id="5_efb3t"]
 [ext_resource type="PackedScene" uid="uid://dh7tkfawuad0p" path="res://scenes/util/StateMachine.tscn" id="6_e6bal"]
-[ext_resource type="Script" uid="uid://3t50pp7o0hry" path="res://scripts/hostile_falling.gd" id="6_lh40n"]
+[ext_resource type="Script" path="res://scripts/hostile_falling.gd" id="6_lh40n"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_mu37s"]
 radius = 0.05
@@ -48,4 +48,3 @@ metadata/_custom_type_script = "uid://ctrb4s8bd7cju"
 [node name="Falling" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("hostile")]
 script = ExtResource("6_lh40n")
 hostile = NodePath("../..")
-metadata/_custom_type_script = "uid://3t50pp7o0hry"
