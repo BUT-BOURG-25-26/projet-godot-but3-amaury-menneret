@@ -4,15 +4,19 @@ const GENERATION_BOUND_DISTANCE = 50
 
 var noise = FastNoiseLite.new()
 var player: Node
-var generated_tiles
+var generated_tiles : Dictionary
+
+@export var tileSize : int = 5
 
 const textures = {
-	1 : "res://sprites/tiles/red_flower.png",
-	2 : "res://sprites/tiles/grass.png",
-	3 : "res://sprites/tiles/grass_patch_1.png",
-	4 : "res://sprites/tiles/grass_patch_2.png",
-	5 : "res://sprites/tiles/grass_patch_3.png"
+	1 : preload("res://sprites/tiles/dirt.png"),
+	2 : preload("res://sprites/tiles/grass.png"),
+	3 : preload("res://sprites/tiles/grass_patch_1.png"),
+	4 : preload("res://sprites/tiles/red_flower.png"),
+	5 : preload("res://sprites/tiles/yellow_flower.png")
 }
+
+var tileScene : PackedScene = load("res://scenes/tiles/tile.tscn")
 
 func _ready():
 	noise.seed = randf_range(0,10000)
@@ -63,10 +67,17 @@ func _process(delta):
 	pass
 	
 func create_tile(position):
-	var scene : CustomWorldTile = preload("res://scenes/tiles/tile.tscn").instantiate()
+	var scene : CustomWorldTile = tileScene.instantiate()
 	
 	scene.position = position
-	scene.texture = load(textures[int(remap(noise.get_noise_2d(position.x, position.z), -1, 1, 1, textures.size()))])
+	
+	#var collisionShape = BoxShape3D.new()
+	#collisionShape.size = Vector3(tileSize,0,tileSize)
+	#scene.collisionShape.shape = collisionShape
+	#var meshInstance = PlaneMesh.new()
+	#meshInstance.size = Vector2(tileSize,tileSize)
+	#scene.meshInstance.mesh = meshInstance
+	scene.texture = textures[int(remap(noise.get_noise_2d(position.x, position.z), -1, 1, 1, textures.size()))]
 	
 	add_child(scene)
 	return scene

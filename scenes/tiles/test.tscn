@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8upiaellfn1t"]
+
+[ext_resource type="Script" uid="uid://dhvbe6k3c63q6" path="res://scripts/test_array_mesh.gd" id="1_mipy1"]
+
+[node name="Test" type="Node3D"]
+script = ExtResource("1_mipy1")
