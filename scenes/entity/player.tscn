@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cyam61ck6xmku"]
+[gd_scene load_steps=35 format=3 uid="uid://cyam61ck6xmku"]
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_tw10c"]
 [ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player.gd" id="2_qswnv"]
@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dh7tkfawuad0p" path="res://scenes/util/StateMachine.tscn" id="26_53ku4"]
 [ext_resource type="Script" uid="uid://dwvrjd7x7085e" path="res://scripts/player_run.gd" id="27_b6txc"]
 [ext_resource type="Script" uid="uid://tqavfvqa87c6" path="res://scripts/player_idle.gd" id="28_lqdkl"]
-[ext_resource type="Script" path="res://scripts/player_dead.gd" id="29_v1usl"]
+[ext_resource type="Script" uid="uid://cesjjh6qvkvab" path="res://scripts/player_dead.gd" id="29_v1usl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tw10c"]
 radius = 0.025
@@ -38,8 +38,10 @@ height = 0.1
 radius = 0.03
 height = 0.22
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_v1usl"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_tw10c"]
-radius = 10.0
+radius = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gdab3"]
 animations = [{
@@ -148,15 +150,24 @@ mesh = SubResource("CapsuleMesh_tw10c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109737, 0)
 shape = SubResource("CapsuleShape3D_tw10c")
 
-[node name="DetectionRange" type="Area3D" parent="." index="2"]
+[node name="ItemPickUpRange" type="Area3D" parent="." index="2"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPickUpRange" index="0"]
+shape = SubResource("SphereShape3D_v1usl")
+
+[node name="DetectionRange" type="Area3D" parent="." index="3"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange" index="0"]
 shape = SubResource("SphereShape3D_tw10c")
 
-[node name="Timer" type="Timer" parent="." index="3"]
+[node name="Timer" type="Timer" parent="." index="4"]
 autostart = true
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="4"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159488, 0)
 pixel_size = 0.005
 billboard = 1
@@ -166,7 +177,7 @@ animation = &"idle"
 frame_progress = 0.802284
 speed_scale = 2.0
 
-[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state") instance=ExtResource("26_53ku4")]
+[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("initial_state") instance=ExtResource("26_53ku4")]
 initial_state = NodePath("Idle")
 
 [node name="Run" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("player")]
@@ -185,6 +196,7 @@ script = ExtResource("29_v1usl")
 player = NodePath("../..")
 
 [connection signal="hp_depleted" from="." to="." method="_on_hp_depleted"]
+[connection signal="body_entered" from="ItemPickUpRange" to="." method="_on_item_pick_up_range_body_entered"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

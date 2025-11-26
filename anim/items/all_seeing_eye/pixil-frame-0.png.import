@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://47kqw0akcl3t"
-path.s3tc="res://.godot/imported/iceball.png-a8529c176ba306b7c07ec4c7fde9dd4d.s3tc.ctex"
+uid="uid://bc67o36i6y64q"
+path.s3tc="res://.godot/imported/pixil-frame-0.png-b43afd432d8d262f3b8e60bad0d2f6b8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/iceball.png"
-dest_files=["res://.godot/imported/iceball.png-a8529c176ba306b7c07ec4c7fde9dd4d.s3tc.ctex"]
+source_file="res://anim/items/all_seeing_eye/pixil-frame-0.png"
+dest_files=["res://.godot/imported/pixil-frame-0.png-b43afd432d8d262f3b8e60bad0d2f6b8.s3tc.ctex"]
 
 [params]
 

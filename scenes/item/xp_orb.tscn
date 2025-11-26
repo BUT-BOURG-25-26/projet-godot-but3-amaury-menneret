@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdbwjxp8cwho0"]
+
+[ext_resource type="PackedScene" uid="uid://djuxkq4rnej6n" path="res://scenes/item/item.tscn" id="1_wtv33"]
+[ext_resource type="Script" uid="uid://crdlmtcadk5ob" path="res://scripts/xp_orb.gd" id="2_fl1j4"]
+[ext_resource type="Texture2D" uid="uid://c7ij46xpuk5tc" path="res://anim/items/xp/xp.png" id="3_fl1j4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fl1j4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fl1j4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Item" instance=ExtResource("1_wtv33")]
+script = ExtResource("2_fl1j4")
+xp_value = 5.0
+
+[node name="AnimatedSprite3D" parent="." index="0"]
+visible = true
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_fl1j4")
+
+[node name="CSGBox3D" parent="." index="2"]
+visible = false

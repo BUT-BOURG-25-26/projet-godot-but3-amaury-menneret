@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://djuxkq4rnej6n"]
+[gd_scene load_steps=3 format=3 uid="uid://djuxkq4rnej6n"]
 
 [ext_resource type="Script" uid="uid://dxv48nvdrf0h8" path="res://scripts/item.gd" id="1_vcqat"]
 
-[node name="Item" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vcqat"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Item" type="RigidBody3D" node_paths=PackedStringArray("sprite")]
+collision_layer = 4
 script = ExtResource("1_vcqat")
+sprite = NodePath("AnimatedSprite3D")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vcqat")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.1, 0.1, 0.1)

@@ -22,7 +22,7 @@ var move_inputs: Vector2
 
 func _ready() -> void:
 	full_rest()
-	gain_skill(load("res://scenes/attack/fireball.tscn"))
+	gain_skill(load("res://scenes/attack/dismantle.tscn"))
 	ui.update()
 
 func gain_skill(attack_skill : PackedScene) -> void:
@@ -102,3 +102,8 @@ func _on_detection_range_body_entered(body: Node3D) -> void:
 func _on_detection_range_body_exited(body: Node3D) -> void:
 	if body is Hostile:
 		enemies_in_range.erase(body)
+
+func _on_item_pick_up_range_body_entered(body: Node3D) -> void:
+	if body is PickableItem:
+		print(body)
+		body.on_pickup(self)

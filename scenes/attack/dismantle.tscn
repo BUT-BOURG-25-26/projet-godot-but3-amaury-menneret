@@ -22,7 +22,7 @@ animations = [{
 [node name="ProjectileAttack" instance=ExtResource("1_rgqe1")]
 script = ExtResource("2_05aca")
 cooldown = 0.2
-damage = 1.0
+damage = 2.0
 speed = 0.0
 mana_cost = 3.0
 attack_name = "DISMANTLE"

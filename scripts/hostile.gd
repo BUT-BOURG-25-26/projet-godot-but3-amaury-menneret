@@ -2,16 +2,13 @@ class_name Hostile
 
 extends LivingEntity
  
-@export var xp_value : float = 10
+@export var xp_scene : PackedScene
 
 @export var damage : int = 1
 
 @onready var target = get_tree().get_first_node_in_group("Player")
 
 @onready var id : int = get_instance_id()
-
-#func _process(delta: float) -> void:
-#	_despawn()
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -27,10 +24,15 @@ func take_damage(value : int) -> void:
 		health = 0
 	_despawn()
 	
+func spawn_xp() -> void:
+	var xp = xp_scene.instantiate() as XpOrb
+	xp.position = position
+	get_tree().current_scene.add_child(xp)
+
 func _despawn():
 	if health <= 0:
 		var player = target as Player
 		GameManager.killcount += 1
-		player.get_xp(xp_value)
-		player.gain_mana(int(xp_value * 0.1))
+		player.gain_mana(int(0 * 0.1))
+		spawn_xp()
 		queue_free()
