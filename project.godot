@@ -20,10 +20,6 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scripts/game_manager.gd"
 
-[debug]
-
-settings/stdout/print_gpu_profile=true
-
 [display]
 
 window/size/viewport_width=1920

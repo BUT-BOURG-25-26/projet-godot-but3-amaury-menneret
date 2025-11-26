@@ -1,6 +1,6 @@
 extends Node
 
-const GENERATION_BOUND_DISTANCE = 50
+const GENERATION_BOUND_DISTANCE = 75
 
 var noise = FastNoiseLite.new()
 var player: Node
@@ -71,13 +71,9 @@ func create_tile(position):
 	
 	scene.position = position
 	
-	#var collisionShape = BoxShape3D.new()
-	#collisionShape.size = Vector3(tileSize,0,tileSize)
-	#scene.collisionShape.shape = collisionShape
-	#var meshInstance = PlaneMesh.new()
-	#meshInstance.size = Vector2(tileSize,tileSize)
-	#scene.meshInstance.mesh = meshInstance
 	scene.texture = textures[int(remap(noise.get_noise_2d(position.x, position.z), -1, 1, 1, textures.size()))]
+	print((int((position.x + position.z)/2)%4) * 90)
+	scene.meshInstance.rotate_y(((int((position.x + position.z)/2)%4) * 90) * 0.0174533)
 	
 	add_child(scene)
 	return scene
