@@ -72,8 +72,7 @@ func create_tile(position):
 	scene.position = position
 	
 	scene.texture = textures[int(remap(noise.get_noise_2d(position.x, position.z), -1, 1, 1, textures.size()))]
-	print((int((position.x + position.z)/2)%4) * 90)
-	scene.meshInstance.rotate_y(((int((position.x + position.z)/2)%4) * 90) * 0.0174533)
+	scene.meshInstance.rotate_y(deg_to_rad((int((position.x + position.z)/2)%4) * 90))
 	
 	add_child(scene)
 	return scene

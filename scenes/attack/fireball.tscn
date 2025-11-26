@@ -18,9 +18,10 @@ animations = [{
 
 [node name="ProjectileAttack" instance=ExtResource("1_l5qua")]
 script = ExtResource("2_gp56f")
-damage = 7.0
-speed = 25.0
-mana_cost = 10.0
+cooldown = 2.0
+damage = 4.0
+speed = 15.0
+mana_cost = 15.0
 attack_name = "FIREBALL"
 icon = ExtResource("4_m68ua")
 

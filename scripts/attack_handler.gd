@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_cooldown_timeout() -> void:
 	if(source.enemies_in_range.size() > 0 && source.use_mana(attack.instantiate().mana_cost)):
 		var scene = attack.instantiate()
-		scene.global_position = source.global_position
+		scene.transform = source.global_transform
 		scene.target = source.enemies_in_range.keys().pick_random()
 		get_tree().get_current_scene().add_child(scene)
 		source.mana 

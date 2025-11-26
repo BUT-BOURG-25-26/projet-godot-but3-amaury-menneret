@@ -22,7 +22,7 @@ shadow_enabled = true
 
 [node name="Camera" type="Camera3D" parent="."]
 script = ExtResource("7_o6xl0")
-fov_camera = 15.0
+fov_camera = 2.5
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Camera"]
 anchors_preset = 15
