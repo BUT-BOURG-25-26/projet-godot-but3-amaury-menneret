@@ -6,4 +6,8 @@ extends State
 
 func enter():
 	player.sprite.play("death")
-	GameManager.display_game_over(true)
+	player.vulnerabilityStateMachine.current_state.Transitioned.emit(player.vulnerabilityStateMachine.current_state, "Invulnerable")
+
+func Update(delta : float) -> void :
+	if !player.sprite.is_playing():
+		GameManager.display_game_over(true)

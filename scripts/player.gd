@@ -10,7 +10,8 @@ var mana:int;
 @export var sprite : AnimatedSprite3D
 @export var ui : PlayerStats
 
-@onready var stateMachine = $StateMachine
+@export var movementStateMachine : StateMachine
+@export var vulnerabilityStateMachine : StateMachine
 
 var xp : float = 0
 var xp_to_next_level : int = 10
@@ -22,7 +23,7 @@ var move_inputs: Vector2
 
 func _ready() -> void:
 	full_rest()
-	gain_skill(load("res://scenes/attack/dismantle.tscn"))
+	#gain_skill(load("res://scenes/attack/dismantle.tscn"))
 	ui.update()
 
 func gain_skill(attack_skill : PackedScene) -> void:
@@ -79,11 +80,16 @@ func _input(ev):
 		GameManager.paused(!GameManager.pause)
 
 func take_damage(value : int):
-	health -= value
-	ui.update()
-	if(health <= 0):
-		hp_depleted.emit()
-	sprite.play("hurt")
+	if vulnerabilityStateMachine.current_state == $VulnerabilityStateMachine/Vulnerable:
+		health -= value
+		if(health <= 0):
+			health = 0
+		ui.update()
+		if(health <= 0):
+			vulnerabilityStateMachine.current_state.Transitioned.emit(vulnerabilityStateMachine.current_state, "Invulnerable")
+			hp_depleted.emit()
+		else :
+			movementStateMachine.current_state.Transitioned.emit(movementStateMachine.current_state, "Stunned")
 
 func _on_timer_timeout() -> void:
 	if mana < max_mana:
@@ -93,7 +99,7 @@ func _on_timer_timeout() -> void:
 		mana = max_mana 
 
 func _on_hp_depleted() -> void:
-	stateMachine.current_state.Transitioned.emit(stateMachine.current_state, "Dead")
+	movementStateMachine.current_state.Transitioned.emit(movementStateMachine.current_state, "Dead")
 
 func _on_detection_range_body_entered(body: Node3D) -> void:
 	if body is Hostile:
@@ -105,5 +111,4 @@ func _on_detection_range_body_exited(body: Node3D) -> void:
 
 func _on_item_pick_up_range_body_entered(body: Node3D) -> void:
 	if body is PickableItem:
-		print(body)
 		body.on_pickup(self)

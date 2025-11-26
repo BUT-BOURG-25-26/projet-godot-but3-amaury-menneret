@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cyam61ck6xmku"]
+[gd_scene load_steps=38 format=3 uid="uid://cyam61ck6xmku"]
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_tw10c"]
 [ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player.gd" id="2_qswnv"]
@@ -25,10 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://cdbjcln3kvdal" path="res://anim/player/run/run005.png" id="23_mpqdt"]
 [ext_resource type="Texture2D" uid="uid://bicb42dnoxpg8" path="res://anim/player/run/run006.png" id="24_ypn3r"]
 [ext_resource type="Texture2D" uid="uid://b81y23klkcq0c" path="res://anim/player/run/run007.png" id="25_jy32m"]
-[ext_resource type="PackedScene" uid="uid://dh7tkfawuad0p" path="res://scenes/util/StateMachine.tscn" id="26_53ku4"]
 [ext_resource type="Script" uid="uid://dwvrjd7x7085e" path="res://scripts/player_run.gd" id="27_b6txc"]
 [ext_resource type="Script" uid="uid://tqavfvqa87c6" path="res://scripts/player_idle.gd" id="28_lqdkl"]
 [ext_resource type="Script" uid="uid://cesjjh6qvkvab" path="res://scripts/player_dead.gd" id="29_v1usl"]
+[ext_resource type="Script" uid="uid://bej8njgg23akd" path="res://scripts/player_stunned.gd" id="30_44md8"]
+[ext_resource type="Script" uid="uid://tx4shaxw48uu" path="res://scripts/state_machine.gd" id="31_4i0yy"]
+[ext_resource type="Script" uid="uid://btqlntjo6qlvw" path="res://scripts/player_vulnerable.gd" id="31_61dgv"]
+[ext_resource type="Script" uid="uid://cqa0baay4qraj" path="res://scripts/player_invulnerable.gd" id="32_61dgv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tw10c"]
 radius = 0.025
@@ -135,10 +138,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="LivingEntity" node_paths=PackedStringArray("sprite") groups=["Player"] instance=ExtResource("1_tw10c")]
+[node name="LivingEntity" node_paths=PackedStringArray("sprite", "movementStateMachine", "vulnerabilityStateMachine") groups=["Player"] instance=ExtResource("1_tw10c")]
 script = ExtResource("2_qswnv")
 max_mana = 100
 sprite = NodePath("AnimatedSprite3D")
+movementStateMachine = NodePath("MovementStateMachine")
+vulnerabilityStateMachine = NodePath("VulnerabilityStateMachine")
 max_health = 10
 speed = 5.0
 
@@ -175,27 +180,46 @@ billboard = 1
 shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gdab3")
-animation = &"idle"
-frame_progress = 0.802284
+animation = &"hurt"
 speed_scale = 2.0
 
-[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("initial_state") instance=ExtResource("26_53ku4")]
+[node name="MovementStateMachine" type="Node" parent="." index="6" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("31_4i0yy")
 initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://tx4shaxw48uu"
 
-[node name="Run" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("player")]
+[node name="Run" type="Node" parent="MovementStateMachine" index="0" node_paths=PackedStringArray("player")]
 script = ExtResource("27_b6txc")
 player = NodePath("../..")
 speed = 5.0
 metadata/_custom_type_script = "uid://dwvrjd7x7085e"
 
-[node name="Idle" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("player")]
+[node name="Idle" type="Node" parent="MovementStateMachine" index="1" node_paths=PackedStringArray("player")]
 script = ExtResource("28_lqdkl")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://tqavfvqa87c6"
 
-[node name="Dead" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("player")]
+[node name="Dead" type="Node" parent="MovementStateMachine" index="2" node_paths=PackedStringArray("player")]
 script = ExtResource("29_v1usl")
 player = NodePath("../..")
+
+[node name="Stunned" type="Node" parent="MovementStateMachine" index="3" node_paths=PackedStringArray("player")]
+script = ExtResource("30_44md8")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://bej8njgg23akd"
+
+[node name="VulnerabilityStateMachine" type="Node" parent="." index="7" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("31_4i0yy")
+initial_state = NodePath("Vulnerable")
+metadata/_custom_type_script = "uid://tx4shaxw48uu"
+
+[node name="Vulnerable" type="Node" parent="VulnerabilityStateMachine" index="0"]
+script = ExtResource("31_61dgv")
+metadata/_custom_type_script = "uid://btqlntjo6qlvw"
+
+[node name="Invulnerable" type="Node" parent="VulnerabilityStateMachine" index="1"]
+script = ExtResource("32_61dgv")
+metadata/_custom_type_script = "uid://cqa0baay4qraj"
 
 [connection signal="hp_depleted" from="." to="." method="_on_hp_depleted"]
 [connection signal="body_entered" from="ItemPickUpRange" to="." method="_on_item_pick_up_range_body_entered"]
