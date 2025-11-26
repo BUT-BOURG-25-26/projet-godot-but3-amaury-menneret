@@ -11,10 +11,12 @@ script = ExtResource("1_vcqat")
 sprite = NodePath("AnimatedSprite3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-visible = false
+gi_mode = 2
+shaded = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vcqat")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 size = Vector3(0.1, 0.1, 0.1)

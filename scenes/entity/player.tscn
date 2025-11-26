@@ -169,8 +169,10 @@ autostart = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159488, 0)
+gi_mode = 2
 pixel_size = 0.005
 billboard = 1
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gdab3")
 animation = &"idle"
