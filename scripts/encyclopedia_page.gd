@@ -2,9 +2,9 @@ class_name EncyclopediaPage
 
 extends Control
 
-@onready var page_items : Array[Item] = []
+@onready var page_items : Array[PickableItem] = []
 
-func add_item(item : Item) :
+func add_item(item : PickableItem) :
 	var case = TextureRect.new()
 	case.size = Vector2(32,32)
 	case.texture = item.icon
