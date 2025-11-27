@@ -19,6 +19,7 @@ script = ExtResource("1_o5qli")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.310676, 0.939327, -0.145416, 0, 0.152986, 0.988228, 0.950516, 0.307019, -0.0475291, 0, 3.46341, 0)
 light_color = Color(1, 0.760018, 0.717029, 1)
+light_energy = 1.5
 light_indirect_energy = 0.0
 shadow_enabled = true
 

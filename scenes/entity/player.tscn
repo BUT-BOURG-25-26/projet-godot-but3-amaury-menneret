@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://cyam61ck6xmku"]
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_tw10c"]
-[ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player.gd" id="2_qswnv"]
+[ext_resource type="Script" uid="uid://be6kyc6eodb51" path="res://scripts/player/player.gd" id="2_qswnv"]
 [ext_resource type="Texture2D" uid="uid://ohfy3upjee6r" path="res://anim/player/death/death000.png" id="3_hhwc5"]
 [ext_resource type="Texture2D" uid="uid://bx5cndy7eigjb" path="res://anim/player/idle/idle000.png" id="3_ksla3"]
 [ext_resource type="Texture2D" uid="uid://h2hxixv8n1rs" path="res://anim/player/death/death001.png" id="4_53ku4"]
@@ -25,13 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://cdbjcln3kvdal" path="res://anim/player/run/run005.png" id="23_mpqdt"]
 [ext_resource type="Texture2D" uid="uid://bicb42dnoxpg8" path="res://anim/player/run/run006.png" id="24_ypn3r"]
 [ext_resource type="Texture2D" uid="uid://b81y23klkcq0c" path="res://anim/player/run/run007.png" id="25_jy32m"]
-[ext_resource type="Script" uid="uid://dwvrjd7x7085e" path="res://scripts/player_run.gd" id="27_b6txc"]
-[ext_resource type="Script" uid="uid://tqavfvqa87c6" path="res://scripts/player_idle.gd" id="28_lqdkl"]
-[ext_resource type="Script" uid="uid://cesjjh6qvkvab" path="res://scripts/player_dead.gd" id="29_v1usl"]
-[ext_resource type="Script" uid="uid://bej8njgg23akd" path="res://scripts/player_stunned.gd" id="30_44md8"]
+[ext_resource type="Script" uid="uid://dwvrjd7x7085e" path="res://scripts/player/player_run.gd" id="27_b6txc"]
+[ext_resource type="Script" uid="uid://tqavfvqa87c6" path="res://scripts/player/player_idle.gd" id="28_lqdkl"]
+[ext_resource type="Script" uid="uid://cesjjh6qvkvab" path="res://scripts/player/player_dead.gd" id="29_v1usl"]
+[ext_resource type="Script" uid="uid://bej8njgg23akd" path="res://scripts/player/player_stunned.gd" id="30_44md8"]
 [ext_resource type="Script" uid="uid://tx4shaxw48uu" path="res://scripts/state_machine.gd" id="31_4i0yy"]
-[ext_resource type="Script" uid="uid://btqlntjo6qlvw" path="res://scripts/player_vulnerable.gd" id="31_61dgv"]
-[ext_resource type="Script" uid="uid://cqa0baay4qraj" path="res://scripts/player_invulnerable.gd" id="32_61dgv"]
+[ext_resource type="Script" uid="uid://btqlntjo6qlvw" path="res://scripts/player/player_vulnerable.gd" id="31_61dgv"]
+[ext_resource type="Script" uid="uid://cqa0baay4qraj" path="res://scripts/player/player_invulnerable.gd" id="32_61dgv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tw10c"]
 radius = 0.025
