@@ -1,0 +1,98 @@
+[gd_scene load_steps=20 format=3 uid="uid://8lfbgkrbap55"]
+
+[ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_did33"]
+[ext_resource type="Script" uid="uid://cqmj3xkyvn44m" path="res://scripts/hostile_boss.gd" id="2_yqglb"]
+[ext_resource type="Texture2D" uid="uid://bfgctr5nc55jx" path="res://anim/boss/tile000.png" id="3_1ujet"]
+[ext_resource type="Texture2D" uid="uid://w6px70lmkbbu" path="res://anim/boss/tile001.png" id="4_f10vs"]
+[ext_resource type="Texture2D" uid="uid://b0park3ywu4xp" path="res://anim/boss/tile002.png" id="5_v1ta6"]
+[ext_resource type="Texture2D" uid="uid://cqjcr84hm2cer" path="res://anim/boss/tile003.png" id="6_qj3eh"]
+[ext_resource type="Texture2D" uid="uid://ca2xsjsdsb3ld" path="res://anim/boss/tile004.png" id="7_cl3yf"]
+[ext_resource type="Texture2D" uid="uid://d37jwft6byilx" path="res://anim/boss/tile005.png" id="8_qr6u6"]
+[ext_resource type="Texture2D" uid="uid://c3qp36ajqw8eu" path="res://anim/boss/tile006.png" id="9_2ctr2"]
+[ext_resource type="Texture2D" uid="uid://b4ueu2x7wwavr" path="res://anim/boss/tile007.png" id="10_nfm7c"]
+[ext_resource type="Texture2D" uid="uid://860bnyb11dkh" path="res://anim/boss/tile008.png" id="11_0mv51"]
+[ext_resource type="Texture2D" uid="uid://bda85klw40p78" path="res://anim/boss/tile009.png" id="12_wgocd"]
+[ext_resource type="Texture2D" uid="uid://o3mgwxf7fwye" path="res://anim/boss/tile010.png" id="13_uevbr"]
+[ext_resource type="Texture2D" uid="uid://bdvnxwxl1gafx" path="res://anim/boss/tile011.png" id="14_r1uja"]
+[ext_resource type="Texture2D" uid="uid://daciqvxvsny6h" path="res://anim/boss/tile012.png" id="15_5ek0j"]
+[ext_resource type="Texture2D" uid="uid://dywnc56tcjeb1" path="res://anim/boss/tile013.png" id="16_lbli6"]
+[ext_resource type="Texture2D" uid="uid://bpb8mfins4q43" path="res://anim/boss/tile014.png" id="17_agmnf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ujet"]
+radius = 0.2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1hsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1ujet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f10vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v1ta6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qj3eh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cl3yf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qr6u6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2ctr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nfm7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0mv51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wgocd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uevbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_r1uja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5ek0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lbli6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_agmnf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hostile" node_paths=PackedStringArray("sprite") instance=ExtResource("1_did33")]
+script = ExtResource("2_yqglb")
+sprite = NodePath("AnimatedSprite3D")
+damage = 10
+max_health = 1000
+speed = 5.0
+gravity = 9.8
+
+[node name="CSGMesh3D" parent="." index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CapsuleShape3D_1ujet")
+
+[node name="Chase" parent="MovementStateMachine" index="1"]
+speed = 2.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="3"]
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_a1hsp")
+frame_progress = 0.030993

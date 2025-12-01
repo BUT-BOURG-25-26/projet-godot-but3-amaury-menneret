@@ -38,8 +38,8 @@ radius = 0.025
 height = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tw10c"]
-radius = 0.03
-height = 0.22
+radius = 0.06
+height = 0.48
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v1usl"]
 
@@ -156,6 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109737, 0)
 shape = SubResource("CapsuleShape3D_tw10c")
 
 [node name="ItemPickUpRange" type="Area3D" parent="." index="2"]
+visible = false
 collision_layer = 4
 collision_mask = 4
 
@@ -163,6 +164,7 @@ collision_mask = 4
 shape = SubResource("SphereShape3D_v1usl")
 
 [node name="DetectionRange" type="Area3D" parent="." index="3"]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -173,14 +175,13 @@ shape = SubResource("SphereShape3D_tw10c")
 autostart = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159488, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197179, 0)
 gi_mode = 2
-pixel_size = 0.005
 billboard = 1
 shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gdab3")
-animation = &"hurt"
+animation = &"idle"
 speed_scale = 2.0
 
 [node name="MovementStateMachine" type="Node" parent="." index="6" node_paths=PackedStringArray("initial_state")]

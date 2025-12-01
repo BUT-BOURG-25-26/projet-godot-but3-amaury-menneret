@@ -15,8 +15,11 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider() is Player:
-			(collision.get_collider() as Player).take_damage(damage)
-			queue_free()
+			damage_entity((collision.get_collider() as Player))
+
+func damage_entity(entity : LivingEntity):
+	entity.take_damage(damage)
+	queue_free()
 
 func take_damage(value : int) -> void:
 	health -= value
