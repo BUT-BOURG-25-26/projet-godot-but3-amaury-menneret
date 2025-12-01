@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://8lfbgkrbap55"]
+[gd_scene load_steps=20 format=3 uid="uid://dpsrr3ay2gy4x"]
 
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_did33"]
-[ext_resource type="Script" uid="uid://cqmj3xkyvn44m" path="res://scripts/hostile_boss.gd" id="2_yqglb"]
+[ext_resource type="Script" path="res://scripts/hostile_boss.gd" id="2_yqglb"]
 [ext_resource type="Texture2D" uid="uid://bfgctr5nc55jx" path="res://anim/boss/tile000.png" id="3_1ujet"]
 [ext_resource type="Texture2D" uid="uid://w6px70lmkbbu" path="res://anim/boss/tile001.png" id="4_f10vs"]
 [ext_resource type="Texture2D" uid="uid://b0park3ywu4xp" path="res://anim/boss/tile002.png" id="5_v1ta6"]

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dn23wa63ppe56" path="res://scenes/ui/playerUi.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://drshay27la78v" path="res://scenes/menu/upgrade_choice_menu.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="10_choun"]
-[ext_resource type="PackedScene" uid="uid://8lfbgkrbap55" path="res://scenes/entity/hostile_boss.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" path="res://scenes/entity/hostile_boss.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cyam61ck6xmku" path="res://scenes/entity/player.tscn" id="12_eb6dy"]
 
 [node name="Main" type="Node"]
@@ -38,7 +38,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(2560, 1440)
 render_target_update_mode = 4
 
 [node name="PlayerUi" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("7_tipki")]
