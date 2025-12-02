@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djblkyg3nb1w8"]
+
+[ext_resource type="Script" uid="uid://78aiw1v7gjks" path="res://scripts/skill/magic_arrow_skill.gd" id="1_qkt2j"]
+[ext_resource type="PackedScene" uid="uid://sf2kc8wjbv52" path="res://scenes/attack/MagicArrow.tscn" id="2_qkrul"]
+
+[node name="MagicArrowSkill" type="Node"]
+script = ExtResource("1_qkt2j")
+magic_arrow_scene = ExtResource("2_qkrul")
+count = 1
+skill_name = "Magic Arrow"
+skill_description = "Cast a magic arrow that aims itself at enemies"
+cooldown = 1.0
