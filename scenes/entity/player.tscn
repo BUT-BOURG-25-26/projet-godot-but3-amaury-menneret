@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://tqavfvqa87c6" path="res://scripts/player/player_idle.gd" id="28_lqdkl"]
 [ext_resource type="Script" uid="uid://cesjjh6qvkvab" path="res://scripts/player/player_dead.gd" id="29_v1usl"]
 [ext_resource type="Script" uid="uid://bej8njgg23akd" path="res://scripts/player/player_stunned.gd" id="30_44md8"]
-[ext_resource type="Script" uid="uid://tx4shaxw48uu" path="res://scripts/state_machine.gd" id="31_4i0yy"]
+[ext_resource type="Script" uid="uid://tx4shaxw48uu" path="res://scripts/util/state_machine.gd" id="31_4i0yy"]
 [ext_resource type="Script" uid="uid://btqlntjo6qlvw" path="res://scripts/player/player_vulnerable.gd" id="31_61dgv"]
 [ext_resource type="Script" uid="uid://cqa0baay4qraj" path="res://scripts/player/player_invulnerable.gd" id="32_61dgv"]
 

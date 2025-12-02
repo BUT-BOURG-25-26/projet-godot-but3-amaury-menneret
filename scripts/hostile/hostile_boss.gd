@@ -3,6 +3,7 @@ class_name HostileBoss
 extends Hostile
 
 @export var sprite : AnimatedSprite3D
+@onready var can_attack : bool = false
 
 func _ready() -> void:
 	sprite.play("default")

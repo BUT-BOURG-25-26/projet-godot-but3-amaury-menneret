@@ -20,6 +20,6 @@ func pathtrace() :
 func Physics_Update(delta: float):
 	if Engine.get_frames_drawn() % 2 == hostile.id % 2:
 		pathtrace()
-		
-	if(!hostile.is_on_floor()):
+	
+	if !hostile.is_on_floor():
 		Transitioned.emit(self, "falling")
