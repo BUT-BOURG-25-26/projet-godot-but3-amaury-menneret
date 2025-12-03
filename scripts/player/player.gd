@@ -23,7 +23,7 @@ var move_inputs: Vector2
 
 func _ready() -> void:
 	full_rest()
-	gain_skill(load("res://scenes/attack/fireball.tscn"))
+	#gain_skill(load("res://scenes/attack/fireball.tscn"))
 	ui.update()
 
 func gain_skill(attack_skill : PackedScene) -> void:
