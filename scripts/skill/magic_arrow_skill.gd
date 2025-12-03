@@ -7,7 +7,7 @@ extends Skill
 	
 func cast(source : LivingEntity, target : LivingEntity) -> void:
 	for x in count:
-		summon_magic_arrow(source.position, (source.position - (target.position + Vector3(randf_range(-1,1),randf_range(-1,1),randf_range(-1,1)))).normalized())
+		summon_magic_arrow(source.position, (source.position - (target.position + Vector3(randf_range(-1,1),0,randf_range(-1,1)))).normalized())
 
 func summon_magic_arrow(source : Vector3, direction : Vector3) -> void:
 	var instance = magic_arrow_scene.instantiate() as MagicArrow

@@ -1,6 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb6hha35wkvfr"]
+[gd_scene load_steps=4 format=3 uid="uid://iths2gx7utuc"]
 
-[ext_resource type="Script" uid="uid://ctjfni2iq22my" path="res://scripts/projectile_attack.gd" id="1_b7rwg"]
+[sub_resource type="GDScript" id="GDScript_tig4i"]
+script/source = "class_name ProjectileAttack
+
+extends Node3D
+
+@export var cooldown : float = 1
+@export var damage : float = 10
+@export var speed : float = 30
+@export var mana_cost : float = 2
+
+@export var attack_name : String
+@export var icon : Texture2D
+
+@export var sprite : AnimatedSprite3D
+
+@onready var target : LivingEntity
+var target_direction : Vector3
+
+func _ready() -> void:
+	target_direction = global_position.direction_to(target.global_position)
+
+func _physics_process(delta: float) -> void:
+	if(target_direction != null):
+		global_position += target_direction * speed * delta
+	
+func _on_body_entered(body: Node3D) -> void:
+	if body is Hostile:
+		(body as Hostile).take_damage(damage)
+		queue_free()
+
+func _on_alive_timer_timeout() -> void:
+		queue_free()
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3rjm"]
 
@@ -15,7 +47,7 @@ animations = [{
 [node name="ProjectileAttack" type="Area3D"]
 collision_layer = 3
 collision_mask = 2
-script = ExtResource("1_b7rwg")
+script = SubResource("GDScript_tig4i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_r3rjm")

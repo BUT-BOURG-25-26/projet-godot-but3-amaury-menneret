@@ -1,12 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt6a6n6verrny"]
+[gd_scene load_steps=7 format=3 uid="uid://dt6a6n6verrny"]
 
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_pindw"]
 [ext_resource type="Script" uid="uid://cxo5534xbtoyl" path="res://scripts/hostile/hostile_normal.gd" id="2_s1fby"]
 [ext_resource type="Script" uid="uid://ctrb4s8bd7cju" path="res://scripts/hostile/hostile_chase.gd" id="3_16afp"]
 [ext_resource type="Script" uid="uid://3t50pp7o0hry" path="res://scripts/hostile/hostile_falling.gd" id="4_cscc4"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_cscc4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ch43x"]
+
 [node name="Hostile" instance=ExtResource("1_pindw")]
 script = ExtResource("2_s1fby")
+
+[node name="CSGMesh3D" parent="." index="0"]
+mesh = SubResource("SphereMesh_cscc4")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_ch43x")
 
 [node name="MovementStateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Chase")

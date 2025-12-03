@@ -9,9 +9,9 @@ extends Control
 
 func _ready() -> void:
 	if upgrade != null:
-		var attack = (upgrade.instantiate() as ProjectileAttack)
-		texture.texture = attack.icon
-		label.text = attack.attack_name
+		var skill = (upgrade.instantiate() as Skill)
+		#texture.texture = attack.icon
+		label.text = skill.skill_name
 		button.pressed.connect(chosen)
 
 func chosen() -> void :

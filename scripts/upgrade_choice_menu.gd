@@ -22,11 +22,5 @@ func draw() -> void :
 	
 	
 func init():
-	add_choice(load("res://scenes/attack/fireball.tscn"))
-	add_choice(load("res://scenes/attack/iceball.tscn"))
-	add_choice(load("res://scenes/attack/dismantle.tscn"))
+	add_choice(load("res://scenes/skill/magic_arrow_skill.tscn"))
 	draw()
-
-func _on_button_pressed() -> void:
-	print("pass")
-	choosen.emit.bind(load("res://scenes/attack/fireball.tscn"))

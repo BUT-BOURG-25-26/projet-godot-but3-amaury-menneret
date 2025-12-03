@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://daciqvxvsny6h" path="res://anim/boss/tile012.png" id="15_5ek0j"]
 [ext_resource type="Texture2D" uid="uid://dywnc56tcjeb1" path="res://anim/boss/tile013.png" id="16_lbli6"]
 [ext_resource type="Texture2D" uid="uid://bpb8mfins4q43" path="res://anim/boss/tile014.png" id="17_agmnf"]
-[ext_resource type="Script" uid="uid://dopaul8yr31dk" path="res://scripts/attack_handler.gd" id="20_qj3eh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ujet"]
 radius = 0.2
@@ -77,6 +76,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_v1ta6"]
+script/source = "class_name AttackHandler
+
+extends Node
+
+@onready var attack : PackedScene
+@onready var cooldown : Timer
+@onready var source : Player
+#
+#func _ready() -> void:
+	#cooldown = Timer.new()
+	#if attack != null && cooldown != null:
+		#cooldown.wait_time =  (attack.instantiate() as ProjectileAttack).cooldown
+	#cooldown.autostart = true
+	#await cooldown.timeout.connect(_on_cooldown_timeout)
+	#add_child(cooldown)
+#
+#func _on_cooldown_timeout() -> void:
+	#if(source.enemies_in_range.size() > 0 && source.use_mana(attack.instantiate().mana_cost)):
+		#var scene = attack.instantiate()
+		#scene.transform = source.global_transform
+		#scene.target = source.enemies_in_range.keys().pick_random()
+		#get_tree().get_current_scene().add_child(scene)
+		#source.mana 
+"
+
 [node name="Hostile" node_paths=PackedStringArray("sprite") instance=ExtResource("1_did33")]
 script = ExtResource("2_yqglb")
 sprite = NodePath("AnimatedSprite3D")
@@ -114,5 +139,5 @@ sprite_frames = SubResource("SpriteFrames_a1hsp")
 frame_progress = 0.030993
 
 [node name="AttackHandler" type="Node" parent="." index="4"]
-script = ExtResource("20_qj3eh")
+script = SubResource("GDScript_v1ta6")
 metadata/_custom_type_script = "uid://dopaul8yr31dk"

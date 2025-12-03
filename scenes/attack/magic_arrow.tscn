@@ -134,13 +134,15 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_iqeks"]
 size = Vector3(0.5, 0.1, 0.1)
 
-[node name="Projectile" node_paths=PackedStringArray("sprite") instance=ExtResource("1_ex6fq")]
+[node name="Projectile" node_paths=PackedStringArray("sprite", "hitbox") instance=ExtResource("1_ex6fq")]
 script = ExtResource("2_1xhmx")
-sprite = NodePath("AnimatedSprite3D")
-damage = 1.0
+sprite = NodePath("Sprite")
+hitbox = NodePath("Hitbox")
+damage = 5.0
+time_to_live = 3.0
 speed = 7.0
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="0"]
+[node name="Sprite" type="AnimatedSprite3D" parent="." index="0"]
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_8r5ce")
@@ -148,3 +150,9 @@ frame_progress = 0.549551
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("BoxShape3D_iqeks")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hitbox" index="1"]
+visible = false
+size = Vector3(0.5, 0.1, 0.1)
+
+[connection signal="body_entered" from="Hitbox" to="." method="collision"]
