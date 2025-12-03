@@ -5,7 +5,8 @@ extends Node
 @onready var skill : PackedScene
 @onready var cooldown : Timer
 @onready var source : LivingEntity
-@onready var target : LivingEntity
+
+@onready var targets : Dictionary
 
 @onready var instance_of_skill : Skill
 
@@ -15,13 +16,14 @@ func _ready() -> void:
 		cooldown = Timer.new()
 		cooldown.wait_time
 		cooldown.timeout.connect(cooldown_done)
+		add_child(cooldown)
+		add_child(instance_of_skill)
 		cooldown.start()
 
 func cast() -> void:
 	instance_of_skill.cast_effects()
-	instance_of_skill.cast()
+	instance_of_skill.cast(source, source)
 
 func cooldown_done() -> void:
-	print("Cooldown for " + instance_of_skill.skill_name)
-	if instance_of_skill.cast_requirements():
+	if instance_of_skill.cast_requirements(source):
 		cast()

@@ -5,7 +5,7 @@ extends LivingEntity
 @export var max_mana:int = 100;
 var mana:int;
 
-@onready var attack_skills : Dictionary = { }
+@onready var skills : Dictionary = { }
 
 @export var sprite : AnimatedSprite3D
 @export var ui : PlayerStats
@@ -23,14 +23,14 @@ var move_inputs: Vector2
 
 func _ready() -> void:
 	full_rest()
-	#gain_skill(load("res://scenes/attack/fireball.tscn"))
+	gain_skill(load("res://scenes/skill/magic_arrow_skill.tscn"))
 	ui.update()
 
-func gain_skill(attack_skill : PackedScene) -> void:
-	var new_skill = AttackHandler.new()
-	new_skill.attack = attack_skill
+func gain_skill(skill : PackedScene) -> void:
+	var new_skill = SkillHandler.new()
+	new_skill.skill = skill
 	new_skill.source = self
-	attack_skills.set(attack_skills.size(),new_skill)
+	skills.set(skills.size(),new_skill)
 	add_child(new_skill)
 	
 func use_mana(value : int) -> bool:

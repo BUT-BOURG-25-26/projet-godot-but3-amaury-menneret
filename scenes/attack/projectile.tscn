@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://dsos0xq1vyf6k"]
+[gd_scene load_steps=2 format=3 uid="uid://dsos0xq1vyf6k"]
+
+[ext_resource type="Script" uid="uid://bxew374r164r0" path="res://scripts/projectile/projectile.gd" id="1_1joa4"]
 
 [node name="Projectile" type="Node3D"]
+script = ExtResource("1_1joa4")
 
 [node name="Hitbox" type="Area3D" parent="."]

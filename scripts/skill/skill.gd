@@ -6,11 +6,12 @@ extends Node
 @export var skill_description : String
 @export var cooldown : float
 @export var level : int = 1
+@export var mana_cost : int = 5
 
-func cast() -> void :
+func cast(source : LivingEntity, target : LivingEntity) -> void :
 	pass
 	
-func cast_requirements() -> bool :
+func cast_requirements(source : LivingEntity) -> bool :
 	return false
 
 func cast_effects() -> void :

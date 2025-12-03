@@ -138,7 +138,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="LivingEntity2" node_paths=PackedStringArray("sprite", "movementStateMachine", "vulnerabilityStateMachine") groups=["Player"] instance=ExtResource("1_tw10c")]
+[node name="LivingEntity" node_paths=PackedStringArray("sprite", "movementStateMachine", "vulnerabilityStateMachine") groups=["Player"] instance=ExtResource("1_tw10c")]
 script = ExtResource("2_qswnv")
 max_mana = 100
 sprite = NodePath("AnimatedSprite3D")
