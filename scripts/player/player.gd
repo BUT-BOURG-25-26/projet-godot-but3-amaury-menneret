@@ -27,11 +27,12 @@ func _ready() -> void:
 	ui.update()
 
 func gain_skill(skill : PackedScene) -> void:
-	var new_skill = SkillHandler.new()
-	new_skill.skill = skill
-	new_skill.source = self
-	skills.set(skills.size(),new_skill)
-	add_child(new_skill)
+	var new_skill_handler = SkillHandler.new()
+	if !skills.has(skill):
+		new_skill_handler.skill = skill
+		new_skill_handler.source = self
+		skills.set(skill, new_skill_handler)
+		add_child(new_skill_handler)
 	
 func use_mana(value : int) -> bool:
 	if mana - value >= 0:

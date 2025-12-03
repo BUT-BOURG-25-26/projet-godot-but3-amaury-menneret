@@ -152,7 +152,6 @@ frame_progress = 0.549551
 shape = SubResource("BoxShape3D_iqeks")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Hitbox" index="1"]
-visible = false
 size = Vector3(0.5, 0.1, 0.1)
 
 [connection signal="body_entered" from="Hitbox" to="." method="collision"]

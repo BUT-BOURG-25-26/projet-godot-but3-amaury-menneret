@@ -12,7 +12,7 @@ func cast(source : LivingEntity, target : LivingEntity) -> void:
 func summon_magic_arrow(source : Vector3, direction : Vector3) -> void:
 	var instance = magic_arrow_scene.instantiate() as MagicArrow
 	instance.position = source
-	instance.rotation = direction
+	instance.direction = direction
 	get_tree().current_scene.add_child(instance)
 
 func cast_requirements(source : LivingEntity) -> bool :

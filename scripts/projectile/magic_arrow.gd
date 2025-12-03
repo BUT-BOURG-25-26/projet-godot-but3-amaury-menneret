@@ -7,9 +7,7 @@ extends Projectile
 
 func _ready() -> void:
 	sprite.play("default")
-	sprite.flip_h = rotation.x < 0	
-	#sprite.rotate_x(rotation.x)
-	#sprite.rotate_z(rotation.z)
+	sprite.flip_h = rotation.x < 0
 	super()
 
 func collision(body : Node3D) -> void:

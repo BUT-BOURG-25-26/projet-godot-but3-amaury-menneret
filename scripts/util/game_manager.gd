@@ -24,11 +24,11 @@ func give_player_upgrade(upgrade : PackedScene) :
 func onPlayerLevelUp():
 	if(enemySpawner != null):
 		enemySpawner.increaseSpawnRate(1.2)
-	#Engine.time_scale = 0
-	#if upgrade_menu == null:
-		#upgrade_menu = get_tree().get_first_node_in_group("upgrade_choice_menu")
-	#upgrade_menu.init()
-	#upgrade_menu.visible = true
+	Engine.time_scale = 0
+	if upgrade_menu == null:
+		upgrade_menu = get_tree().get_first_node_in_group("upgrade_choice_menu")
+	upgrade_menu.init()
+	upgrade_menu.visible = true
 
 func display_game_over(display : bool):
 	var game_over_menu = get_tree().get_first_node_in_group("game_over")
