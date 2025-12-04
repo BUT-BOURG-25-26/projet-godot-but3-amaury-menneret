@@ -185,7 +185,8 @@ shape = SubResource("CapsuleShape3D_memo6")
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cscc4")
-animation = &"die"
+animation = &"idle"
+frame_progress = 0.519156
 
 [node name="MovementStateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Chasing")
