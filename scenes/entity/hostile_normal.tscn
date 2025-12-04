@@ -1,24 +1,191 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt6a6n6verrny"]
+[gd_scene load_steps=41 format=3 uid="uid://dt6a6n6verrny"]
 
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_pindw"]
 [ext_resource type="Script" uid="uid://cxo5534xbtoyl" path="res://scripts/hostile/hostile_normal.gd" id="2_s1fby"]
+[ext_resource type="Texture2D" uid="uid://b3gdo2cn1rjat" path="res://anim/skeleton/tile026.png" id="3_8n3xb"]
 [ext_resource type="Script" uid="uid://ctrb4s8bd7cju" path="res://scripts/hostile/hostile_chase.gd" id="3_16afp"]
+[ext_resource type="Texture2D" uid="uid://cvspesj0oyasx" path="res://anim/skeleton/tile012.png" id="3_memo6"]
+[ext_resource type="Texture2D" uid="uid://bx2sr4vhuccfq" path="res://anim/skeleton/tile013.png" id="4_1thax"]
 [ext_resource type="Script" uid="uid://3t50pp7o0hry" path="res://scripts/hostile/hostile_falling.gd" id="4_cscc4"]
+[ext_resource type="Texture2D" uid="uid://db5pnolwx2qs4" path="res://anim/skeleton/tile027.png" id="4_ifnmj"]
+[ext_resource type="Texture2D" uid="uid://b7xefe088kd5k" path="res://anim/skeleton/tile028.png" id="5_81joy"]
+[ext_resource type="Texture2D" uid="uid://bk5svat88oo6h" path="res://anim/skeleton/tile014.png" id="5_sgyir"]
+[ext_resource type="Texture2D" uid="uid://bykuthrhaddcs" path="res://anim/skeleton/tile015.png" id="6_7hgwu"]
+[ext_resource type="Texture2D" uid="uid://b2kaqj7adwaqh" path="res://anim/skeleton/tile029.png" id="6_b2soh"]
+[ext_resource type="Texture2D" uid="uid://doy5cbl0kjnwg" path="res://anim/skeleton/tile016.png" id="7_ppwmg"]
+[ext_resource type="Texture2D" uid="uid://c66w6spx7x7fw" path="res://anim/skeleton/tile030.png" id="7_x51nk"]
+[ext_resource type="Texture2D" uid="uid://dqu4ni7fup8c0" path="res://anim/skeleton/tile031.png" id="8_1ux3n"]
+[ext_resource type="Texture2D" uid="uid://dje3e87604pks" path="res://anim/skeleton/tile017.png" id="8_yk7oc"]
+[ext_resource type="Texture2D" uid="uid://b1k83ccrwxhpc" path="res://anim/skeleton/tile018.png" id="9_3nch2"]
+[ext_resource type="Texture2D" uid="uid://bn53me6kwvrs7" path="res://anim/skeleton/tile032.png" id="9_shbg3"]
+[ext_resource type="Texture2D" uid="uid://b2eh1dnjo8e67" path="res://anim/skeleton/tile033.png" id="10_1atk0"]
+[ext_resource type="Texture2D" uid="uid://dpbglrigsh114" path="res://anim/skeleton/tile019.png" id="10_4mhiu"]
+[ext_resource type="Texture2D" uid="uid://bgd5e05qlsg8q" path="res://anim/skeleton/tile034.png" id="11_hpbce"]
+[ext_resource type="Texture2D" uid="uid://c5kyaxsanxy6l" path="res://anim/skeleton/tile020.png" id="11_p2i7t"]
+[ext_resource type="Texture2D" uid="uid://diil1rgvq7q11" path="res://anim/skeleton/tile035.png" id="12_u72ew"]
+[ext_resource type="Texture2D" uid="uid://c1dwinwbjrr8x" path="res://anim/skeleton/tile021.png" id="12_wfgpw"]
+[ext_resource type="Texture2D" uid="uid://c4mb5tvyffjiy" path="res://anim/skeleton/tile036.png" id="13_fq6qy"]
+[ext_resource type="Texture2D" uid="uid://c6x55iq7by7gg" path="res://anim/skeleton/tile022.png" id="13_yjv56"]
+[ext_resource type="Texture2D" uid="uid://xveasn0pqdab" path="res://anim/skeleton/tile023.png" id="14_b7w0c"]
+[ext_resource type="Texture2D" uid="uid://n3p2ck8wcewa" path="res://anim/skeleton/tile037.png" id="14_kymwv"]
+[ext_resource type="Texture2D" uid="uid://c8akhhopu473o" path="res://anim/skeleton/tile039.png" id="15_6ft75"]
+[ext_resource type="Texture2D" uid="uid://f5hxh5voiydy" path="res://anim/skeleton/tile024.png" id="15_bllg1"]
+[ext_resource type="Texture2D" uid="uid://dla138y8n6kw6" path="res://anim/skeleton/tile025.png" id="16_eyojh"]
+[ext_resource type="Texture2D" uid="uid://co4i55rk7afne" path="res://anim/skeleton/tile040.png" id="16_lmc7v"]
+[ext_resource type="Texture2D" uid="uid://dsms3howjsaam" path="res://anim/skeleton/tile041.png" id="17_memo6"]
+[ext_resource type="Texture2D" uid="uid://bir8mxg0cp242" path="res://anim/skeleton/tile042.png" id="18_1thax"]
+[ext_resource type="Texture2D" uid="uid://iy0ihu145nn2" path="res://anim/skeleton/tile052.png" id="19_sgyir"]
+[ext_resource type="Texture2D" uid="uid://y3a6hr2tow2c" path="res://anim/skeleton/tile053.png" id="20_7hgwu"]
+[ext_resource type="Texture2D" uid="uid://dqbxsi6qx26oh" path="res://anim/skeleton/tile054.png" id="21_ppwmg"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cscc4"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ch43x"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_memo6"]
+radius = 0.1
+height = 0.3
 
-[node name="Hostile" instance=ExtResource("1_pindw")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_cscc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_memo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1thax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sgyir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7hgwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ppwmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yk7oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3nch2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4mhiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_p2i7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wfgpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_yjv56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b7w0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bllg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_eyojh")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_sgyir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7hgwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ppwmg")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_6ft75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lmc7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_memo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1thax")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8n3xb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ifnmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_81joy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b2soh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x51nk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1ux3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_shbg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1atk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hpbce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u72ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fq6qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kymwv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Hostile" node_paths=PackedStringArray("sprite") instance=ExtResource("1_pindw")]
 script = ExtResource("2_s1fby")
+sprite = NodePath("Sprite")
+speed = 0.5
 
 [node name="CSGMesh3D" parent="." index="0"]
+visible = false
 mesh = SubResource("SphereMesh_cscc4")
 
 [node name="CollisionShape3D" parent="." index="1"]
-shape = SubResource("SphereShape3D_ch43x")
+shape = SubResource("CapsuleShape3D_memo6")
 
-[node name="MovementStateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+[node name="Sprite" type="AnimatedSprite3D" parent="." index="2"]
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_cscc4")
+animation = &"walk"
+frame_progress = 0.926967
+
+[node name="MovementStateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Chase")
 
 [node name="Chase" type="Node" parent="MovementStateMachine" index="0" node_paths=PackedStringArray("hostile")]
