@@ -14,6 +14,7 @@ func _ready() -> void:
 		timer.timeout.connect(timed_out)
 		timer.start(time_to_live)
 	look_at(position + (direction * speed))
+	direction = direction - Vector3(0, direction.y, 0)
 
 func timed_out() -> void:
 	queue_free()

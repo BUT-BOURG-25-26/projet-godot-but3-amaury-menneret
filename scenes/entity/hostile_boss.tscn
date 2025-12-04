@@ -140,4 +140,3 @@ frame_progress = 0.030993
 
 [node name="AttackHandler" type="Node" parent="." index="4"]
 script = SubResource("GDScript_v1ta6")
-metadata/_custom_type_script = "uid://dopaul8yr31dk"

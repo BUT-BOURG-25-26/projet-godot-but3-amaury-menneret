@@ -6,9 +6,9 @@ extends Projectile
 @export var hitbox : Area3D
 
 func _ready() -> void:
-	sprite.play("default")
-	sprite.flip_h = rotation.x < 0
 	super()
+	sprite.play("default")
+	sprite.flip_h = direction.x < 0
 
 func collision(body : Node3D) -> void:
 	if body is Hostile:
