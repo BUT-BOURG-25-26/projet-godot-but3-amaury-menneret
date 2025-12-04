@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dt6a6n6verrny"]
+[gd_scene load_steps=42 format=3 uid="uid://dt6a6n6verrny"]
 
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_pindw"]
 [ext_resource type="Script" uid="uid://cxo5534xbtoyl" path="res://scripts/hostile/hostile_normal.gd" id="2_s1fby"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://iy0ihu145nn2" path="res://anim/skeleton/tile052.png" id="19_sgyir"]
 [ext_resource type="Texture2D" uid="uid://y3a6hr2tow2c" path="res://anim/skeleton/tile053.png" id="20_7hgwu"]
 [ext_resource type="Texture2D" uid="uid://dqbxsi6qx26oh" path="res://anim/skeleton/tile054.png" id="21_ppwmg"]
+[ext_resource type="Script" uid="uid://bqyepd0b06o6c" path="res://scripts/hostile/hostile_stunned.gd" id="38_1thax"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cscc4"]
 
@@ -166,9 +167,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hostile" node_paths=PackedStringArray("sprite") instance=ExtResource("1_pindw")]
+[node name="Hostile" node_paths=PackedStringArray("sprite", "movement_state_machine") instance=ExtResource("1_pindw")]
 script = ExtResource("2_s1fby")
 sprite = NodePath("Sprite")
+movement_state_machine = NodePath("MovementStateMachine")
 speed = 0.5
 
 [node name="CSGMesh3D" parent="." index="0"]
@@ -186,9 +188,9 @@ animation = &"walk"
 frame_progress = 0.926967
 
 [node name="MovementStateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
-initial_state = NodePath("Chase")
+initial_state = NodePath("Chasing")
 
-[node name="Chase" type="Node" parent="MovementStateMachine" index="0" node_paths=PackedStringArray("hostile")]
+[node name="Chasing" type="Node" parent="MovementStateMachine" index="0" node_paths=PackedStringArray("hostile")]
 script = ExtResource("3_16afp")
 hostile = NodePath("../..")
 speed = 3.0
@@ -198,3 +200,7 @@ metadata/_custom_type_script = "uid://ctrb4s8bd7cju"
 script = ExtResource("4_cscc4")
 hostile = NodePath("../..")
 metadata/_custom_type_script = "uid://3t50pp7o0hry"
+
+[node name="Stunned" type="Node" parent="MovementStateMachine" index="2"]
+script = ExtResource("38_1thax")
+metadata/_custom_type_script = "uid://bqyepd0b06o6c"

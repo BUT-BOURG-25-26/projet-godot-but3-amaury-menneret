@@ -9,4 +9,4 @@ magic_arrow_scene = ExtResource("2_qkrul")
 count = 1
 skill_name = "Magic Arrow"
 skill_description = "Cast a magic arrow that aims itself at enemies"
-cooldown = 0.5
+cooldown = 1.0

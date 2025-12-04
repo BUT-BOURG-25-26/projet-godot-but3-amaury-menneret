@@ -44,7 +44,7 @@ height = 0.48
 [sub_resource type="SphereShape3D" id="SphereShape3D_v1usl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tw10c"]
-radius = 7.0
+radius = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gdab3"]
 animations = [{

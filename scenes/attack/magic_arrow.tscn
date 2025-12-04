@@ -143,10 +143,11 @@ time_to_live = 3.0
 speed = 6.0
 
 [node name="Sprite" type="AnimatedSprite3D" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_8r5ce")
-frame_progress = 0.549551
+frame_progress = 0.620597
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("BoxShape3D_iqeks")

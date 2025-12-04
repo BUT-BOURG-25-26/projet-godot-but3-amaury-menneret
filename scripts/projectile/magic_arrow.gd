@@ -7,8 +7,9 @@ extends Projectile
 
 func _ready() -> void:
 	super()
-	sprite.play("default")
 	sprite.flip_h = direction.x < 0
+	var camera : Camera3D = get_viewport().get_camera_3d()
+	sprite.play("default")
 
 func collision(body : Node3D) -> void:
 	if body is Hostile:

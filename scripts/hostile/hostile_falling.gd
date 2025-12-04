@@ -8,4 +8,4 @@ func Physics_Update(delta: float):
 	hostile.velocity.y = -hostile.gravity
 		
 	if(hostile.is_on_floor()):
-		Transitioned.emit(self, "Chase")
+		Transitioned.emit(self, "Chasing")

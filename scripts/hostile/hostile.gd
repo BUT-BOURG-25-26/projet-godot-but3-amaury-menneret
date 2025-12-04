@@ -20,22 +20,16 @@ func _physics_process(delta: float) -> void:
 func damage_entity(entity : LivingEntity):
 	entity.take_damage(damage)
 	queue_free()
-
-func take_damage(value : int) -> void:
-	health -= value
-	if(health <= 0):
-		health = 0
-	_despawn()
 	
 func spawn_xp() -> void:
 	var xp = xp_scene.instantiate() as XpOrb
 	xp.position = position
 	get_tree().current_scene.add_child(xp)
 
-func _despawn():
+func despawn():
 	if health <= 0:
 		var player = target as Player
 		GameManager.killcount += 1
-		player.gain_mana(int(0 * 0.1))
+		player.gain_mana(3)
 		spawn_xp()
 		queue_free()
