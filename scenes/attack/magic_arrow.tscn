@@ -138,9 +138,9 @@ size = Vector3(0.1, 0.1, 0.5)
 script = ExtResource("2_1xhmx")
 sprite = NodePath("Sprite")
 hitbox = NodePath("Hitbox")
-damage = 5.0
+damage = 10.0
 time_to_live = 3.0
-speed = 7.0
+speed = 10.0
 
 [node name="Sprite" type="AnimatedSprite3D" parent="." index="0"]
 billboard = 1
@@ -152,7 +152,6 @@ frame_progress = 0.549551
 shape = SubResource("BoxShape3D_iqeks")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Hitbox" index="1"]
-visible = false
 size = Vector3(0.1, 0.1, 0.5)
 
 [connection signal="body_entered" from="Hitbox" to="." method="collision"]

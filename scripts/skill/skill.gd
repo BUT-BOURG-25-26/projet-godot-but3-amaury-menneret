@@ -11,7 +11,7 @@ extends Node
 func cast(source : LivingEntity, target : LivingEntity) -> void :
 	pass
 	
-func cast_requirements(source : LivingEntity) -> bool :
+func cast_requirements(source : LivingEntity, target : LivingEntity) -> bool :
 	return false
 
 func cast_effects() -> void :

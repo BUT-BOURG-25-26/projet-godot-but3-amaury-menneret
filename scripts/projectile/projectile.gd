@@ -13,7 +13,7 @@ func _ready() -> void:
 		add_child(timer)
 		timer.timeout.connect(timed_out)
 		timer.start(time_to_live)
-	look_at(direction * speed)
+	look_at(position + (direction * speed))
 
 func timed_out() -> void:
 	queue_free()

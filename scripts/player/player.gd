@@ -5,7 +5,7 @@ extends LivingEntity
 @export var max_mana:int = 100;
 var mana:int;
 
-@onready var skills : Dictionary = { }
+@onready var skills : Dictionary = {}
 
 @export var sprite : AnimatedSprite3D
 @export var ui : PlayerStats
@@ -113,3 +113,9 @@ func _on_detection_range_body_exited(body: Node3D) -> void:
 func _on_item_pick_up_range_body_entered(body: Node3D) -> void:
 	if body is PickableItem:
 		body.on_pickup(self)
+
+func get_target() -> LivingEntity :
+	if enemies_in_range.size() > 0:
+		return enemies_in_range.keys().pick_random() 
+	else:
+		return self
