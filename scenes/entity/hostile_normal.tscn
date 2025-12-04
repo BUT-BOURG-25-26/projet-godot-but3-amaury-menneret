@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dt6a6n6verrny"]
+[gd_scene load_steps=43 format=3 uid="uid://dt6a6n6verrny"]
 
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_pindw"]
 [ext_resource type="Script" uid="uid://cxo5534xbtoyl" path="res://scripts/hostile/hostile_normal.gd" id="2_s1fby"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://y3a6hr2tow2c" path="res://anim/skeleton/tile053.png" id="20_7hgwu"]
 [ext_resource type="Texture2D" uid="uid://dqbxsi6qx26oh" path="res://anim/skeleton/tile054.png" id="21_ppwmg"]
 [ext_resource type="Script" uid="uid://bqyepd0b06o6c" path="res://scripts/hostile/hostile_stunned.gd" id="38_1thax"]
+[ext_resource type="Script" uid="uid://codgib43l6gr2" path="res://scripts/hostile/hostile_dead.gd" id="39_sgyir"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cscc4"]
 
@@ -90,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_eyojh")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -184,7 +185,7 @@ shape = SubResource("CapsuleShape3D_memo6")
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cscc4")
-animation = &"hurt"
+animation = &"die"
 
 [node name="MovementStateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Chasing")
@@ -204,3 +205,8 @@ metadata/_custom_type_script = "uid://3t50pp7o0hry"
 script = ExtResource("38_1thax")
 hostile = NodePath("../..")
 metadata/_custom_type_script = "uid://bqyepd0b06o6c"
+
+[node name="Dead" type="Node" parent="MovementStateMachine" index="3" node_paths=PackedStringArray("hostile")]
+script = ExtResource("39_sgyir")
+hostile = NodePath("../..")
+metadata/_custom_type_script = "uid://codgib43l6gr2"

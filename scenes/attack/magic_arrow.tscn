@@ -138,7 +138,7 @@ size = Vector3(0.1, 0.1, 0.5)
 script = ExtResource("2_1xhmx")
 sprite = NodePath("Sprite")
 hitbox = NodePath("Hitbox")
-damage = 3.0
+damage = 10.0
 time_to_live = 3.0
 speed = 6.0
 
@@ -147,7 +147,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_8r5ce")
-frame_progress = 0.620597
+frame_progress = 0.756488
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("BoxShape3D_iqeks")

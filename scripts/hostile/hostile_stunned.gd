@@ -9,6 +9,6 @@ func enter():
 		hostile.sprite.play("hurt")
 	hostile.velocity = Vector3(0,0,0)
 
-func Physics_Update(delta: float):
+func Update(delta: float):
 	if hostile is HostileNormal and !hostile.sprite.is_playing():
 		Transitioned.emit(self, "Chasing")
