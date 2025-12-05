@@ -46,9 +46,12 @@
 radius = 0.1
 height = 0.3
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cscc4"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgyir"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_memo6")
+}, {
 "duration": 1.0,
 "texture": ExtResource("3_memo6")
 }, {
@@ -168,10 +171,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hostile" node_paths=PackedStringArray("sprite", "movement_state_machine") instance=ExtResource("1_pindw")]
+[node name="Hostile" node_paths=PackedStringArray("sprite", "movement_state_machine", "hitbox") instance=ExtResource("1_pindw")]
 script = ExtResource("2_s1fby")
 sprite = NodePath("Sprite")
 movement_state_machine = NodePath("MovementStateMachine")
+hitbox = NodePath("CollisionShape3D")
 speed = 0.5
 
 [node name="CSGMesh3D" parent="." index="0"]
@@ -181,14 +185,7 @@ mesh = SubResource("SphereMesh_cscc4")
 [node name="CollisionShape3D" parent="." index="1"]
 shape = SubResource("CapsuleShape3D_memo6")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="." index="2"]
-billboard = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_cscc4")
-animation = &"idle"
-frame_progress = 0.519156
-
-[node name="MovementStateMachine" parent="." index="3" node_paths=PackedStringArray("initial_state")]
+[node name="MovementStateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Chasing")
 
 [node name="Chasing" type="Node" parent="MovementStateMachine" index="0" node_paths=PackedStringArray("hostile")]
@@ -211,3 +208,7 @@ metadata/_custom_type_script = "uid://bqyepd0b06o6c"
 script = ExtResource("39_sgyir")
 hostile = NodePath("../..")
 metadata/_custom_type_script = "uid://codgib43l6gr2"
+
+[node name="Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_sgyir")
+animation = &"die"

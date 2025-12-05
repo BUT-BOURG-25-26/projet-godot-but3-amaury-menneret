@@ -5,8 +5,10 @@ extends State
 @export var hostile : Hostile
 
 func enter():
+	if hostile is HostileNormal :
+		hostile.hitbox.disabled = true
+		hostile.sprite.play("die")
 	hostile.velocity = Vector3(0,0,0)
-	hostile.sprite.play("die")
 
 func Update(delta : float) -> void :
 	if hostile is HostileNormal:

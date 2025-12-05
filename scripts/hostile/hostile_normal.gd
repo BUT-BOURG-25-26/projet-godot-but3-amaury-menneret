@@ -4,6 +4,7 @@ extends Hostile
 
 @export var sprite : AnimatedSprite3D
 @export var movement_state_machine : StateMachine
+@export var hitbox : CollisionShape3D
 
 func take_damage(value : int) -> void:
 	super(value)

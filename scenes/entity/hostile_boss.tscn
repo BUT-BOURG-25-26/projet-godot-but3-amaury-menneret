@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpsrr3ay2gy4x"]
+[gd_scene load_steps=22 format=3 uid="uid://dpsrr3ay2gy4x"]
 
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_did33"]
 [ext_resource type="Script" uid="uid://cqmj3xkyvn44m" path="res://scripts/hostile/hostile_boss.gd" id="2_yqglb"]
@@ -23,7 +23,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ujet"]
 radius = 0.2
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a1hsp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1ta6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -72,39 +72,13 @@ animations = [{
 "texture": ExtResource("17_agmnf")
 }],
 "loop": true,
-"name": &"default",
+"name": &"float",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_v1ta6"]
-script/source = "class_name AttackHandler
-
-extends Node
-
-@onready var attack : PackedScene
-@onready var cooldown : Timer
-@onready var source : Player
-#
-#func _ready() -> void:
-	#cooldown = Timer.new()
-	#if attack != null && cooldown != null:
-		#cooldown.wait_time =  (attack.instantiate() as ProjectileAttack).cooldown
-	#cooldown.autostart = true
-	#await cooldown.timeout.connect(_on_cooldown_timeout)
-	#add_child(cooldown)
-#
-#func _on_cooldown_timeout() -> void:
-	#if(source.enemies_in_range.size() > 0 && source.use_mana(attack.instantiate().mana_cost)):
-		#var scene = attack.instantiate()
-		#scene.transform = source.global_transform
-		#scene.target = source.enemies_in_range.keys().pick_random()
-		#get_tree().get_current_scene().add_child(scene)
-		#source.mana 
-"
-
 [node name="Hostile" node_paths=PackedStringArray("sprite") instance=ExtResource("1_did33")]
 script = ExtResource("2_yqglb")
-sprite = NodePath("AnimatedSprite3D")
+sprite = NodePath("Sprite")
 damage = 10
 max_health = 1000
 speed = 1.0
@@ -132,11 +106,6 @@ hostile = NodePath("../..")
 range = 3.0
 metadata/_custom_type_script = "uid://dw6os4ch7oetj"
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="3"]
-billboard = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_a1hsp")
-frame_progress = 0.030993
-
-[node name="AttackHandler" type="Node" parent="." index="4"]
-script = SubResource("GDScript_v1ta6")
+[node name="Sprite" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_v1ta6")
+animation = &"float"

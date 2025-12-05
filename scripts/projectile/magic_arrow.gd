@@ -12,6 +12,6 @@ func _ready() -> void:
 	sprite.play("default")
 
 func collision(body : Node3D) -> void:
-	if body is Hostile:
+	if body is HostileNormal:
 		body.take_damage(damage)
 		queue_free()

@@ -33,3 +33,10 @@ func despawn():
 		player.gain_mana(3)
 		spawn_xp()
 		queue_free()
+
+func get_target() -> LivingEntity :
+	var player : Player = get_tree().get_first_node_in_group("Player")
+	if player:
+		return player 
+	else:
+		return self

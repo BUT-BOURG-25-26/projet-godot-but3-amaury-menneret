@@ -15,7 +15,7 @@ var mana:int;
 
 var xp : float = 0
 var xp_to_next_level : int = 10
-var level : float = 0
+var level : float = 1
 
 var enemies_in_range : Dictionary = {}
 

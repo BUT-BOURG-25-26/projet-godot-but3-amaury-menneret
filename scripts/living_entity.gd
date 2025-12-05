@@ -22,3 +22,6 @@ func despawn() -> void:
 func _ready() -> void:
 	health = max_health
 	hp_depleted.connect(despawn)
+	
+func get_target() -> LivingEntity:
+	return self

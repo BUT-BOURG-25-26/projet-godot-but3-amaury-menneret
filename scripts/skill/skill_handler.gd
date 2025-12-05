@@ -29,8 +29,4 @@ func cooldown_done() -> void:
 		cast()
 
 func request_target() -> LivingEntity :
-	if source is Player:
-		return source.get_target()
-	else:
-		var player = get_tree().get_first_node_in_group("Player")
-		return player
+	return source.get_target()

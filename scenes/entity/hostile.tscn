@@ -34,3 +34,7 @@ shape = SubResource("SphereShape3D_mu37s")
 [node name="MovementStateMachine" type="Node" parent="." index="2"]
 script = ExtResource("4_lh40n")
 metadata/_custom_type_script = "uid://tx4shaxw48uu"
+
+[node name="Sprite" type="AnimatedSprite3D" parent="." index="3"]
+billboard = 1
+texture_filter = 0
