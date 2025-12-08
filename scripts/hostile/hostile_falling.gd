@@ -4,6 +4,9 @@ extends State
 
 @export var hostile : Hostile
 
+func enter() -> void :
+	hostile.can_attack = false
+
 func Physics_Update(delta: float):
 	hostile.velocity.y = -hostile.gravity
 		

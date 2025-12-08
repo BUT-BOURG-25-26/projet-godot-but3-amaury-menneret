@@ -171,7 +171,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hostile" node_paths=PackedStringArray("sprite", "movement_state_machine", "hitbox") instance=ExtResource("1_pindw")]
+[node name="HostileNormal" node_paths=PackedStringArray("sprite", "movement_state_machine", "hitbox") instance=ExtResource("1_pindw")]
 script = ExtResource("2_s1fby")
 sprite = NodePath("Sprite")
 movement_state_machine = NodePath("MovementStateMachine")

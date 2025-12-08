@@ -3,7 +3,6 @@ class_name HostileBoss
 extends Hostile
 
 @export var sprite : AnimatedSprite3D
-@onready var can_attack : bool = false
 
 @onready var skills : Dictionary = {}
 

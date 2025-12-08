@@ -10,6 +10,8 @@ extends LivingEntity
 
 @onready var id : int = get_instance_id()
 
+@onready var can_attack : bool = false
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	for i in get_slide_collision_count():
@@ -18,8 +20,9 @@ func _physics_process(delta: float) -> void:
 			damage_entity((collision.get_collider() as Player))
 
 func damage_entity(entity : LivingEntity):
-	entity.take_damage(damage)
-	queue_free()
+	if can_attack:
+		entity.take_damage(damage)
+		queue_free()
 	
 func spawn_xp() -> void:
 	var xp = xp_scene.instantiate() as XpOrb

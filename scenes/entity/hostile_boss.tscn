@@ -76,7 +76,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hostile" node_paths=PackedStringArray("sprite") instance=ExtResource("1_did33")]
+[node name="HostileBoss" node_paths=PackedStringArray("sprite") instance=ExtResource("1_did33")]
 script = ExtResource("2_yqglb")
 sprite = NodePath("Sprite")
 damage = 10

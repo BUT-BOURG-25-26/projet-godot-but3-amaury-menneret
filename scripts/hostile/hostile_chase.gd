@@ -9,8 +9,8 @@ var direction : Vector3
 @onready var player : Player
 
 func enter():
-	if hostile is HostileNormal:
-		hostile.sprite.play("walk")
+	hostile.can_attack = true
+	hostile.sprite.play("walk")
 	player = get_tree().get_first_node_in_group("Player")
 	pathtrace()
 

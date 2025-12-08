@@ -19,7 +19,7 @@ func cast_requirements(source : LivingEntity, target : LivingEntity) -> bool :
 	if source is Player and target is Hostile:
 		return source.use_mana(mana_cost)
 	if source is Hostile and target is Player:
-		return true
+		return (source as Hostile).can_attack
 	return false
 
 func cast_effects() -> void :
