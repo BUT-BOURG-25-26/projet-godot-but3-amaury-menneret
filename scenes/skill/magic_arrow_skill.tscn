@@ -10,4 +10,4 @@ count = 100
 skill_name = "Magic Arrow"
 skill_description = "Cast a magic arrow that aims itself at enemies"
 cooldown = 1.0
-max_target_nb = 50
+max_target_nb = 300
