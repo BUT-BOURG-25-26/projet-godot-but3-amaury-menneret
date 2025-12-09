@@ -2,6 +2,8 @@ extends Node
 
 var pause : bool = true
 @onready var enemySpawner : EnemySpawner
+@onready var active_enemy_nb : int
+@onready var max_active_enemies : int = 300
 @onready var killcount : int
 @onready var player : Player
 @onready var upgrade_menu : UpgradeChoiceMenu
@@ -20,6 +22,11 @@ func give_player_upgrade(upgrade : PackedScene) :
 		x.queue_free()
 	(upgrade_menu as UpgradeChoiceMenu).choices.clear()
 	Engine.time_scale = 1
+
+func can_spawn_new_enemy() -> bool:
+	if active_enemy_nb >= max_active_enemies:
+		return false
+	return true	
 
 func onPlayerLevelUp():
 	if(enemySpawner != null):

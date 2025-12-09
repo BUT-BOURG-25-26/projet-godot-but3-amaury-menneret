@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq5ayxykesrlm"]
+[gd_scene load_steps=11 format=3 uid="uid://bq5ayxykesrlm"]
 
 [ext_resource type="Script" uid="uid://q43vfrsy4siw" path="res://scripts/world_generator.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bwcqvj1g877n1" path="res://scenes/entity/enemySpawner.tscn" id="3_sugp2"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dn23wa63ppe56" path="res://scenes/ui/playerUi.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://dt6a6n6verrny" path="res://scenes/entity/hostile_normal.tscn" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://drshay27la78v" path="res://scenes/menu/upgrade_choice_menu.tscn" id="9_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://dpsrr3ay2gy4x" path="res://scenes/entity/hostile_boss.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cyam61ck6xmku" path="res://scenes/entity/player.tscn" id="12_eb6dy"]
 
 [node name="Main" type="Node"]
@@ -38,7 +37,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2560, 1440)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="PlayerUi" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("7_tipki")]
@@ -59,9 +58,7 @@ visible = false
 [node name="EnemySpawner" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.783336, -0.621599, 0, 0.621599, 0.783336, 0, 0, 0, 1, 0, 0, 0)
 enemy = ExtResource("9_eb6dy")
+spawn_rate = 20.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("12_eb6dy")]
 ui = NodePath("../Camera/SubViewportContainer/SubViewport/PlayerUi")
-
-[node name="Hostile" parent="." instance=ExtResource("11_ya4ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.381862, 0, -13.166)

@@ -5,6 +5,7 @@ extends State
 @export var player : Player
 
 func enter():
+	player.velocity = Vector3(0,0,0)
 	player.sprite.play("death")
 	player.vulnerabilityStateMachine.current_state.Transitioned.emit(player.vulnerabilityStateMachine.current_state, "Invulnerable")
 

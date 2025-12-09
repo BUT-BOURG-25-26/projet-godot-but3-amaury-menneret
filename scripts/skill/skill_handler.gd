@@ -6,8 +6,6 @@ extends Node
 @onready var cooldown : Timer
 @onready var source : LivingEntity
 
-@onready var targets : Dictionary
-
 @onready var instance_of_skill : Skill
 
 func _ready() -> void:
@@ -20,13 +18,24 @@ func _ready() -> void:
 		add_child(instance_of_skill)
 		cooldown.start()
 
-func cast() -> void:
-	instance_of_skill.cast_effects()
-	instance_of_skill.cast(source, request_target())
+func cast(targets : Array[LivingEntity]) -> void:
+	instance_of_skill.cast_effects(source)
+	instance_of_skill.cast(source, targets)
 
 func cooldown_done() -> void:
-	if instance_of_skill.cast_requirements(source, request_target()):
-		cast()
+	var targets : Array[LivingEntity] = request_targets(instance_of_skill.max_target_nb)
+	if instance_of_skill.cast_requirements(source, targets):
+		cast(targets)
 
-func request_target() -> LivingEntity :
+func request_target() -> LivingEntity:
 	return source.get_target()
+	
+func request_targets(nb_targets : int) -> Array[LivingEntity]:
+	var targets : Array[LivingEntity] = []
+	for x in nb_targets :
+		var target = request_target()
+		if !targets.has(target):
+			targets.append(target)
+	if targets.has(source):
+		targets.erase(source)
+	return targets

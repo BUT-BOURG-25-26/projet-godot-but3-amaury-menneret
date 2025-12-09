@@ -17,7 +17,7 @@ var xp : float = 0
 var xp_to_next_level : int = 10
 var level : float = 1
 
-var enemies_in_range : Dictionary = {}
+var enemies_in_range : Array[Hostile] = []
 
 var move_inputs: Vector2
 
@@ -34,10 +34,12 @@ func gain_skill(skill : PackedScene) -> void:
 		skills.set(skill, new_skill_handler)
 		add_child(new_skill_handler)
 	
-func use_mana(value : int) -> bool:
+func use_mana(value : int) -> void:
+	mana -= value
+	ui.update()
+	
+func can_use_mana(value : int) -> bool:
 	if mana - value >= 0:
-		mana -= value
-		ui.update()
 		return true
 	return false
 	
@@ -104,7 +106,7 @@ func _on_hp_depleted() -> void:
 
 func _on_detection_range_body_entered(body: Node3D) -> void:
 	if body is Hostile:
-		enemies_in_range.set(body, body.id)
+		enemies_in_range.append(body)
 
 func _on_detection_range_body_exited(body: Node3D) -> void:
 	if body is Hostile:
@@ -116,6 +118,6 @@ func _on_item_pick_up_range_body_entered(body: Node3D) -> void:
 
 func get_target() -> LivingEntity :
 	if enemies_in_range.size() > 0:
-		return enemies_in_range.keys().pick_random() 
-	else:
+		return enemies_in_range.pick_random()
+	else :
 		return self

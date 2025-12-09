@@ -7,3 +7,6 @@ extends PickableItem
 func on_pickup(player : Player) -> void :
 	player.get_xp(xp_value)
 	queue_free()
+
+func despawn() -> void :
+	queue_free()
