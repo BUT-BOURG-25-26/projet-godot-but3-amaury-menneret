@@ -8,6 +8,8 @@ extends Node3D
 @export var range : int = 20
 @export var spawn_rate : float = 1
 
+@onready var enemy_pools : Array[Hostile] = []
+
 func _ready() -> void:
 	GameManager.enemySpawner = self
 

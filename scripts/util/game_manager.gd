@@ -3,7 +3,7 @@ extends Node
 var pause : bool = true
 @onready var enemySpawner : EnemySpawner
 @onready var active_enemy_nb : int
-@onready var max_active_enemies : int = 300
+@onready var max_active_enemies : int = 100
 @onready var killcount : int
 @onready var player : Player
 @onready var upgrade_menu : UpgradeChoiceMenu
