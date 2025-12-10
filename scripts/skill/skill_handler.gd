@@ -12,7 +12,7 @@ func _ready() -> void:
 	if skill :
 		instance_of_skill = skill.instantiate()
 		cooldown = Timer.new()
-		cooldown.wait_time
+		cooldown.wait_time = instance_of_skill.cooldown
 		cooldown.timeout.connect(cooldown_done)
 		add_child(cooldown)
 		add_child(instance_of_skill)
