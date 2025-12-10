@@ -80,7 +80,7 @@ modulate = Color(0, 0, 0, 0.372549)
 pixel_size = 0.006
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_qdi7p")
-frame_progress = 0.141067
+frame_progress = 0.948936
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false

@@ -11,6 +11,11 @@ var direction : Vector3
 
 signal hp_depleted
 
+func gain_health(value : int) -> void:
+	health += value
+	if (health > max_health):
+		health = max_health
+
 func take_damage(value : int) -> void:
 	health -= value
 	if(health <= 0):

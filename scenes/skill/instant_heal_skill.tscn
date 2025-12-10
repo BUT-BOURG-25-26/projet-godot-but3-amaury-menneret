@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgdlele3boyto"]
+
+[ext_resource type="Script" uid="uid://dbpgh5gvc31h2" path="res://scripts/skill/instant_heal_skill.gd" id="1_xe4kv"]
+
+[node name="InstantHealSkill" type="Node"]
+script = ExtResource("1_xe4kv")
+heal = 5.0
+cooldown = 10.0
+mana_cost = 10
+metadata/_custom_type_script = "uid://6e5cvfqbsche"
