@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://jiixrpox2jc2"]
+
+[ext_resource type="Script" uid="uid://cxiku286rsr4r" path="res://scripts/attack/sword_slash.gd" id="1_qdi7p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdi7p"]
+size = Vector3(5, 0, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l52t8"]
+size = Vector3(2, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdi7p"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qdi7p"]
+size = Vector2(2, 1)
+
+[node name="SwordSlash" type="Area3D" node_paths=PackedStringArray("hitbox", "debug_hitbox_visualizer")]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_qdi7p")
+damage = 8.0
+shape = SubResource("BoxShape3D_qdi7p")
+ttl = 0.5
+hitbox = NodePath("Hitbox")
+debug_hitbox_visualizer = NodePath("MeshInstance3D")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_l52t8")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qdi7p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_qdi7p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

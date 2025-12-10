@@ -4,6 +4,7 @@ extends Skill
 
 @export var magic_arrow_scene : PackedScene
 @export var count : int
+
 func cast(source : LivingEntity, targets : Array[LivingEntity]) -> void:
 	var wait_time : float = (cooldown/2)/count
 	var directions : Array[Vector3] = []
