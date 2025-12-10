@@ -16,10 +16,11 @@ func slash_in_direction_of(source : LivingEntity) -> void:
 	instance.source = source
 	instance.position = source.position
 	if source is Player:
+		instance.sprite.flip_h = source.sprite.flip_h
 		if source.sprite.flip_h:
-			instance.position -= Vector3((instance.shape.size.x/2),0,0)
+			instance.position -= Vector3((instance.shape.size.z/2),0,0)
 		else:
-			instance.position += Vector3((instance.shape.size.x/2),0,0)
+			instance.position += Vector3((instance.shape.size.z/2),0,0)
 			
 	get_tree().current_scene.add_child(instance)
 
