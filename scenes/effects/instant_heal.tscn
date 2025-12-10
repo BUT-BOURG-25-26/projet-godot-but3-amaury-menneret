@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmh4s3fw8vmq1"]
+
+[ext_resource type="Script" uid="uid://nliw0a8fvp24" path="res://scripts/effect/instant_heal.gd" id="1_1oqfr"]
+
+[node name="InstantHeal" type="Node"]
+script = ExtResource("1_1oqfr")
+effect_name = "Instant Heal"
+effect_description = "Heals you once applied"
+ticks = 1
+metadata/_custom_type_script = "uid://byo3jyqaqok22"
