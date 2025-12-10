@@ -14,6 +14,13 @@ func cast(source : LivingEntity, targets : Array[LivingEntity]) -> void:
 func slash_in_direction_of(source : LivingEntity) -> void:
 	var instance = sword_slash_scene.instantiate() as SwordSlash
 	instance.source = source
+	instance.position = source.position
+	if source is Player:
+		if source.sprite.flip_h:
+			instance.position -= Vector3((instance.shape.size.x/2),0,0)
+		else:
+			instance.position += Vector3((instance.shape.size.x/2),0,0)
+			
 	get_tree().current_scene.add_child(instance)
 
 func cast_requirements(source : LivingEntity, targets : Array[LivingEntity]) -> bool :

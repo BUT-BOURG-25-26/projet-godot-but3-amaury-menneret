@@ -8,6 +8,8 @@ extends Area3D
 
 @onready var source : LivingEntity
 
+@export var sprite : AnimatedSprite3D
+
 @export var hitbox : CollisionShape3D
 @export var debug_hitbox_visualizer : MeshInstance3D
 
@@ -20,7 +22,8 @@ func _ready() -> void:
 	timer.timeout.connect(despawn)
 	add_child(timer)
 	timer.start(ttl)
-	position = source.position
+	sprite.play("default")
+	
 
 func despawn() -> void:
 	queue_free()

@@ -1,35 +1,88 @@
-[gd_scene load_steps=6 format=3 uid="uid://jiixrpox2jc2"]
+[gd_scene load_steps=16 format=3 uid="uid://jiixrpox2jc2"]
 
 [ext_resource type="Script" uid="uid://cxiku286rsr4r" path="res://scripts/attack/sword_slash.gd" id="1_qdi7p"]
+[ext_resource type="Texture2D" uid="uid://b1ns1ttfpyi6e" path="res://anim/sword_slash/1.png" id="2_k4tyw"]
+[ext_resource type="Texture2D" uid="uid://cg86omgmcnx5q" path="res://anim/sword_slash/2.png" id="3_s46wl"]
+[ext_resource type="Texture2D" uid="uid://calhgy4m5m5o3" path="res://anim/sword_slash/3.png" id="4_kp7mi"]
+[ext_resource type="Texture2D" uid="uid://dmieeydwmydtb" path="res://anim/sword_slash/4.png" id="5_h0sjr"]
+[ext_resource type="Texture2D" uid="uid://dsjm1vuo73ooi" path="res://anim/sword_slash/5.png" id="6_dykjp"]
+[ext_resource type="Texture2D" uid="uid://b2vgwp0lobqiw" path="res://anim/sword_slash/6.png" id="7_ql664"]
+[ext_resource type="Texture2D" uid="uid://pa75xl6hc3u4" path="res://anim/sword_slash/7.png" id="8_qeqam"]
+[ext_resource type="Texture2D" uid="uid://cwci0ror07rxw" path="res://anim/sword_slash/8.png" id="9_h25sy"]
+[ext_resource type="Texture2D" uid="uid://dnlh8gg3cujyb" path="res://anim/sword_slash/9.png" id="10_xhv70"]
+[ext_resource type="Texture2D" uid="uid://br6cwwo5ghase" path="res://anim/sword_slash/10.png" id="11_uavok"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qdi7p"]
-size = Vector3(5, 0, 5)
+size = Vector3(2, 0, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l52t8"]
 size = Vector3(2, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qdi7p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k4tyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s46wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kp7mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h0sjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dykjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ql664")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qeqam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h25sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xhv70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uavok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qdi7p"]
 size = Vector2(2, 1)
 
-[node name="SwordSlash" type="Area3D" node_paths=PackedStringArray("hitbox", "debug_hitbox_visualizer")]
+[node name="SwordSlash" type="Area3D" node_paths=PackedStringArray("sprite", "hitbox", "debug_hitbox_visualizer")]
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_qdi7p")
 damage = 8.0
 shape = SubResource("BoxShape3D_qdi7p")
 ttl = 0.5
+sprite = NodePath("Sprite")
 hitbox = NodePath("Hitbox")
 debug_hitbox_visualizer = NodePath("MeshInstance3D")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_l52t8")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, -0.190847)
+modulate = Color(0, 0, 0, 0.372549)
+pixel_size = 0.006
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_qdi7p")
+frame_progress = 0.975941
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_qdi7p")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
