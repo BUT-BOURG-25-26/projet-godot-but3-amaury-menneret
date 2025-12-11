@@ -212,3 +212,5 @@ metadata/_custom_type_script = "uid://codgib43l6gr2"
 [node name="Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_sgyir")
 animation = &"die"
+frame = 14
+frame_progress = 1.0

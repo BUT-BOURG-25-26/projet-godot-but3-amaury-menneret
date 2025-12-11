@@ -25,7 +25,7 @@ func apply() -> void:
 	ticks -= 1
 	if ticks <= 0:
 		print("SHOULD REMOVE ", instance_of_effect)
-		remove()
+		#remove()
 
 func can_apply() -> bool:
 	if ticks > 0:
@@ -34,6 +34,7 @@ func can_apply() -> bool:
 		return false
 
 func cooldown_done() -> void:
+	print(can_apply())
 	if can_apply():
 		apply()
 

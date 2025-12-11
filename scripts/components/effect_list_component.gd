@@ -14,6 +14,8 @@ func add_effect(effect : Effect) -> void:
 		effect_handler.parent = self
 		effect_list.set(effect, effect_handler)
 		add_child(effect_handler)
+	else:
+		(effect_list.get(effect) as EffectHandler).ticks += effect.ticks
 
 func clear_effect(effect : Effect) -> void:
 	if effect_list.has(effect):

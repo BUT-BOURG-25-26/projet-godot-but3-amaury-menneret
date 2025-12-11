@@ -36,7 +36,8 @@ func gain_skill(skill : PackedScene) -> void:
 		skills.set(skill, new_skill_handler)
 		add_child(new_skill_handler)
 	
-func use_mana(value : int) -> void:
+func use_mana(value : int, source : String) -> void:
+	print(source, " USE MANA")
 	mana -= value
 	ui.update()
 	
