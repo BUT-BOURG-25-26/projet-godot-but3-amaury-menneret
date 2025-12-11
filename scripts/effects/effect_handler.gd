@@ -18,7 +18,7 @@ func _ready() -> void:
 		cooldown.timeout.connect(cooldown_done)
 		add_child(cooldown)
 		add_child(instance_of_effect)
-		cooldown.start()
+		cooldown.start(0.01)
 
 func apply() -> void:
 	instance_of_effect.apply(target)
@@ -34,7 +34,6 @@ func can_apply() -> bool:
 		return false
 
 func cooldown_done() -> void:
-	print(can_apply())
 	if can_apply():
 		apply()
 

@@ -26,7 +26,7 @@ func cast_requirements(source : LivingEntity, targets : Array[LivingEntity]) -> 
 
 func cast_effects(source : LivingEntity) -> void :
 	if source is Player:
-		return source.use_mana(mana_cost, "Instant Heal")
+		return source.use_mana(mana_cost)
 
 func get_first_effect_list_component(target : LivingEntity) -> EffectListComponent:
 	for child in target.get_children():
