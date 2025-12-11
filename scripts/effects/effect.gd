@@ -6,11 +6,10 @@ extends Node
 @export var effect_description : String
 @export var ticks : int
 @export var cooldown : float
-@export var target : LivingEntity
 @export var animation : Animation
 
-func apply() -> void :
-	ticks -= 1
+func apply(target : LivingEntity) -> void :
+	pass
 
-func can_apply() -> bool :
-	return ticks > 0 and target
+func can_apply(target :  LivingEntity) -> bool :
+	return false

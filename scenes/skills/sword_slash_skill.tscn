@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgexpily2tj38"]
+
+[ext_resource type="Script" uid="uid://lupeqc1l247h" path="res://scripts/skills/sword_slash_skill.gd" id="1_4gryv"]
+[ext_resource type="PackedScene" uid="uid://jiixrpox2jc2" path="res://scenes/attack/sword_slash.tscn" id="2_4e67t"]
+
+[node name="SwordSlashSkill" type="Node"]
+script = ExtResource("1_4gryv")
+sword_slash_scene = ExtResource("2_4e67t")
+count = 1
+skill_name = "Sword Slash"
+skill_description = "Slash enemies in front of your blade"
+cooldown = 1.0
+mana_cost = 0
+metadata/_custom_type_script = "uid://6e5cvfqbsche"
