@@ -5,6 +5,8 @@ extends Skill
 @export var heal : float
 
 func cast(source : LivingEntity, targets : Array[LivingEntity]) -> void :
+	if source.get_children().has(EffectListComponent):
+		print("HAHA  !")
 	source.gain_health(heal)
 	
 func cast_requirements(source : LivingEntity, targets : Array[LivingEntity]) -> bool :
