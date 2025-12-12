@@ -7,7 +7,7 @@ extends Node3D
 @export var sprite : AnimatedSprite3D
 
 func add_effect(effect : Effect) -> void:
-	if !effect_list.has(effect):
+	if !effect_list.has(effect.get_unique_effect_name()):
 		var effect_handler = EffectHandler.new()
 		var new_effect : Effect = effect.duplicate(7)
 		effect_handler.instance_of_effect = new_effect

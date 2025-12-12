@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4dedur8wo133"]
+[gd_scene load_steps=9 format=3 uid="uid://d4dedur8wo133"]
 
 [ext_resource type="PackedScene" uid="uid://lqdnoki1o7m5" path="res://scenes/entity/living_entity.tscn" id="1_mu37s"]
 [ext_resource type="Script" uid="uid://be544a2bnlrwh" path="res://scripts/hostile/hostile.gd" id="2_2rgjq"]
+[ext_resource type="Script" uid="uid://dajnr8ln4g3e1" path="res://scripts/components/effect_list_component.gd" id="2_ro2fa"]
 [ext_resource type="PackedScene" uid="uid://cdbwjxp8cwho0" path="res://scenes/item/xp_orb.tscn" id="3_lh40n"]
 [ext_resource type="Script" uid="uid://tx4shaxw48uu" path="res://scripts/util/state_machine.gd" id="4_lh40n"]
 
@@ -21,8 +22,6 @@ collision_mask = 3
 script = ExtResource("2_2rgjq")
 xp_scene = ExtResource("3_lh40n")
 damage = 1
-max_health = 10
-speed = 1.5
 
 [node name="CSGMesh3D" parent="." index="0"]
 mesh = SubResource("SphereMesh_mu37s")
@@ -38,3 +37,8 @@ metadata/_custom_type_script = "uid://tx4shaxw48uu"
 [node name="Sprite" type="AnimatedSprite3D" parent="." index="3"]
 billboard = 1
 texture_filter = 0
+
+[node name="EffectListComponent" type="Node3D" parent="." index="4" node_paths=PackedStringArray("target")]
+script = ExtResource("2_ro2fa")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://dajnr8ln4g3e1"

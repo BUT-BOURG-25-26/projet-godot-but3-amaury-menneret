@@ -4,6 +4,7 @@ extends Skill
 
 @export var magic_arrow_scene : PackedScene
 @export var count : int
+@export var damage : int
 
 func cast(source : LivingEntity, targets : Array[LivingEntity]) -> void:
 	var wait_time : float = (cooldown/2)/count
@@ -18,6 +19,7 @@ func summon_magic_arrow(source : Vector3, direction : Vector3) -> void:
 	var instance = magic_arrow_scene.instantiate() as MagicArrow
 	instance.position = source
 	instance.direction = direction
+	instance.damage = damage
 	get_tree().current_scene.add_child(instance)
 
 func cast_requirements(source : LivingEntity, targets : Array[LivingEntity]) -> bool :

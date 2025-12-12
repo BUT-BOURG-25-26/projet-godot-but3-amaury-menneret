@@ -1,14 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpq4bkb4kh286"]
+[gd_scene load_steps=3 format=3 uid="uid://dpq4bkb4kh286"]
 
 [ext_resource type="Script" uid="uid://blavdaauax4ed" path="res://scripts/skills/poison_vial_throw.gd" id="1_7pu4l"]
+[ext_resource type="PackedScene" uid="uid://bym7wmqhlwc83" path="res://scenes/entity/poison_vial.tscn" id="2_dhm7i"]
 
 [node name="PoisonVialThrow" type="Node"]
 script = ExtResource("1_7pu4l")
-count = null
-skill_name = null
-skill_description = null
-cooldown = null
-level = null
-mana_cost = null
-max_target_nb = null
+poison_vial_scene = ExtResource("2_dhm7i")
+throw_distance = 3.0
+count = 5
+duration = 5.0
+zone_radius = 2.0
+skill_name = "Poison Vial Throw"
+skill_description = "Throw a poison vial"
+cooldown = 2.0
+mana_cost = 0
+max_target_nb = 5
 metadata/_custom_type_script = "uid://6e5cvfqbsche"

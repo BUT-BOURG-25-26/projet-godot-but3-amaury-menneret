@@ -17,13 +17,19 @@ top_radius = 3.0
 bottom_radius = 3.0
 height = 0.001
 
-[node name="PoisonVial" type="Area3D"]
+[node name="PoisonVial" type="Area3D" node_paths=PackedStringArray("zone_hitbox", "zone_debug_shape")]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_crt2w")
 poison_scene = ExtResource("2_xb3sy")
 poison_damage = 1
 poison_ticks = 10
 poison_cooldown = 1.0
 zone_cooldown = 0.5
+ttl = 5.0
+zone_radius = 5.0
+zone_hitbox = NodePath("CollisionShape3D")
+zone_debug_shape = NodePath("MeshInstance3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_wvqbr")
