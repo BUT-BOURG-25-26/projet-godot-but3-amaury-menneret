@@ -9,6 +9,6 @@ heal = 5.0
 heal_effect = ExtResource("2_xxt85")
 skill_name = "Instant Heal"
 skill_description = "gain health once"
-cooldown = 10.0
+cooldown = 2.0
 mana_cost = 10
 metadata/_custom_type_script = "uid://6e5cvfqbsche"

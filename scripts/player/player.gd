@@ -25,7 +25,7 @@ func _ready() -> void:
 	full_rest()
 	#gain_skill(load("res://scenes/skills/magic_arrow_skill.tscn"))
 	gain_skill(load("res://scenes/skills/instant_heal_skill.tscn"))
-	#gain_skill(load("res://scenes/skills/sword_slash_skill.tscn"))
+	gain_skill(load("res://scenes/skills/sword_slash_skill.tscn"))
 	ui.update()
 
 func gain_skill(skill : PackedScene) -> void:

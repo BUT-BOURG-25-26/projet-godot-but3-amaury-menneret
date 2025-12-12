@@ -9,3 +9,6 @@ func apply(target : LivingEntity) -> void:
 
 func can_apply(target : LivingEntity) -> bool: 
 	return target is LivingEntity and target.health > damage
+
+func get_unique_effect_name() -> String :
+	return effect_name + "_" + str(damage) + "_" + str(cooldown)

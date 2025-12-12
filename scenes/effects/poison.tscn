@@ -5,6 +5,8 @@
 [node name="Poison" type="Node"]
 script = ExtResource("1_rd5pm")
 damage = 1
-ticks = 10
+effect_name = "Poison"
+effect_description = "Take small damage for a period of time"
+ticks = 5
 cooldown = 1.0
 metadata/_custom_type_script = "uid://byo3jyqaqok22"

@@ -13,3 +13,6 @@ func apply(target : LivingEntity) -> void :
 
 func can_apply(target :  LivingEntity) -> bool :
 	return false
+
+func get_unique_effect_name() -> String :
+	return effect_name
