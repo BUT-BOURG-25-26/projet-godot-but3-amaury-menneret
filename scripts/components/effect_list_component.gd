@@ -8,6 +8,7 @@ extends Node3D
 
 func add_effect(effect : Effect) -> void:
 	if !effect_list.has(effect):
+		print("ADD ", effect)
 		var effect_handler = EffectHandler.new()
 		effect_handler.instance_of_effect = effect
 		effect_handler.target = target
@@ -16,6 +17,7 @@ func add_effect(effect : Effect) -> void:
 		add_child(effect_handler)
 	else:
 		(effect_list.get(effect) as EffectHandler).ticks += effect.ticks
+		print("ADD ", effect.ticks, " TICKS TO ", effect)
 
 func clear_effect(effect : Effect) -> void:
 	if effect_list.has(effect):
