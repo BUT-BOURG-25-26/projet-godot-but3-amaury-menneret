@@ -19,7 +19,7 @@ height = 0.001
 
 [node name="PoisonVial" type="Area3D" node_paths=PackedStringArray("zone_hitbox", "zone_debug_shape")]
 collision_layer = 3
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_crt2w")
 poison_scene = ExtResource("2_xb3sy")
 poison_damage = 1

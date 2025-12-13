@@ -6,10 +6,10 @@
 [node name="LightningBoltSkill" type="Node"]
 script = ExtResource("1_iwh2c")
 lightning_bolt_scene = ExtResource("2_hxmuc")
-count = 15
+count = 2
 skill_name = "Lightning Bolt"
 skill_description = "Summon a lightning bolt straight from the sky"
-cooldown = 3.0
+cooldown = 5.0
 mana_cost = 10
 max_target_nb = 100
 metadata/_custom_type_script = "uid://6e5cvfqbsche"
