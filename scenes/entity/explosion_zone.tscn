@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://br8ou23bvsqtj"]
+
+[ext_resource type="Script" uid="uid://bxuknjalx4jb3" path="res://scripts/explosion_zone.gd" id="1_qmxo6"]
+[ext_resource type="Texture2D" uid="uid://bl04lifrkfwwp" path="res://anim/explosion/frame1.png" id="2_omk3c"]
+[ext_resource type="Texture2D" uid="uid://cwjmxwu3slwrf" path="res://anim/explosion/frame2.png" id="3_hw6td"]
+[ext_resource type="Texture2D" uid="uid://b0qek1x0jsrg5" path="res://anim/explosion/frame3.png" id="4_qoq3i"]
+[ext_resource type="Texture2D" uid="uid://b0wqvgvl88ew5" path="res://anim/explosion/frame4.png" id="5_1re7m"]
+[ext_resource type="Texture2D" uid="uid://ih8p3mv5q6bc" path="res://anim/explosion/frame5.png" id="6_o30pm"]
+[ext_resource type="Texture2D" uid="uid://dxhi5a03e1tyt" path="res://anim/explosion/frame6.png" id="7_c2ntg"]
+[ext_resource type="Texture2D" uid="uid://bv0tbabsw4t8j" path="res://anim/explosion/frame7.png" id="8_nbsxb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k7k8p"]
+height = 0.001
+radius = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k7k8p"]
+top_radius = 3.0
+bottom_radius = 3.0
+height = 0.001
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmxo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_omk3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hw6td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qoq3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1re7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o30pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c2ntg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nbsxb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ExplosionZone" type="Area3D" node_paths=PackedStringArray("hitbox", "debug_hitbox_visualizer", "sprite")]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_qmxo6")
+explosion_radius = 3.0
+explosion_damage = 5
+hitbox = NodePath("CollisionShape3D")
+debug_hitbox_visualizer = NodePath("MeshInstance3D")
+sprite = NodePath("AnimatedSprite3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_k7k8p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_k7k8p")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.13
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_qmxo6")
+frame = 6
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://dgkjetiaa12c7"]
+
+[ext_resource type="Script" uid="uid://b3knr3dwdsh7n" path="res://scripts/lightning_bolt.gd" id="1_tr65r"]
+[ext_resource type="PackedScene" uid="uid://br8ou23bvsqtj" path="res://scenes/entity/explosion_zone.tscn" id="2_wrfhb"]
+[ext_resource type="Texture2D" uid="uid://bw4v2lxx8quje" path="res://anim/lightningbolt/lightning_skill4_frame1.png" id="3_tchdd"]
+[ext_resource type="Texture2D" uid="uid://veghvgjfv3od" path="res://anim/lightningbolt/lightning_skill4_frame2.png" id="4_205m8"]
+[ext_resource type="Texture2D" uid="uid://c2chr433jtvcr" path="res://anim/lightningbolt/lightning_skill4_frame3.png" id="5_fv13p"]
+[ext_resource type="Texture2D" uid="uid://dxgol5sw3nclu" path="res://anim/lightningbolt/lightning_skill4_frame4.png" id="6_lgqwk"]
+[ext_resource type="Texture2D" uid="uid://bs48nuo3v6od6" path="res://anim/lightningbolt/lightning_skill4_frame5.png" id="7_l67ik"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tghgs"]
+size = Vector3(0.1, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wrfhb"]
+size = Vector3(0.1, 2, 0.1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbea2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tchdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_205m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fv13p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lgqwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l67ik")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="LightningBolt" type="Area3D" node_paths=PackedStringArray("sprite")]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_tr65r")
+speed = 10.0
+explosion_scene = ExtResource("2_wrfhb")
+sprite = NodePath("AnimatedSprite3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tghgs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_wrfhb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_nbea2")
+frame_progress = 0.637247
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

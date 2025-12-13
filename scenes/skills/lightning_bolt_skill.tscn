@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://q2aamourjjdq"]
+
+[ext_resource type="Script" uid="uid://d31w4rnfvv1k2" path="res://scripts/skills/lightning_bolt_skill.gd" id="1_iwh2c"]
+[ext_resource type="PackedScene" uid="uid://dgkjetiaa12c7" path="res://scenes/entity/lightning_bolt.tscn" id="2_hxmuc"]
+
+[node name="LightningBoltSkill" type="Node"]
+script = ExtResource("1_iwh2c")
+lightning_bolt_scene = ExtResource("2_hxmuc")
+count = 3
+skill_name = "Lightning Bolt"
+skill_description = "Summon a lightning bolt straight from the sky"
+cooldown = 3.0
+mana_cost = 10
+max_target_nb = 100
+metadata/_custom_type_script = "uid://6e5cvfqbsche"

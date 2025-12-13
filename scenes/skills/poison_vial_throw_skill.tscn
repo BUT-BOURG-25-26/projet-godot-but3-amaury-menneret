@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpq4bkb4kh286"]
 
-[ext_resource type="Script" uid="uid://blavdaauax4ed" path="res://scripts/skills/poison_vial_throw.gd" id="1_7pu4l"]
-[ext_resource type="PackedScene" uid="uid://bym7wmqhlwc83" path="res://scenes/entity/poison_vial.tscn" id="2_dhm7i"]
+[ext_resource type="Script" uid="uid://blavdaauax4ed" path="res://scripts/skills/poison_vial_throw.gd" id="1_82bh2"]
+[ext_resource type="PackedScene" uid="uid://bym7wmqhlwc83" path="res://scenes/entity/poison_vial.tscn" id="2_vlct2"]
 
 [node name="PoisonVialThrow" type="Node"]
-script = ExtResource("1_7pu4l")
-poison_vial_scene = ExtResource("2_dhm7i")
+script = ExtResource("1_82bh2")
+poison_vial_scene = ExtResource("2_vlct2")
 throw_distance = 3.0
 count = 5
 duration = 5.0
