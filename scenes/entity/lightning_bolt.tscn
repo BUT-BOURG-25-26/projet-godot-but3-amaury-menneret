@@ -60,6 +60,6 @@ autostart = true
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_nbea2")
-frame_progress = 0.637247
+frame_progress = 0.972363
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

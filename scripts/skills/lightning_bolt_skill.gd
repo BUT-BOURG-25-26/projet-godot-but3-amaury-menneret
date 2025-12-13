@@ -6,9 +6,13 @@ extends Skill
 @export var count : int
 
 func cast(source : LivingEntity, targets : Array[LivingEntity]) -> void:
+	var positions : Array[Vector3]
 	var wait_time : float = (cooldown/2)/count
+	for x in targets.size():
+		if targets.get(x) and !positions.has(targets.get(x).position):
+			positions.append(targets.get(x).position)
 	for x in count:
-		summon_lightning_bolt(targets.pick_random().position + Vector3(0,2,0))
+		summon_lightning_bolt(positions.pick_random() + Vector3(0,2,0))
 		await get_tree().create_timer(wait_time).timeout
 
 func summon_lightning_bolt(position : Vector3) -> void:
