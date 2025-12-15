@@ -5,6 +5,8 @@ extends Area3D
 @export var explosion_radius : float
 @export var explosion_damage : int
 
+@export var knockback_kick : float
+
 @export var hitbox : CollisionShape3D
 @export var debug_hitbox_visualizer : MeshInstance3D
 

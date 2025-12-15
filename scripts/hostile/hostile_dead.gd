@@ -9,9 +9,9 @@ func enter():
 	if player.enemies_in_range.has(hostile):
 		player.enemies_in_range.erase(hostile)
 	GameManager.active_enemy_nb -= 1
+	hostile.velocity = Vector3(0,0,0)
 	hostile.can_attack = false
 	hostile.sprite.play("die")
-	hostile.velocity = Vector3(0,0,0)
 
 func Update(delta : float) -> void :
 	if hostile is HostileNormal:

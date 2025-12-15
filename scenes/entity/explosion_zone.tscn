@@ -53,6 +53,7 @@ collision_mask = 2
 script = ExtResource("1_qmxo6")
 explosion_radius = 3.0
 explosion_damage = 5
+knockback_kick = 1.0
 hitbox = NodePath("CollisionShape3D")
 debug_hitbox_visualizer = NodePath("MeshInstance3D")
 sprite = NodePath("AnimatedSprite3D")

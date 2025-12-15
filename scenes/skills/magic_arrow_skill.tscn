@@ -6,7 +6,7 @@
 [node name="MagicArrowSkill" type="Node"]
 script = ExtResource("1_35xbq")
 magic_arrow_scene = ExtResource("2_kxtyg")
-count = 10
+count = 15
 damage = 3
 skill_name = "Magic Arrow"
 skill_description = "Cast a magic arrow that aims itself at enemies"

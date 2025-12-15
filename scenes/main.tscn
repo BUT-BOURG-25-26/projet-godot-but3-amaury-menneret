@@ -25,6 +25,7 @@ light_indirect_energy = 0.0
 [node name="Camera" type="Camera3D" parent="."]
 far = 40000.0
 script = ExtResource("7_o6xl0")
+fov_camera = 4.5
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Camera"]
 anchors_preset = 15
@@ -37,7 +38,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2560, 1440)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="PlayerUi" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("7_tipki")]
@@ -58,7 +59,7 @@ visible = false
 [node name="EnemySpawner" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.783336, -0.621599, 0, 0.621599, 0.783336, 0, 0, 0, 1, 0, 0, 0)
 enemy = ExtResource("9_eb6dy")
-spawn_rate = 20.0
+spawn_rate = 3.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("12_eb6dy")]
 ui = NodePath("../Camera/SubViewportContainer/SubViewport/PlayerUi")

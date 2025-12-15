@@ -16,7 +16,6 @@ func cast(source : LivingEntity, targets : Array[LivingEntity]) -> void:
 		await get_tree().create_timer(wait_time).timeout
 
 func summon_lightning_bolt(position : Vector3) -> void:
-	print("SUMMONING LIGHTNING BOLT AT ", position)
 	var instance = lightning_bolt_scene.instantiate() as LightningBolt
 	instance.position = position
 	get_tree().current_scene.add_child(instance)

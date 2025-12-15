@@ -6,7 +6,7 @@
 [node name="LightningBoltSkill" type="Node"]
 script = ExtResource("1_iwh2c")
 lightning_bolt_scene = ExtResource("2_hxmuc")
-count = 2
+count = 5
 skill_name = "Lightning Bolt"
 skill_description = "Summon a lightning bolt straight from the sky"
 cooldown = 5.0
