@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://e0pqs24waqiy"]
+
+[ext_resource type="Script" uid="uid://dulommtit07ie" path="res://scripts/upgrades/health_upgrade.gd" id="1_un86h"]
+
+[node name="HealthUpgrade" type="Node"]
+script = ExtResource("1_un86h")
+default_value = 5
+title = "Health Upgrade"
+description = "Upgrade player health"
+metadata/_custom_type_script = "uid://c7rqdfmc6a4mn"

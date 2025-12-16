@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgx4y7fbqw0gd"]
+
+[ext_resource type="Script" uid="uid://buuct8tuvveye" path="res://scripts/upgrades/speed_upgrade.gd" id="1_m45us"]
+
+[node name="SpeedUpgrade" type="Node"]
+script = ExtResource("1_m45us")
+title = "Speed upgrade"
+description = "Upgrade Player Speed"
+metadata/_custom_type_script = "uid://c7rqdfmc6a4mn"
