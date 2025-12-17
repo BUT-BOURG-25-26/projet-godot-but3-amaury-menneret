@@ -12,15 +12,16 @@ func _ready() -> void:
 	paused(false)
 	display_game_over(false)
 	
-func give_player_upgrade(upgrade : PackedScene) :
+func give_player_upgrade(upgrade : Upgrade) :
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player")
-	player.gain_skill(upgrade)
+	upgrade.apply_upgrade(player)
+	player.full_rest()
 	var upgrade_menu = get_tree().get_first_node_in_group("upgrade_choice_menu")
 	upgrade_menu.visible = false
 	for x in upgrade_menu.get_children():
 		x.queue_free()
-	(upgrade_menu as UpgradeChoiceMenu).choices.clear()
+	(upgrade_menu as UpgradeChoiceMenu).upgrades.clear()
 	Engine.time_scale = 1
 
 func can_spawn_new_enemy() -> bool:

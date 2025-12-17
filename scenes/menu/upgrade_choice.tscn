@@ -15,7 +15,7 @@ corner_radius_bottom_left = 5
 [sub_resource type="LabelSettings" id="LabelSettings_3i6f5"]
 font_size = 10
 
-[node name="UpgradeChoice" type="Control"]
+[node name="UpgradeChoice" type="Control" node_paths=PackedStringArray("button", "texture", "label")]
 layout_mode = 3
 anchor_right = 0.033
 anchor_bottom = 0.081
@@ -24,6 +24,9 @@ offset_bottom = 0.519997
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xxh4o")
+button = NodePath("Button")
+texture = NodePath("Button/TextureRect")
+label = NodePath("Button/Label")
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1

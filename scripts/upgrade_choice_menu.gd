@@ -4,22 +4,24 @@ extends Control
 
 signal choosen(upgrade: PackedScene)
 
-@onready var choices : Array[PackedScene] = []
+@onready var upgrades : Array[Upgrade] = []
 @export var upgrade_choice_scene : PackedScene
 
 @export var possible_upgrades : Array[String] = [
-	"res://scenes/skills/instant_heal_skill.tscn",
-	"res://scenes/skills/lightning_bolt_skill.tscn",
-	"res://scenes/skills/poison_vial_throw_skill.tscn",
-	"res://scenes/skills/sword_slash_skill.tscn"
+	"res://scenes/upgrades/health_upgrade.tscn",
+	"res://scenes/upgrades/mana_upgrade.tscn",
+	"res://scenes/upgrades/new_skill_upgrade.tscn",
+	"res://scenes/upgrades/speed_upgrade.tscn"
 ]
 
-func add_choice(choice : PackedScene) -> void :
-	choices.append(choice)
+func add_upgrade_choice(upgrade_choice : Upgrade) -> void :
+	if !upgrades.has(upgrade_choice):
+		upgrades.append(upgrade_choice)
+		add_child(upgrade_choice)
 	
 func draw() -> void :
 	var index = 0
-	for choice in choices:
+	for choice in upgrades:
 		index += 1
 		var up_choice : UpgradeChoice = upgrade_choice_scene.instantiate()
 		up_choice.upgrade = choice
@@ -27,19 +29,20 @@ func draw() -> void :
 		up_choice.scale = Vector2(3,3)
 		up_choice.position = Vector2(((get_viewport().get_visible_rect().size.x/3) * index) - (get_viewport().get_visible_rect().size.x/3)/2 - (up_choice.size.x * 1.5), (get_viewport().get_visible_rect().size.y/2) - (up_choice.size.y * 1.5))
 
-func get_random_upgrade() -> String:
-	return possible_upgrades.pick_random()
+func get_random_upgrade() -> Upgrade:
+	return (load(possible_upgrades.pick_random()) as PackedScene).instantiate()
 	
 func get_random_upgrades(nb : int) -> void:
-	var upgrades:Array[String] = []
+	var upgrades_to_be_added:Array[Upgrade] = []
 	for x in nb:
-		var upgrade = get_random_upgrade()
-		if !upgrades.has(upgrade):
-			upgrades.append(upgrade)
-		else:
-			x -= 1
-	for upgrade in upgrades:
-		add_choice(load(upgrade))
+		var possible_upgrade = get_random_upgrade()
+		if !upgrades_to_be_added.has(possible_upgrade):
+			upgrades_to_be_added.append(possible_upgrade)
+		else :
+			while upgrades_to_be_added.has(possible_upgrade):
+				possible_upgrade = get_random_upgrade()
+	for comming_upgrade in upgrades_to_be_added:
+		add_upgrade_choice(comming_upgrade)
 	
 
 func init():

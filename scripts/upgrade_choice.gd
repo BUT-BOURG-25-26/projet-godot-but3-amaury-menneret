@@ -2,16 +2,32 @@ class_name UpgradeChoice
 
 extends Control
 
-@onready var button : Button = $Button
-@onready var texture : TextureRect = $Button/TextureRect
-@onready var label : Label = $Button/Label
-@onready var upgrade : PackedScene
+@export var button : Button
+@export var texture : TextureRect
+@export var label : Label
+
+@onready var upgrade : Upgrade
 
 func _ready() -> void:
-	if upgrade != null:
-		var skill = (upgrade.instantiate() as Skill)
-		#texture.texture = attack.icon
-		label.text = skill.skill_name
+	if upgrade:
+		var color : Color
+		match upgrade.tier: 
+			"common":
+				color = Color.GRAY
+			"rare":
+				color = Color.SKY_BLUE
+			"legendary":
+				color = Color.MEDIUM_PURPLE
+			"exotic":
+				color = Color.GOLD
+		label.text = upgrade.title
+		
+		var style : StyleBoxFlat = load("res://material/rounded_corners.tres").duplicate(7)
+		style.bg_color = color
+		
+		button.add_theme_stylebox_override("normal", style)
+		button.add_theme_stylebox_override("hover", style)
+		button.add_theme_stylebox_override("pressed", style)
 		button.pressed.connect(chosen)
 
 func chosen() -> void :

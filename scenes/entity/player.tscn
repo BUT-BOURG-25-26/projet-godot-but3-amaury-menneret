@@ -193,7 +193,6 @@ metadata/_custom_type_script = "uid://tx4shaxw48uu"
 [node name="Run" type="Node" parent="MovementStateMachine" index="0" node_paths=PackedStringArray("player")]
 script = ExtResource("27_b6txc")
 player = NodePath("../..")
-speed = 5.0
 metadata/_custom_type_script = "uid://dwvrjd7x7085e"
 
 [node name="Idle" type="Node" parent="MovementStateMachine" index="1" node_paths=PackedStringArray("player")]

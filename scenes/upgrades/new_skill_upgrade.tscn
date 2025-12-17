@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cug80sv3fjp8f"]
+
+[ext_resource type="Script" uid="uid://dh4rfw88a54id" path="res://scripts/upgrades/new_skill_upgrade.gd" id="1_c0lte"]
+
+[node name="NewSkillUpgrade" type="Node"]
+script = ExtResource("1_c0lte")
+title = "New skill upgrade"
+description = "gives the plaer a new skill"
+tier = "exotic"
+metadata/_custom_type_script = "uid://c7rqdfmc6a4mn"

@@ -12,7 +12,9 @@ var velocity : Vector3
 var move_inputs: Vector2
 
 func enter():
-	player.sprite.play("run")
+	if player:
+		speed = player.speed
+		player.sprite.play("run")
 
 func Update(delta: float):
 	player.sprite.flip_h = floor(((player.move_inputs.x) + (player.move_inputs.y))/2) < 0

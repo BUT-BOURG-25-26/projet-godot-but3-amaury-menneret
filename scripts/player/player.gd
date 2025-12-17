@@ -71,9 +71,8 @@ func get_xp(value : float):
 	
 func level_up(value : int):
 	level += value
-	max_mana *= 1.2
-	full_rest()
 	GameManager.onPlayerLevelUp()
+	#full_rest()
 
 func full_rest():
 	mana = max_mana

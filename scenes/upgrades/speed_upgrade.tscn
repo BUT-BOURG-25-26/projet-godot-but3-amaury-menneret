@@ -4,6 +4,7 @@
 
 [node name="SpeedUpgrade" type="Node"]
 script = ExtResource("1_m45us")
+default_value = 0.25
 title = "Speed upgrade"
 description = "Upgrade Player Speed"
 metadata/_custom_type_script = "uid://c7rqdfmc6a4mn"
