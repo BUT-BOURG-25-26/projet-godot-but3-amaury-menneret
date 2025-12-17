@@ -20,14 +20,13 @@ func add_upgrade_choice(upgrade_choice : Upgrade) -> void :
 		add_child(upgrade_choice)
 	
 func draw() -> void :
-	var index = 0
 	for choice in upgrades:
-		index += 1
+		print(choice)
 		var up_choice : UpgradeChoice = upgrade_choice_scene.instantiate()
 		up_choice.upgrade = choice
 		add_child(up_choice)
 		up_choice.scale = Vector2(3,3)
-		up_choice.position = Vector2(((get_viewport().get_visible_rect().size.x/3) * index) - (get_viewport().get_visible_rect().size.x/3)/2 - (up_choice.size.x * 1.5), (get_viewport().get_visible_rect().size.y/2) - (up_choice.size.y * 1.5))
+		up_choice.position = Vector2(((get_viewport().get_visible_rect().size.x/3) * (upgrades.find(choice) + 1) ) - (get_viewport().get_visible_rect().size.x/3)/2 - (up_choice.size.x * 1.5), (get_viewport().get_visible_rect().size.y/2) - (up_choice.size.y * 1.5))
 
 func get_random_upgrade() -> Upgrade:
 	return (load(possible_upgrades.pick_random()) as PackedScene).instantiate()
@@ -40,6 +39,7 @@ func get_random_upgrades(nb : int) -> void:
 			upgrades_to_be_added.append(possible_upgrade)
 		else :
 			while upgrades_to_be_added.has(possible_upgrade):
+				print("FINDING OTHER UPGRADE")
 				possible_upgrade = get_random_upgrade()
 	for comming_upgrade in upgrades_to_be_added:
 		add_upgrade_choice(comming_upgrade)
