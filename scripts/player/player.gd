@@ -5,13 +5,15 @@ extends LivingEntity
 @export var max_mana:int = 100;
 var mana:int;
 
-@onready var skills : Dictionary = {}
+#@onready var skills : Dictionary = {}
 
 @export var sprite : AnimatedSprite3D
 @export var ui : PlayerStats
 
 @export var movementStateMachine : StateMachine
 @export var vulnerabilityStateMachine : StateMachine
+
+@export var skill_list_component : SkillListComponent
 
 var xp : float = 0
 var xp_to_next_level : int = 10
@@ -31,12 +33,8 @@ func _ready() -> void:
 	ui.update()
 
 func gain_skill(skill : PackedScene) -> void:
-	var new_skill_handler = SkillHandler.new()
-	if !skills.has(skill):
-		new_skill_handler.skill = skill
-		new_skill_handler.source = self
-		skills.set(skill, new_skill_handler)
-		add_child(new_skill_handler)
+	if skill_list_component:
+		skill_list_component.gain_skill(skill)
 
 func use_mana(value : int) -> void:
 	mana -= value

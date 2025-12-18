@@ -4,7 +4,6 @@ extends Node3D
 
 @onready var effect_list : Dictionary = {}
 @export var target : LivingEntity
-@export var sprite : AnimatedSprite3D
 
 func add_effect(effect : Effect) -> void:
 	if !effect_list.has(effect.get_unique_effect_name()):

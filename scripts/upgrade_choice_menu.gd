@@ -21,7 +21,7 @@ func add_upgrade_choice(upgrade_choice : Upgrade) -> void :
 	
 func draw() -> void :
 	for choice in upgrades:
-		print(choice)
+		#print(choice)
 		var up_choice : UpgradeChoice = upgrade_choice_scene.instantiate()
 		up_choice.upgrade = choice
 		add_child(up_choice)
@@ -39,7 +39,6 @@ func get_random_upgrades(nb : int) -> void:
 			upgrades_to_be_added.append(possible_upgrade)
 		else :
 			while upgrades_to_be_added.has(possible_upgrade):
-				print("FINDING OTHER UPGRADE")
 				possible_upgrade = get_random_upgrade()
 	for comming_upgrade in upgrades_to_be_added:
 		add_upgrade_choice(comming_upgrade)

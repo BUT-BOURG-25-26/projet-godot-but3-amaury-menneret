@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dopsgfnvs688r"]
+[gd_scene load_steps=2 format=3 uid="uid://dopsgfnvs688r"]
 
 [ext_resource type="Script" uid="uid://dajnr8ln4g3e1" path="res://scripts/components/effect_list_component.gd" id="1_cc63m"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cc63m"]
-
-[node name="EffectListComponent" type="Node3D" node_paths=PackedStringArray("sprite")]
+[node name="EffectListComponent" type="Node"]
 script = ExtResource("1_cc63m")
-sprite = NodePath("AnimatedSprite3D")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-sprite_frames = SubResource("SpriteFrames_cc63m")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dpsrr3ay2gy4x"]
+[gd_scene load_steps=23 format=3 uid="uid://dpsrr3ay2gy4x"]
 
 [ext_resource type="PackedScene" uid="uid://d4dedur8wo133" path="res://scenes/entity/hostile.tscn" id="1_did33"]
 [ext_resource type="Script" uid="uid://cqmj3xkyvn44m" path="res://scripts/hostile/hostile_boss.gd" id="2_yqglb"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://daciqvxvsny6h" path="res://anim/boss/tile012.png" id="15_5ek0j"]
 [ext_resource type="Texture2D" uid="uid://dywnc56tcjeb1" path="res://anim/boss/tile013.png" id="16_lbli6"]
 [ext_resource type="Texture2D" uid="uid://bpb8mfins4q43" path="res://anim/boss/tile014.png" id="17_agmnf"]
+[ext_resource type="Script" uid="uid://dfemus65cwhnk" path="res://scripts/components/skill_list_component.gd" id="20_qj3eh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ujet"]
 radius = 0.2
@@ -76,9 +77,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="HostileBoss" node_paths=PackedStringArray("sprite") instance=ExtResource("1_did33")]
+[node name="HostileBoss" node_paths=PackedStringArray("sprite", "skill_list_component") instance=ExtResource("1_did33")]
 script = ExtResource("2_yqglb")
 sprite = NodePath("Sprite")
+skill_list_component = NodePath("SkillListComponent")
 damage = 10
 max_health = 1000
 speed = 1.0
@@ -109,3 +111,8 @@ metadata/_custom_type_script = "uid://dw6os4ch7oetj"
 [node name="Sprite" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_v1ta6")
 animation = &"float"
+
+[node name="SkillListComponent" type="Node" parent="." index="5" node_paths=PackedStringArray("target")]
+script = ExtResource("20_qj3eh")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://dfemus65cwhnk"
