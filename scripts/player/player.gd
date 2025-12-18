@@ -5,8 +5,6 @@ extends LivingEntity
 @export var max_mana:int = 100;
 var mana:int;
 
-#@onready var skills : Dictionary = {}
-
 @export var sprite : AnimatedSprite3D
 @export var ui : PlayerStats
 
@@ -70,7 +68,6 @@ func get_xp(value : float):
 func level_up(value : int):
 	level += value
 	GameManager.onPlayerLevelUp()
-	#full_rest()
 
 func full_rest():
 	mana = max_mana
@@ -117,8 +114,11 @@ func _on_item_pick_up_range_body_entered(body: Node3D) -> void:
 	if body is PickableItem:
 		body.on_pickup(self)
 
-func get_target() -> LivingEntity :
+func get_target() -> LivingEntity:
 	if enemies_in_range.size() > 0:
 		return enemies_in_range.pick_random()
 	else :
 		return self
+		
+func has_skill(skill : Skill) -> bool:
+	return skill_list_component.has_skill(skill)

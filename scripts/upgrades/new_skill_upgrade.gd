@@ -17,6 +17,10 @@ func _ready() -> void:
 
 func get_random_unowned_player_skill(player : Player) -> void:
 	skill_scene = load(skills.pick_random()) as PackedScene
+	var skill_instance = skill_scene.instantiate() as Skill
+	while player.has_skill(skill_instance):
+		skill_scene = load(skills.pick_random()) as PackedScene
+		skill_instance = skill_scene.instantiate() as Skill
 
 func apply_upgrade(player : Player) -> void:
 	player.gain_skill(skill_scene)

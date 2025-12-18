@@ -24,3 +24,6 @@ func remove_skill(skill_name : String) -> void:
 func clear_skills() -> void:
 	if skill_list:
 		skill_list.clear()
+
+func has_skill(skill : Skill) -> bool:
+	return skill_list.has(skill.skill_name)
