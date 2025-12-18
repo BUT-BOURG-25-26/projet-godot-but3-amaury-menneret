@@ -5,6 +5,7 @@ extends Node
 @export var title : String
 @export var description : String
 @export var tier : String = "common"
+@export var can_upgrade : bool = true
 
 var tiers : Array[String] = [
 	"common",

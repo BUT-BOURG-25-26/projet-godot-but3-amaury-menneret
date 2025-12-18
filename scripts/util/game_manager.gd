@@ -32,6 +32,7 @@ func can_spawn_new_enemy() -> bool:
 func onPlayerLevelUp():
 	if(enemySpawner != null):
 		enemySpawner.increaseSpawnRate(1.2)
+		enemySpawner.increase_difficulty(1)
 	Engine.time_scale = 0
 	if upgrade_menu == null:
 		upgrade_menu = get_tree().get_first_node_in_group("upgrade_choice_menu")

@@ -32,4 +32,4 @@ func cast_requirements(source : LivingEntity, targets : Array[LivingEntity]) -> 
 func level_up() -> void :
 	super()
 	count += 1
-	mana_cost *= 2
+	cooldown *= 0.95

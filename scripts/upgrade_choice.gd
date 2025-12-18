@@ -33,4 +33,5 @@ func _ready() -> void:
 		button.pressed.connect(chosen)
 
 func chosen() -> void :
-	GameManager.give_player_upgrade(upgrade)
+	if upgrade.can_upgrade:
+		GameManager.give_player_upgrade(upgrade)

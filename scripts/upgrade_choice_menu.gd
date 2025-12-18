@@ -10,7 +10,7 @@ signal choosen(upgrade: PackedScene)
 @export var possible_upgrades : Array[String] = [
 	"res://scenes/upgrades/health_upgrade.tscn",
 	"res://scenes/upgrades/mana_upgrade.tscn",
-	"res://scenes/upgrades/new_skill_upgrade.tscn",
+	#"res://scenes/upgrades/new_skill_upgrade.tscn",
 	"res://scenes/upgrades/speed_upgrade.tscn",
 	"res://scenes/upgrades/skill_upgrade.tscn"
 ]

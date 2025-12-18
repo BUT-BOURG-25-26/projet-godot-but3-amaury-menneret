@@ -39,4 +39,3 @@ func cast_effects(source : LivingEntity) -> void :
 func level_up() -> void :
 	super()
 	count += 1
-	mana_cost *= 2
