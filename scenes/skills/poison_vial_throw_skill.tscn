@@ -7,9 +7,9 @@
 script = ExtResource("1_82bh2")
 poison_vial_scene = ExtResource("2_vlct2")
 throw_distance = 3.0
-count = 5
-duration = 5.0
-zone_radius = 2.0
+count = 1
+duration = 3.0
+zone_radius = 1.0
 skill_name = "Poison Vial Throw"
 skill_description = "Throw a poison vial"
 cooldown = 10.0

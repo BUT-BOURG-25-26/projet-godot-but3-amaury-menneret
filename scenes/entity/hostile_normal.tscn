@@ -176,7 +176,6 @@ script = ExtResource("2_s1fby")
 sprite = NodePath("Sprite")
 movement_state_machine = NodePath("MovementStateMachine")
 hitbox = NodePath("CollisionShape3D")
-damage = null
 max_health = 10
 speed = 0.5
 
