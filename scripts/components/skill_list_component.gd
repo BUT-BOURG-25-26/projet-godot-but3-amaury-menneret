@@ -25,5 +25,12 @@ func clear_skills() -> void:
 	if skill_list:
 		skill_list.clear()
 
-func has_skill(skill : Skill) -> bool:
-	return skill_list.has(skill.skill_name)
+func has_skill(skill_name : String) -> bool:
+	return skill_list.has(skill_name)
+
+func upgrade_skill(skill_name : String) -> void:
+	if has_skill(skill_name):
+		(skill_list.get(skill_name) as SkillHandler).skill.level_up()
+		
+func get_random_skill() -> Skill:
+	return (skill_list.values().pick_random() as SkillHandler).skill

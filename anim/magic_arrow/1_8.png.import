@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv064s0q0vnef"
 path.s3tc="res://.godot/imported/1_8.png-e839a7b5eab1522a648cc48359c1da30.s3tc.ctex"
+path.etc2="res://.godot/imported/1_8.png-e839a7b5eab1522a648cc48359c1da30.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/magic_arrow/1_8.png"
-dest_files=["res://.godot/imported/1_8.png-e839a7b5eab1522a648cc48359c1da30.s3tc.ctex"]
+dest_files=["res://.godot/imported/1_8.png-e839a7b5eab1522a648cc48359c1da30.s3tc.ctex", "res://.godot/imported/1_8.png-e839a7b5eab1522a648cc48359c1da30.etc2.ctex"]
 
 [params]
 

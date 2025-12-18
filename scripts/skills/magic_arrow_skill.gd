@@ -33,3 +33,8 @@ func cast_requirements(source : LivingEntity, targets : Array[LivingEntity]) -> 
 func cast_effects(source : LivingEntity) -> void :
 	if source is Player:
 		source.use_mana(mana_cost)
+
+func level_up() -> void :
+	super()
+	count += 2
+	mana_cost += 5

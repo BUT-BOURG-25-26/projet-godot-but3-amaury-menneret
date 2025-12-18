@@ -24,9 +24,11 @@ func _ready() -> void:
 		
 		var style : StyleBoxFlat = load("res://material/rounded_corners.tres").duplicate(7)
 		style.bg_color = color
+		var alternate_style : StyleBoxFlat = style.duplicate(7)
+		alternate_style.bg_color = color.lightened(0.15)
 		
 		button.add_theme_stylebox_override("normal", style)
-		button.add_theme_stylebox_override("hover", style)
+		button.add_theme_stylebox_override("hover", alternate_style)
 		button.add_theme_stylebox_override("pressed", style)
 		button.pressed.connect(chosen)
 

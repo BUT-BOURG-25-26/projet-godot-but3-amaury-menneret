@@ -59,14 +59,14 @@ func _physics_process(delta: float) -> void:
 func get_xp(value : float):
 	xp += value
 	if(xp >= xp_to_next_level):
-		xp = 0
-		xp_to_next_level = xp_to_next_level * 1.5 as int
 		level_up(1)
 	if ui != null:
 		ui.update()
 	
 func level_up(value : int):
 	level += value
+	xp = 0
+	xp_to_next_level = xp_to_next_level * 1.2 as int
 	GameManager.onPlayerLevelUp()
 
 func full_rest():
@@ -120,5 +120,5 @@ func get_target() -> LivingEntity:
 	else :
 		return self
 		
-func has_skill(skill : Skill) -> bool:
-	return skill_list_component.has_skill(skill)
+func has_skill(skill_name : String) -> bool:
+	return skill_list_component.has_skill(skill_name)

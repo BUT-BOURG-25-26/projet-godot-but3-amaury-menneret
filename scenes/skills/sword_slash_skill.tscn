@@ -6,7 +6,7 @@
 [node name="SwordSlashSkill" type="Node"]
 script = ExtResource("1_4gryv")
 sword_slash_scene = ExtResource("2_4e67t")
-count = 5
+count = 1
 skill_name = "Sword Slash"
 skill_description = "Slash enemies in front of your blade"
 cooldown = 1.0

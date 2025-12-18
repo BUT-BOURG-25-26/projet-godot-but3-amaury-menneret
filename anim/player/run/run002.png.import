@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djo6u147nmn4w"
 path.s3tc="res://.godot/imported/run002.png-0a35a8cb7220d3d13cac4c7caec0c9be.s3tc.ctex"
+path.etc2="res://.godot/imported/run002.png-0a35a8cb7220d3d13cac4c7caec0c9be.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/player/run/run002.png"
-dest_files=["res://.godot/imported/run002.png-0a35a8cb7220d3d13cac4c7caec0c9be.s3tc.ctex"]
+dest_files=["res://.godot/imported/run002.png-0a35a8cb7220d3d13cac4c7caec0c9be.s3tc.ctex", "res://.godot/imported/run002.png-0a35a8cb7220d3d13cac4c7caec0c9be.etc2.ctex"]
 
 [params]
 

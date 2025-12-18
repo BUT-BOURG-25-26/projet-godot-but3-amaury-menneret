@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq33qpyjdw5ga"
 path.s3tc="res://.godot/imported/red_flower.png-2929c5add2d7284d29a89e4208598d18.s3tc.ctex"
+path.etc2="res://.godot/imported/red_flower.png-2929c5add2d7284d29a89e4208598d18.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://sprites/tiles/red_flower.png"
-dest_files=["res://.godot/imported/red_flower.png-2929c5add2d7284d29a89e4208598d18.s3tc.ctex"]
+dest_files=["res://.godot/imported/red_flower.png-2929c5add2d7284d29a89e4208598d18.s3tc.ctex", "res://.godot/imported/red_flower.png-2929c5add2d7284d29a89e4208598d18.etc2.ctex"]
 
 [params]
 

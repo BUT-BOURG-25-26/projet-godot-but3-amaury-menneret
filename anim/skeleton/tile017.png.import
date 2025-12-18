@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dje3e87604pks"
 path.s3tc="res://.godot/imported/tile017.png-2208698d289ea71a661529801c375b04.s3tc.ctex"
+path.etc2="res://.godot/imported/tile017.png-2208698d289ea71a661529801c375b04.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/skeleton/tile017.png"
-dest_files=["res://.godot/imported/tile017.png-2208698d289ea71a661529801c375b04.s3tc.ctex"]
+dest_files=["res://.godot/imported/tile017.png-2208698d289ea71a661529801c375b04.s3tc.ctex", "res://.godot/imported/tile017.png-2208698d289ea71a661529801c375b04.etc2.ctex"]
 
 [params]
 

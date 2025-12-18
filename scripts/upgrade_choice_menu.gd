@@ -11,7 +11,8 @@ signal choosen(upgrade: PackedScene)
 	"res://scenes/upgrades/health_upgrade.tscn",
 	"res://scenes/upgrades/mana_upgrade.tscn",
 	"res://scenes/upgrades/new_skill_upgrade.tscn",
-	"res://scenes/upgrades/speed_upgrade.tscn"
+	"res://scenes/upgrades/speed_upgrade.tscn",
+	"res://scenes/upgrades/skill_upgrade.tscn"
 ]
 
 func add_upgrade_choice(upgrade_choice : Upgrade) -> void :
@@ -22,7 +23,6 @@ func add_upgrade_choice(upgrade_choice : Upgrade) -> void :
 func draw() -> void :
 	var index = 1
 	for choice in upgrades.values():
-		print(choice)
 		var up_choice : UpgradeChoice = upgrade_choice_scene.instantiate()
 		up_choice.upgrade = choice
 		add_child(up_choice)

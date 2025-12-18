@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bby8r1n8j3h2l"
 path.s3tc="res://.godot/imported/001.png-6af06edc657567a40860a1be816697f4.s3tc.ctex"
+path.etc2="res://.godot/imported/001.png-6af06edc657567a40860a1be816697f4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/slash/001.png"
-dest_files=["res://.godot/imported/001.png-6af06edc657567a40860a1be816697f4.s3tc.ctex"]
+dest_files=["res://.godot/imported/001.png-6af06edc657567a40860a1be816697f4.s3tc.ctex", "res://.godot/imported/001.png-6af06edc657567a40860a1be816697f4.etc2.ctex"]
 
 [params]
 

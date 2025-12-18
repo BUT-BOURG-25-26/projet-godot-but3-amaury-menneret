@@ -33,3 +33,9 @@ func get_first_effect_list_component(target : LivingEntity) -> EffectListCompone
 		if child is EffectListComponent:
 			return child
 	return null
+
+func level_up() -> void :
+	super()
+	heal += 1
+	cooldown *= 0.95
+	mana_cost += 2

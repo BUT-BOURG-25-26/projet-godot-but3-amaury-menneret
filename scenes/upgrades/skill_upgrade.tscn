@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv7du31c5x4lt"]
+
+[ext_resource type="Script" uid="uid://086tnc4gxubx" path="res://scripts/upgrades/skill_upgrade.gd" id="1_f12dw"]
+
+[node name="SkillUpgrade" type="Node"]
+script = ExtResource("1_f12dw")
+metadata/_custom_type_script = "uid://c7rqdfmc6a4mn"

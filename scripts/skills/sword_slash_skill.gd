@@ -28,3 +28,8 @@ func cast_requirements(source : LivingEntity, targets : Array[LivingEntity]) -> 
 	if targets.size() > 0:
 		return true
 	return false
+
+func level_up() -> void :
+	super()
+	count += 1
+	mana_cost *= 2

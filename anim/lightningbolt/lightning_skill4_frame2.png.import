@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://veghvgjfv3od"
 path.s3tc="res://.godot/imported/lightning_skill4_frame2.png-d276aa408dba9fe2bd72dd3e228c42dd.s3tc.ctex"
+path.etc2="res://.godot/imported/lightning_skill4_frame2.png-d276aa408dba9fe2bd72dd3e228c42dd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/lightningbolt/lightning_skill4_frame2.png"
-dest_files=["res://.godot/imported/lightning_skill4_frame2.png-d276aa408dba9fe2bd72dd3e228c42dd.s3tc.ctex"]
+dest_files=["res://.godot/imported/lightning_skill4_frame2.png-d276aa408dba9fe2bd72dd3e228c42dd.s3tc.ctex", "res://.godot/imported/lightning_skill4_frame2.png-d276aa408dba9fe2bd72dd3e228c42dd.etc2.ctex"]
 
 [params]
 

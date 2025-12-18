@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://yr42btdqm8e4"
 path.s3tc="res://.godot/imported/hurt002.png-0f99c351618fdf92650ff03e4bdd5166.s3tc.ctex"
+path.etc2="res://.godot/imported/hurt002.png-0f99c351618fdf92650ff03e4bdd5166.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/player/hurt/hurt002.png"
-dest_files=["res://.godot/imported/hurt002.png-0f99c351618fdf92650ff03e4bdd5166.s3tc.ctex"]
+dest_files=["res://.godot/imported/hurt002.png-0f99c351618fdf92650ff03e4bdd5166.s3tc.ctex", "res://.godot/imported/hurt002.png-0f99c351618fdf92650ff03e4bdd5166.etc2.ctex"]
 
 [params]
 

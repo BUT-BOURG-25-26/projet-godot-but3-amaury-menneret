@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcm8wfu0yy3x4"
 path.s3tc="res://.godot/imported/death003.png-5f7dc9e062d81761906bea9c54e30ace.s3tc.ctex"
+path.etc2="res://.godot/imported/death003.png-5f7dc9e062d81761906bea9c54e30ace.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/player/death/death003.png"
-dest_files=["res://.godot/imported/death003.png-5f7dc9e062d81761906bea9c54e30ace.s3tc.ctex"]
+dest_files=["res://.godot/imported/death003.png-5f7dc9e062d81761906bea9c54e30ace.s3tc.ctex", "res://.godot/imported/death003.png-5f7dc9e062d81761906bea9c54e30ace.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcg0vbgbvg11t"
 path.s3tc="res://.godot/imported/pngtree-3d-realistic-ice-ball-isolated-on-a-background-png-image_15754733.png-d921aeef5e8cde82781c772d7893a8e6.s3tc.ctex"
+path.etc2="res://.godot/imported/pngtree-3d-realistic-ice-ball-isolated-on-a-background-png-image_15754733.png-d921aeef5e8cde82781c772d7893a8e6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/iceball/pngtree-3d-realistic-ice-ball-isolated-on-a-background-png-image_15754733.png"
-dest_files=["res://.godot/imported/pngtree-3d-realistic-ice-ball-isolated-on-a-background-png-image_15754733.png-d921aeef5e8cde82781c772d7893a8e6.s3tc.ctex"]
+dest_files=["res://.godot/imported/pngtree-3d-realistic-ice-ball-isolated-on-a-background-png-image_15754733.png-d921aeef5e8cde82781c772d7893a8e6.s3tc.ctex", "res://.godot/imported/pngtree-3d-realistic-ice-ball-isolated-on-a-background-png-image_15754733.png-d921aeef5e8cde82781c772d7893a8e6.etc2.ctex"]
 
 [params]
 

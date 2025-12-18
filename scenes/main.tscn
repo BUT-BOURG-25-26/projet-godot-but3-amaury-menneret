@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq5ayxykesrlm"]
+[gd_scene load_steps=10 format=3 uid="uid://bq5ayxykesrlm"]
 
 [ext_resource type="Script" uid="uid://q43vfrsy4siw" path="res://scripts/world_generator.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bwcqvj1g877n1" path="res://scenes/entity/enemySpawner.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://5a8lwcgkyly5" path="res://scenes/menu/game_over_menu.tscn" id="6_85g3d"]
-[ext_resource type="PackedScene" uid="uid://qjtya8hu6dls" path="res://scenes/ui/skill_list_display.tscn" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://d12olfaaeo2jc" path="res://scenes/menu/pauseMenu.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://bpbgfbcpeax2r" path="res://scripts/camera.gd" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dn23wa63ppe56" path="res://scenes/ui/playerUi.tscn" id="7_tipki"]
@@ -37,14 +36,12 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="PlayerUi" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("7_tipki")]
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="SkillListDisplay" parent="Camera/SubViewportContainer/SubViewport" instance=ExtResource("6_choun")]
 
 [node name="UI" type="CanvasLayer" parent="Camera" groups=["ui_layer"]]
 
@@ -58,7 +55,7 @@ visible = false
 [node name="EnemySpawner" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.783336, -0.621599, 0, 0.621599, 0.783336, 0, 0, 0, 1, 0, 0, 0)
 enemy = ExtResource("9_eb6dy")
-spawn_rate = 3.0
+spawn_rate = 2.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("12_eb6dy")]
 ui = NodePath("../Camera/SubViewportContainer/SubViewport/PlayerUi")

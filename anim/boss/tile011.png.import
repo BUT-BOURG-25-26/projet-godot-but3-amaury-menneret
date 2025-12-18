@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdvnxwxl1gafx"
 path.s3tc="res://.godot/imported/tile011.png-450acd18af84bd20941593520c74fb2e.s3tc.ctex"
+path.etc2="res://.godot/imported/tile011.png-450acd18af84bd20941593520c74fb2e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://anim/boss/tile011.png"
-dest_files=["res://.godot/imported/tile011.png-450acd18af84bd20941593520c74fb2e.s3tc.ctex"]
+dest_files=["res://.godot/imported/tile011.png-450acd18af84bd20941593520c74fb2e.s3tc.ctex", "res://.godot/imported/tile011.png-450acd18af84bd20941593520c74fb2e.etc2.ctex"]
 
 [params]
 
