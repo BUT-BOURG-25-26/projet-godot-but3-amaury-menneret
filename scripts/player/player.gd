@@ -74,11 +74,15 @@ func full_rest():
 	health = max_health
 
 func read_move_inputs():
-	move_inputs = Input.get_vector("left", "right", "forward", "backward")
+	pass
+	#DECOMMENT IF YOU WANT KEYBOARD INPUT
+	#move_inputs = Input.get_vector("left", "right", "forward", "backward")
 
-func _input(ev):
+func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE) && health > 0:
 		GameManager.paused(!GameManager.pause)
+	if event is InputEventMouseButton:
+		move_inputs = Vector2(event.position.x - (get_viewport().size.x/2), event.position.y - (get_viewport().size.y/2)).normalized()
 
 func take_damage(value : int):
 	if vulnerabilityStateMachine.current_state == $VulnerabilityStateMachine/Vulnerable:
