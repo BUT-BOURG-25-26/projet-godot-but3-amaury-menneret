@@ -10,7 +10,7 @@ signal choosen(upgrade: PackedScene)
 @export var possible_upgrades : Array[String] = [
 	"res://scenes/upgrades/health_upgrade.tscn",
 	"res://scenes/upgrades/mana_upgrade.tscn",
-	#"res://scenes/upgrades/new_skill_upgrade.tscn",
+	"res://scenes/upgrades/new_skill_upgrade.tscn",
 	"res://scenes/upgrades/speed_upgrade.tscn",
 	"res://scenes/upgrades/skill_upgrade.tscn"
 ]
@@ -37,13 +37,11 @@ func get_random_upgrades(nb : int) -> void:
 	var upgrades_to_be_added:Dictionary = {}
 	for x in nb:
 		var possible_upgrade = get_random_upgrade()
-		if !upgrades_to_be_added.has(possible_upgrade.title):
+		if !upgrades_to_be_added.has(possible_upgrade.title) and possible_upgrade.can_init:
 			upgrades_to_be_added.set(possible_upgrade.title, possible_upgrade)
 		else :
-			var index = 1
 			while upgrades_to_be_added.has(possible_upgrade.title):
 				possible_upgrade = get_random_upgrade()
-				index += 1
 			upgrades_to_be_added.set(possible_upgrade.title, possible_upgrade)
 	for comming_upgrade in upgrades_to_be_added.values():
 		add_upgrade_choice(comming_upgrade)

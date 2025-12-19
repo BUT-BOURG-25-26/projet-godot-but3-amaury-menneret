@@ -11,8 +11,16 @@ extends Upgrade
 	"res://scenes/skills/sword_slash_skill.tscn"
 ]
 
-func _ready() -> void:
-	get_random_unowned_player_skill(get_tree().get_first_node_in_group("Player") as Player)
+func can_init(player : Player) -> bool:
+	var player_has_all_skills = true
+	for skill in skills:
+		if !player.has_skill((load(skill).instantiate() as Skill).skill_name):
+			player_has_all_skills = false
+			break
+	return !player_has_all_skills 
+
+func init(player : Player) -> void:
+	get_random_unowned_player_skill(player)
 	title = (skill_scene.instantiate() as Skill).skill_name
 
 func get_random_unowned_player_skill(player : Player) -> void:
@@ -20,6 +28,7 @@ func get_random_unowned_player_skill(player : Player) -> void:
 	var skill_instance = skill_scene.instantiate() as Skill
 	while player.has_skill(skill_instance.skill_name):
 		skill_scene = load(skills.pick_random()) as PackedScene
+		skill_instance = skill_scene.instantiate()
 
 func apply_upgrade(player : Player) -> void:
 	player.gain_skill(skill_scene)

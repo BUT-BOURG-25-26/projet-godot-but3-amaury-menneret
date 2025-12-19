@@ -10,6 +10,8 @@ extends Control
 
 func _ready() -> void:
 	if upgrade:
+		var player = get_tree().get_first_node_in_group("Player")
+		upgrade.init(player)
 		var color : Color
 		match upgrade.tier: 
 			"common":

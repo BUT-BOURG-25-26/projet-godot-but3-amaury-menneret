@@ -11,10 +11,18 @@ extends Upgrade
 	"res://scenes/skills/sword_slash_skill.tscn"
 ]
 
-func _ready() -> void:
-	super()
-	get_random_owned_player_skill(get_tree().get_first_node_in_group("Player") as Player)
-	title = skill.skill_name + " UPGRADE"
+func can_init(player : Player) -> bool:
+	var player_has_any_skill = false
+	for skill in skills:
+		if player.has_skill((load(skill).instantiate() as Skill).skill_name):
+			player_has_any_skill = true
+			break
+	return player_has_any_skill 
+
+func init(player : Player) -> void:
+	super(player)
+	get_random_owned_player_skill(player)
+	title = skill.skill_name + " upgrade"
 
 func get_random_owned_player_skill(player : Player) -> void:
 	skill = player.skill_list_component.get_random_skill()

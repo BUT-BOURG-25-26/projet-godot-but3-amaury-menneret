@@ -14,7 +14,10 @@ var tiers : Array[String] = [
 	"exotic"
 ]
 
-func _ready() -> void:
+func can_init(player : Player) -> bool:
+	return true
+
+func init(player : Player) -> void:
 	get_random_tier()
 	get_value_with_tier()
 

@@ -4,7 +4,7 @@
 
 [node name="NewSkillUpgrade" type="Node"]
 script = ExtResource("1_c0lte")
-title = "New skill upgrade"
-description = "gives the plaer a new skill"
+title = "New Skill Upgrade"
+description = "gives the player a new skill"
 tier = "exotic"
 metadata/_custom_type_script = "uid://c7rqdfmc6a4mn"

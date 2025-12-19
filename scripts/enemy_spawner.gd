@@ -16,14 +16,15 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	for x in (spawn_rate as int):
 		if GameManager.can_spawn_new_enemy() :
-			var scene = enemy.instantiate()
+			var scene = enemy.instantiate() as Hostile
 			var spawnpoint = Vector3(randf_range(-range,range),1,randf_range(-range,range))
 			if(spawnpoint.distance_to(Vector3(0,0,0)) < range/2):
 				spawnpoint = Vector3(randf_range(-range,range),1,randf_range(-range,range))
 			scene.position = global_position + spawnpoint
-			(scene as Hostile).damage + 0.5 * difficulty_setting
-			(scene as Hostile).speed + 0.25 * difficulty_setting
-			(scene as Hostile).max_health + 0.75 * difficulty_setting
+			scene.damage + 0.5 * difficulty_setting
+			scene.speed + 0.25 * difficulty_setting
+			scene.max_health + 0.75 * difficulty_setting
+			scene.health = scene.max_health
 			get_tree().get_current_scene().add_child(scene)
 			GameManager.active_enemy_nb += 1
 			await get_tree().create_timer(3/spawn_rate).timeout

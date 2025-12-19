@@ -4,4 +4,5 @@
 
 [node name="SkillUpgrade" type="Node"]
 script = ExtResource("1_f12dw")
+title = "Skill Upgrade"
 metadata/_custom_type_script = "uid://c7rqdfmc6a4mn"
