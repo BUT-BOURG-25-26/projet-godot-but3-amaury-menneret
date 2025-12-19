@@ -21,9 +21,9 @@ func _on_timer_timeout() -> void:
 			if(spawnpoint.distance_to(Vector3(0,0,0)) < range/2):
 				spawnpoint = Vector3(randf_range(-range,range),1,randf_range(-range,range))
 			scene.position = global_position + spawnpoint
-			scene.damage + 0.5 * difficulty_setting
-			scene.speed + 0.25 * difficulty_setting
-			scene.max_health + 0.75 * difficulty_setting
+			scene.damage += difficulty_setting * 2
+			scene.speed += 0.33 * difficulty_setting
+			scene.max_health += difficulty_setting * 5
 			scene.health = scene.max_health
 			get_tree().get_current_scene().add_child(scene)
 			GameManager.active_enemy_nb += 1
